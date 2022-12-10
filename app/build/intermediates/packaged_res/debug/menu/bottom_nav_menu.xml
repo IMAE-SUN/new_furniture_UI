@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_mf"
+        android:icon="@drawable/ic_baseline_home"
+        android:title="@string/mf" />
+
+    <item
+        android:id="@+id/navigation_rf"
+        android:icon="@drawable/ic_baseline_emoji_emotions"
+        android:title="@string/rf" />
+
+    <item
+        android:id="@+id/navigation_sf"
+        android:icon="@drawable/ic_baseline_settings"
+        android:title="@string/sf" />
+
+</menu>

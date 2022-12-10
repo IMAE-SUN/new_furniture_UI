@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <string-array name="reply_entries">
+        <item>Reply</item>
+        <item>Reply to all</item>
+    </string-array>
+    <string-array name="reply_values">
+        <item>reply</item>
+        <item>reply_all</item>
+    </string-array>
+    <color name="black">#FF000000</color>
+    <color name="fur_darkNavy">#181D31</color>
+    <color name="fur_light">#F5EBE0</color>
+    <color name="fur_medium">#F0DBDB</color>
+    <color name="fur_navy">#2B3A55</color>
+    <color name="fur_pale">#FEFCF3</color>
+    <color name="fur_pink">#DBA39A</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">내일의 집</string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="messages_header">Messages</string>
+    <string name="mf">Main</string>
+    <string name="reply_title">Default reply action</string>
+    <string name="rf">Recommendation</string>
+    <string name="sf">Setting</string>
+    <string name="signature_title">Your signature</string>
+    <string name="sync_header">Sync</string>
+    <string name="sync_title">Sync email periodically</string>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        
+        <item name="colorPrimary">@color/fur_pale</item>
+        <item name="colorPrimaryDark">@color/fur_pink</item>
+        <item name="colorAccent">@color/fur_navy</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AppTheme.Toolbar" parent="ThemeOverlay.AppCompat.ActionBar"/>
+    <style name="Theme.NewBottomNavi_ANTI" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        
+        <item name="colorPrimary">@color/fur_pink</item>
+        <item name="colorPrimaryVariant">@color/fur_navy</item>
+        <item name="colorOnPrimary">@color/fur_pale</item>
+        
+        <item name="colorSecondary">@color/fur_light</item>
+        <item name="colorSecondaryVariant">@color/fur_medium</item>
+        <item name="colorOnSecondary">@color/fur_navy</item>
+        
+        <item name="android:statusBarColor" ns1:targetApi="l">@color/fur_pink</item>
+        
+        <item name="android:windowBackground">@color/fur_pale</item>
+    </style>
+</resources>
