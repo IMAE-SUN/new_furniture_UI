@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.NewBottomNavi_ANTI" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/fur_pink</item>
+        <item name="colorPrimaryVariant">@color/fur_navy</item>
+        <item name="colorOnPrimary">@color/fur_pale</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/fur_light</item>
+        <item name="colorSecondaryVariant">@color/fur_medium</item>
+        <item name="colorOnSecondary">@color/fur_navy</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/fur_pink</item>
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/fur_pale</item>
+    </style>
+</resources>
