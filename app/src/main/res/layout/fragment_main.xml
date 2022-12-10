@@ -464,6 +464,7 @@
                             android:orientation="horizontal">
 
                             <ImageView
+                                android:id="@+id/img_trending_1"
                                 android:layout_width="220dp"
                                 android:layout_height="110dp"
                                 android:layout_marginLeft="8dp"
@@ -471,6 +472,7 @@
                                 android:src="@drawable/ic_baseline_home" />
 
                             <ImageView
+                                android:id="@+id/img_trending_2"
                                 android:layout_width="220dp"
                                 android:layout_height="110dp"
                                 android:layout_marginLeft="4dp"
@@ -493,6 +495,7 @@
                             android:orientation="horizontal">
 
                             <ImageView
+                                android:id="@+id/img_trending_3"
                                 android:layout_width="220dp"
                                 android:layout_height="110dp"
                                 android:layout_marginLeft="8dp"
@@ -500,6 +503,7 @@
                                 android:src="@drawable/ic_baseline_home" />
 
                             <ImageView
+                                android:id="@+id/img_trending_4"
                                 android:layout_width="220dp"
                                 android:layout_height="110dp"
                                 android:layout_marginLeft="4dp"
@@ -584,6 +588,7 @@
                                 android:orientation="vertical">
 
                                 <ImageView
+                                    android:id="@+id/img_recently_1"
                                     android:layout_width="match_parent"
                                     android:layout_height="110dp"
                                     android:scaleType="fitXY"
@@ -596,11 +601,6 @@
                                     android:layout_marginTop="-16dp"
                                     android:layout_marginRight="8dp"
                                     android:layout_marginBottom="8dp">
-
-                                    <ImageView
-                                        android:layout_width="36dp"
-                                        android:layout_height="36dp"
-                                        android:src="@drawable/ic_baseline_home" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -626,7 +626,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="4dp"
                                         android:fontFamily="@font/notosanskr_medium"
-                                        android:text="BMW M5 G-Power"
+                                        android:text=""
                                         android:textColor="#000000"
                                         android:textSize="14sp"
                                         android:textStyle="bold" />
@@ -635,7 +635,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/notosanskr_medium"
-                                        android:text="Tel-Aviv, Israel"
+                                        android:text=""
                                         android:textColor="#a4a7b5"
                                         android:textSize="12sp" />
 
@@ -690,6 +690,7 @@
                                 android:orientation="vertical">
 
                                 <ImageView
+                                    android:id="@+id/img_recently_2"
                                     android:layout_width="match_parent"
                                     android:layout_height="110dp"
                                     android:src="@drawable/ic_baseline_home"
@@ -703,12 +704,6 @@
                                     android:layout_marginLeft="8dp"
                                     android:layout_marginRight="8dp"
                                     android:layout_marginBottom="8dp">
-
-                                    <ImageView
-                                        android:layout_width="36dp"
-                                        android:layout_height="36dp"
-                                        android:src="@drawable/ic_baseline_home"
-                                        />
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -734,7 +729,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="4dp"
                                         android:fontFamily="@font/notosanskr_medium"
-                                        android:text="Ford Mustang GT"
+                                        android:text=""
                                         android:textColor="#000000"
                                         android:textSize="14sp"
                                         android:textStyle="bold" />
@@ -743,7 +738,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/notosanskr_medium"
-                                        android:text="Tel-Aviv, Israel"
+                                        android:text=""
                                         android:textColor="#a4a7b5"
                                         android:textSize="12sp" />
 
@@ -807,6 +802,7 @@
                                 android:orientation="vertical">
 
                                 <ImageView
+                                    android:id="@+id/img_recently_3"
                                     android:layout_width="match_parent"
                                     android:layout_height="110dp"
                                     android:scaleType="fitXY"
@@ -819,11 +815,6 @@
                                     android:layout_marginTop="-16dp"
                                     android:layout_marginRight="8dp"
                                     android:layout_marginBottom="8dp">
-
-                                    <ImageView
-                                        android:layout_width="36dp"
-                                        android:layout_height="36dp"
-                                        android:src="@drawable/ic_baseline_home" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -849,7 +840,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="4dp"
                                         android:fontFamily="@font/notosanskr_medium"
-                                        android:text="Audi A7 2018"
+                                        android:text=""
                                         android:textColor="#000000"
                                         android:textSize="14sp"
                                         android:textStyle="bold" />
@@ -858,7 +849,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/notosanskr_medium"
-                                        android:text="Warsaw, Poland"
+                                        android:text=""
                                         android:textColor="#a4a7b5"
                                         android:textSize="12sp" />
 
@@ -913,6 +904,7 @@
                                 android:orientation="vertical">
 
                                 <ImageView
+                                    android:id="@+id/img_recently_4"
                                     android:layout_width="match_parent"
                                     android:layout_height="110dp"
                                     android:src="@drawable/ic_baseline_home"
@@ -927,11 +919,6 @@
                                     android:layout_marginRight="8dp"
                                     android:layout_marginBottom="8dp">
 
-                                    <ImageView
-                                        android:layout_width="36dp"
-                                        android:layout_height="36dp"
-                                        android:src="@drawable/ic_baseline_home"
-                                        />
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -957,7 +944,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="4dp"
                                         android:fontFamily="@font/notosanskr_medium"
-                                        android:text="Mercedes-Benz SLS"
+                                        android:text=""
                                         android:textColor="#000000"
                                         android:textSize="14sp"
                                         android:textStyle="bold" />
@@ -966,7 +953,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/notosanskr_medium"
-                                        android:text="Haifa, Israel"
+                                        android:text=""
                                         android:textColor="#a4a7b5"
                                         android:textSize="12sp" />
 

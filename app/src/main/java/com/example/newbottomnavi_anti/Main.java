@@ -66,16 +66,30 @@ public class Main extends Fragment {
         //0~39까지의 중복 없는 난수 4개 생성
         Set<Integer> set = new HashSet<>();
 
-        while (set.size() < 3) {
+        while (set.size() < 11) {
             Double d = Math.random() * 112;
             set.add(d.intValue());
         }
 
         List<Integer> list = new ArrayList<>(set);
 
+        //random
         Glide.with(getActivity()).load(strarray[list.get(0)][5]).into(binding.bannerA1);
         Glide.with(getActivity()).load(strarray[list.get(1)][5]).into(binding.bannerB1);
         Glide.with(getActivity()).load(strarray[list.get(2)][5]).into(binding.bannerC1);
+
+        //trending
+        Glide.with(getActivity()).load(strarray[list.get(3)][5]).into(binding.imgTrending1);
+        Glide.with(getActivity()).load(strarray[list.get(4)][5]).into(binding.imgTrending2);
+        Glide.with(getActivity()).load(strarray[list.get(5)][5]).into(binding.imgTrending3);
+        Glide.with(getActivity()).load(strarray[list.get(6)][5]).into(binding.imgTrending4);
+
+        //recently
+        Glide.with(getActivity()).load(strarray[list.get(7)][5]).into(binding.imgRecently1);
+        Glide.with(getActivity()).load(strarray[list.get(8)][5]).into(binding.imgRecently2);
+        Glide.with(getActivity()).load(strarray[list.get(9)][5]).into(binding.imgRecently3);
+        Glide.with(getActivity()).load(strarray[list.get(10)][5]).into(binding.imgRecently4);
+
 
         binding.rand1Title.setText(strarray[list.get(0)][0]);
         binding.rand2Title.setText(strarray[list.get(1)][0]);
