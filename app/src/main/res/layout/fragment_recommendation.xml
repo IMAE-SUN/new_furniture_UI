@@ -264,15 +264,20 @@
                                 android:text="Click refresh to refresh the results"
                                 android:textColor="#a4a7b5"
                                 android:textSize="12sp"
-                                android:layout_gravity="center"/>
+                                android:layout_gravity="center"
+                                android:layout_weight="9"
+                                android:layout_marginRight="10dp"/>
 
-                            <Button
-                                android:id="@+id/refresh_btn"
+                            <ImageButton
+                                android:id="@+id/refresh_imgbtn"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 android:layout_gravity="right"
-                                android:background="@drawable/ic_baseline_refresh" />
+                                android:layout_weight="1"
+                                android:text="refresh"
+                                android:textSize="10sp"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_baseline_refresh" />
 
                         </LinearLayout>
 
@@ -301,7 +306,7 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:id="@+id/img_recom_1"
+                                    android:id="@+id/img_recom_a"
                                     android:layout_width="match_parent"
                                     android:layout_height="110dp"
                                     android:scaleType="fitXY"
@@ -316,7 +321,7 @@
                                     android:layout_marginBottom="8dp">
 
                                     <ImageView
-                                        android:id="@+id/img_recom_1_1"
+                                        android:id="@+id/img_recom_a_1"
                                         android:layout_width="36dp"
                                         android:layout_height="36dp"
                                         android:src="@drawable/ic_baseline_home" />
@@ -409,7 +414,7 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:id="@+id/img_recom_2"
+                                    android:id="@+id/img_recom_b"
                                     android:layout_width="match_parent"
                                     android:layout_height="110dp"
                                     android:src="@drawable/ic_baseline_home"
@@ -425,7 +430,7 @@
                                     android:layout_marginBottom="8dp">
 
                                     <ImageView
-                                        android:id="@+id/img_recom_2_1"
+                                        android:id="@+id/img_recom_b_1"
                                         android:layout_width="36dp"
                                         android:layout_height="36dp"
                                         android:src="@drawable/ic_baseline_home" />
@@ -527,7 +532,7 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:id="@+id/img_recom_3"
+                                    android:id="@+id/img_recom_c"
                                     android:layout_width="match_parent"
                                     android:layout_height="110dp"
                                     android:scaleType="fitXY"
@@ -542,7 +547,7 @@
                                     android:layout_marginBottom="8dp">
 
                                     <ImageView
-                                        android:id="@+id/img_recom_3_1"
+                                        android:id="@+id/img_recom_c_1"
                                         android:layout_width="36dp"
                                         android:layout_height="36dp"
                                         android:src="@drawable/ic_baseline_home" />
@@ -635,7 +640,7 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:id="@+id/img_recom_4"
+                                    android:id="@+id/img_recom_d"
                                     android:layout_width="match_parent"
                                     android:layout_height="110dp"
                                     android:src="@drawable/ic_baseline_home"
@@ -651,7 +656,7 @@
                                     android:layout_marginBottom="8dp">
 
                                     <ImageView
-                                        android:id="@+id/img_recom_4_1"
+                                        android:id="@+id/img_recom_d_1"
                                         android:layout_width="36dp"
                                         android:layout_height="36dp"
                                         android:src="@drawable/ic_baseline_home" />
