@@ -15,16 +15,20 @@
             app:key="sound"
             app:title="sound" />
 
-        <EditTextPreference
-            app:key="sound"
+        <ListPreference
+            app:defaultValue="reply"
+            app:entries="@array/notifications"
+            app:entryValues="@array/notifications"
+            app:key="notification"
             app:title="notification"
-            app:useSimpleSummaryProvider="true"/>
+            app:useSimpleSummaryProvider="true" />
 
         <ListPreference
             app:defaultValue="reply"
+            app:dependency="sound"
             app:entries="@array/sounds"
             app:entryValues="@array/sounds"
-            app:key="sounds"
+            app:key="alarm"
             app:title="alarm sound"
             app:useSimpleSummaryProvider="true" />
 
@@ -33,13 +37,13 @@
     <PreferenceCategory app:title="Recommendation">
 
         <SwitchPreferenceCompat
-            app:key="sync"
+            app:key="recommendation"
             app:title="Personal Recommendation"
             app:summaryOff="You can save your own setting for better recommendation"
             app:summaryOn="Turn it off if you don't need this setting"/>
 
         <SwitchPreferenceCompat
-            app:dependency="sync"
+            app:dependency="recommendation"
             app:key="attachment"
             app:summaryOff="@string/attachment_summary_off"
             app:summaryOn="@string/attachment_summary_on"
