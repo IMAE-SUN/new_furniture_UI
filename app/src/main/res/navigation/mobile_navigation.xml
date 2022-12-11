@@ -35,6 +35,12 @@
         <argument
             android:name="img"
             app:argType="string" />
+        <argument
+            android:name="material"
+            app:argType="string" />
+        <argument
+            android:name="size"
+            app:argType="string" />
     </fragment>
 
     <fragment

@@ -31,7 +31,13 @@ public class FurnitureInfoFragment extends Fragment {
         String img = FurnitureInfoFragmentArgs.fromBundle(getArguments()).getImg();
         Glide.with(getActivity()).load(img).into(binding.img);
 
+        String material = FurnitureInfoFragmentArgs.fromBundle(getArguments()).getMaterial();
+        binding.material.setText(material);
 
+        String size = FurnitureInfoFragmentArgs.fromBundle(getArguments()).getSize();
+        binding.size.setText(size);
+
+        
         return view;
     }
 
