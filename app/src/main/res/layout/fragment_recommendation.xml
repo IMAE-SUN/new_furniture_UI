@@ -331,11 +331,11 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_alignParentRight="true"
-                                        android:background="@drawable/pink_rounded_shape"
+                                        android:background="@drawable/gray_rounded_shape"
                                         android:fontFamily="@font/notosanskr_medium"
                                         android:padding="8dp"
-                                        android:text="$200/day"
-                                        android:textColor="#FFFFFF"
+                                        android:text="상세정보"
+                                        android:textColor="@color/fur_darkNavy"
                                         android:textSize="14sp" />
 
                                 </RelativeLayout>
@@ -351,8 +351,8 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="4dp"
                                         android:fontFamily="@font/notosanskr_medium"
-                                        android:text="BMW M5 G-Power"
-                                        android:textColor="#000000"
+                                        android:text="파로마 앤드리 LED침대 Q "
+                                        android:textColor="@color/fur_darkNavy"
                                         android:textSize="14sp"
                                         android:textStyle="bold" />
 
@@ -360,8 +360,8 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/notosanskr_medium"
-                                        android:text="Tel-Aviv, Israel"
-                                        android:textColor="#a4a7b5"
+                                        android:text="379000₩"
+                                        android:textColor="@color/fur_medium"
                                         android:textSize="12sp" />
 
 
@@ -383,7 +383,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_centerVertical="true"
                                         android:layout_marginLeft="44dp"
-                                        android:src="@drawable/ic_baseline_home" />
+                                        android:src="@drawable/ic_timeline_gray_24dp" />
 
                                     <ImageView
                                         android:layout_width="wrap_content"
@@ -391,7 +391,7 @@
                                         android:layout_alignParentRight="true"
                                         android:layout_centerVertical="true"
                                         android:layout_marginRight="0dp"
-                                        android:src="@drawable/ic_baseline_home" />
+                                        android:src="@drawable/ic_more_horiz_gray_24dp" />
 
                                 </RelativeLayout>
 
@@ -440,11 +440,11 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_alignParentRight="true"
-                                        android:background="@drawable/pink_rounded_shape"
+                                        android:background="@drawable/gray_rounded_shape"
                                         android:fontFamily="@font/notosanskr_medium"
                                         android:padding="8dp"
-                                        android:text="$220/day"
-                                        android:textColor="#FFFFFF"
+                                        android:text="상세정보"
+                                        android:textColor="@color/fur_darkNavy"
                                         android:textSize="14sp" />
 
                                 </RelativeLayout>
@@ -460,8 +460,8 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="4dp"
                                         android:fontFamily="@font/notosanskr_medium"
-                                        android:text="Ford Mustang GT"
-                                        android:textColor="#000000"
+                                        android:text="느웰베드 아이번 LED침대 K "
+                                        android:textColor="@color/fur_darkNavy"
                                         android:textSize="14sp"
                                         android:textStyle="bold" />
 
@@ -469,8 +469,8 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/notosanskr_medium"
-                                        android:text="Tel-Aviv, Israel"
-                                        android:textColor="#a4a7b5"
+                                        android:text="968000₩"
+                                        android:textColor="@color/fur_medium"
                                         android:textSize="12sp" />
 
 
@@ -557,11 +557,11 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_alignParentRight="true"
-                                        android:background="@drawable/pink_rounded_shape"
+                                        android:background="@drawable/gray_rounded_shape"
                                         android:fontFamily="@font/notosanskr_medium"
                                         android:padding="8dp"
-                                        android:text="$190/day"
-                                        android:textColor="#FFFFFF"
+                                        android:text="상세정보"
+                                        android:textColor="@color/fur_darkNavy"
                                         android:textSize="14sp" />
 
                                 </RelativeLayout>
@@ -577,8 +577,8 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="4dp"
                                         android:fontFamily="@font/notosanskr_medium"
-                                        android:text="Audi A7 2018"
-                                        android:textColor="#000000"
+                                        android:text="에이스 BRA 1430-N 침대 SS "
+                                        android:textColor="@color/fur_darkNavy"
                                         android:textSize="14sp"
                                         android:textStyle="bold" />
 
@@ -586,8 +586,8 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/notosanskr_medium"
-                                        android:text="Warsaw, Poland"
-                                        android:textColor="#a4a7b5"
+                                        android:text="1078170₩"
+                                        android:textColor="@color/fur_medium"
                                         android:textSize="12sp" />
 
 
@@ -609,7 +609,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_centerVertical="true"
                                         android:layout_marginLeft="44dp"
-                                        android:src="@drawable/ic_baseline_home" />
+                                        android:src="@drawable/ic_timeline_gray_24dp" />
 
                                     <ImageView
                                         android:layout_width="wrap_content"
@@ -617,7 +617,7 @@
                                         android:layout_alignParentRight="true"
                                         android:layout_centerVertical="true"
                                         android:layout_marginRight="0dp"
-                                        android:src="@drawable/ic_baseline_home" />
+                                        android:src="@drawable/ic_more_horiz_gray_24dp" />
 
                                 </RelativeLayout>
 
@@ -666,11 +666,11 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_alignParentRight="true"
-                                        android:background="@drawable/pink_rounded_shape"
+                                        android:background="@drawable/gray_rounded_shape"
                                         android:fontFamily="@font/notosanskr_medium"
                                         android:padding="8dp"
-                                        android:text="$240/day"
-                                        android:textColor="#FFFFFF"
+                                        android:text="상세정보"
+                                        android:textColor="@color/fur_darkNavy"
                                         android:textSize="14sp" />
 
                                 </RelativeLayout>
@@ -686,8 +686,8 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="4dp"
                                         android:fontFamily="@font/notosanskr_medium"
-                                        android:text="Mercedes-Benz SLS"
-                                        android:textColor="#000000"
+                                        android:text="리바트 온라인 토스트 침대 Q "
+                                        android:textColor="@color/fur_darkNavy"
                                         android:textSize="14sp"
                                         android:textStyle="bold" />
 
@@ -695,8 +695,8 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/notosanskr_medium"
-                                        android:text="Haifa, Israel"
-                                        android:textColor="#a4a7b5"
+                                        android:text="523520₩"
+                                        android:textColor="@color/fur_medium"
                                         android:textSize="12sp" />
 
 

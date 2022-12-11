@@ -159,15 +159,18 @@ public class Recommendation extends Fragment {
             }
         });
 
+        Glide.with(this).load("https://pix8.agoda.net/hotelImages/111/1110567/1110567_16083113590045958402.jpg?ca=6&ce=1&s=1024x768").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_wys_1);
+        Glide.with(this).load("https://pix8.agoda.net/hotelImages/111/1110567/1110567_16083113130045955510.jpg?ca=6&ce=1&s=1024x768").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_wys_2);
 
-        Glide.with(this).load("https://img.danawa.com/prod_img/500000/325/105/img/5105325_1.jpg?shrink=330:330&_v=20190729141738").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_a);
-        Glide.with(this).load("https://img.danawa.com/prod_img/500000/325/105/img/5105325_2.jpg?shrink=500:500&_v=20190729141738").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_a_1);
-        Glide.with(this).load("https://img.danawa.com/prod_img/500000/325/105/img/5105325_3.jpg?shrink=500:500&_v=20190729141738").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_b);
-        Glide.with(this).load("https://img.danawa.com/prod_img/500000/325/105/img/5105325_4.jpg?shrink=500:500&_v=20190729141738").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_b_1);
-        Glide.with(this).load("https://img.danawa.com/prod_img/500000/325/105/img/5105325_1.jpg?shrink=330:330&_v=20190729141738").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_c);
-        Glide.with(this).load("https://img.danawa.com/prod_img/500000/325/105/img/5105325_2.jpg?shrink=500:500&_v=20190729141738").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_c_1);
-        Glide.with(this).load("https://img.danawa.com/prod_img/500000/325/105/img/5105325_3.jpg?shrink=500:500&_v=20190729141738").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_d);
-        Glide.with(this).load("https://img.danawa.com/prod_img/500000/325/105/img/5105325_4.jpg?shrink=500:500&_v=20190729141738").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_d_1);
+
+        Glide.with(this).load("https://pix8.agoda.net/hotelImages/111/1110567/1110567_17020812280050853336.jpg?ca=6&ce=1&s=1024x768").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_a);
+        Glide.with(this).load("https://q-xx.bstatic.com/xdata/images/hotel/840x460/58416127.jpg?k=0b4774030b77e017dc0b8a587f392f9dfab4283e3652a5ef357ccaee4d292ba7&o=").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_a_1);
+        Glide.with(this).load("https://img.danawa.com/prod_img/500000/043/638/img/1638043_1.jpg?shrink=500:500").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_b);
+        Glide.with(this).load("https://img.danawa.com/prod_img/500000/043/638/img/1638043_3.jpg?shrink=500:500").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_b_1);
+        Glide.with(this).load("https://img.danawa.com/prod_img/500000/063/627/img/4627063_1.jpg?shrink=500:500").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_c);
+        Glide.with(this).load("https://img.danawa.com/prod_img/500000/063/627/img/4627063_3.jpg?shrink=500:500").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_c_1);
+        Glide.with(this).load("https://img.danawa.com/prod_img/500000/392/235/img/5235392_1.jpg?shrink=500:500").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_d);
+        Glide.with(this).load("https://img.danawa.com/prod_img/500000/392/235/img/5235392_3.jpg?shrink=500:500").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_d_1);
 
         return view;
     }
