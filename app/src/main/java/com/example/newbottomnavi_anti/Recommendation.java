@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import androidx.exifinterface.media.ExifInterface;
 import androidx.fragment.app.Fragment;
 
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
@@ -40,8 +42,13 @@ import com.bumptech.glide.Glide;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.normal.TedPermission;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.net.Socket;
+import java.nio.charset.Charset;
 import java.security.Permission;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -148,7 +155,7 @@ public class Recommendation extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d("recommedation", "recommendation 시작함");
-                Toast.makeText(getContext(), "recommedation start", Toast.LENGTH_SHORT).show();
+                connect();
             }
         });
 
@@ -247,6 +254,102 @@ public class Recommendation extends Fragment {
                 }
                 break;
         }
+    }
+
+    private final Charset UTF8_CHARSET = Charset.forName("UTF-8");
+    private Handler mHandler;
+    private Socket socket;
+    private DataOutputStream dos;
+    private DataInputStream dis;
+    private String ip = "210.102.178.118";
+    private int port = 12125;
+    private String img_path;
+    private Bitmap img;
+
+    public void connect() {
+        mHandler = new Handler();
+        BitmapDrawable drawable = (BitmapDrawable) img_wys_1.getDrawable();
+        img = drawable.getBitmap();
+        Log.w("connect", "연결 하는중");
+        Thread checkUpdate = new Thread() {
+            public void run() {
+                ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+                img.compress(Bitmap.CompressFormat.PNG, 100, byteArray);
+                byte[] bytes = byteArray.toByteArray();
+                String result = new String();
+                int data_len=0;
+                byte[] img_result;
+                // 서버 접속
+                try {
+                    socket = new Socket(ip, port);
+                    Log.w("서버:", "서버 접속됨");
+                } catch (IOException e1) {
+                    Log.w("서버:", "서버접속못함");
+                    e1.printStackTrace();
+                }
+
+                Log.w(": ", "안드로이드에서 서버로 연결요청");
+
+                try {
+                    dos = new DataOutputStream(socket.getOutputStream());
+                    dis = new DataInputStream(socket.getInputStream());
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.w("버퍼:", "버퍼생성 잘못됨");
+                }
+                Log.w("버퍼:", "버퍼생성 잘됨");
+
+                try {
+                    dos.writeUTF(Integer.toString(bytes.length));
+                    dos.flush();
+
+                    dos.write(bytes);
+                    dos.flush();
+
+                    result = readString(dis);
+                    Log.w("done", result);
+                    //data_len = dis.readInt();
+                    //img_result =InputStreamToByteArray(data_len,dis);
+                    //img_path = readString(dis);
+                    socket.close();
+                    //Log.w("done", "img done");
+                } catch (Exception e) {
+                    Log.w("error", "error occur");
+                }
+            }
+        };
+        checkUpdate.start();
+        try {
+            checkUpdate.join();
+        } catch (InterruptedException e) {
+
+        }
+    }
+
+    public String readString (DataInputStream dis) throws IOException{
+        int length = dis.readInt();
+        byte[] data = new byte[length];
+        dis.readFully(data, 0, length);
+        String text = new String(data, UTF8_CHARSET);
+        return text;
+    }
+
+    public byte[] InputStreamToByteArray(int data_len, DataInputStream in) {
+        int loop = (int)(data_len/1024);
+        System.out.println("loop"+Integer.toString(loop));
+        byte[] resbytes = new byte[data_len];
+        int offset = 0;
+        try {
+            for (int i=0; i<loop; i++){
+                in.readFully(resbytes, offset, 1024);
+                offset += 1024;
+            }
+            in.readFully(resbytes, offset, data_len-(loop*1024));
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        return resbytes;
     }
 //
 //    private void galleryAddPic(){
