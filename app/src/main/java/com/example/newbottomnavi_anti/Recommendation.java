@@ -1,5 +1,7 @@
 package com.example.newbottomnavi_anti;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.Manifest;
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -135,7 +137,7 @@ public class Recommendation extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d("gallery", "gallery 클릭함");
-//                getAlbum();
+                getAlbum();
             }
         });
 
@@ -159,8 +161,8 @@ public class Recommendation extends Fragment {
             }
         });
 
-        Glide.with(this).load("https://pix8.agoda.net/hotelImages/111/1110567/1110567_16083113590045958402.jpg?ca=6&ce=1&s=1024x768").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_wys_1);
-        Glide.with(this).load("https://pix8.agoda.net/hotelImages/111/1110567/1110567_16083113130045955510.jpg?ca=6&ce=1&s=1024x768").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_wys_2);
+//       Glide.with(this).load("https://pix8.agoda.net/hotelImages/111/1110567/1110567_16083113590045958402.jpg?ca=6&ce=1&s=1024x768").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_wys_1);
+//       Glide.with(this).load("https://pix8.agoda.net/hotelImages/111/1110567/1110567_16083113130045955510.jpg?ca=6&ce=1&s=1024x768").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_wys_2);
 
 
         Glide.with(this).load("https://pix8.agoda.net/hotelImages/111/1110567/1110567_17020812280050853336.jpg?ca=6&ce=1&s=1024x768").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_a);
@@ -223,15 +225,29 @@ public class Recommendation extends Fragment {
 //
 //        return imageFile;
 //    }
-//
-//
-//    private void getAlbum(){
-//        Log.i("getAlbum", "Call");
-//        Intent intent = new Intent(Intent.ACTION_PICK);
-//        intent.setType("image/*");
-//        intent.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE);
-//        startActivityForResult(intent, REQUEST_TAKE_ALBUM);
-//    }
+
+
+    private void getAlbum(){
+        Log.i("getAlbum", "Call");
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        intent.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE);
+        startActivityForResult(intent, 1);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    Uri uri = data.getData();
+                    img_wys_1.setImageURI(uri);
+                }
+                break;
+        }
+    }
 //
 //    private void galleryAddPic(){
 //        Log.i("galleryAddPic", "Call");
@@ -243,8 +259,8 @@ public class Recommendation extends Fragment {
 //        getContext().sendBroadcast(mediaScanIntent);
 //        Toast.makeText(getContext(), "사진이 앨범에 저장되었습니다.", Toast.LENGTH_SHORT).show();
 //    }
-//
-//    // 카메라 전용 크랍
+
+    // 카메라 전용 크랍
 //    public void cropImage(){
 //        Log.i("cropImage", "Call");
 //        Log.i("cropImage", "photoURI : " + photoURI + " / albumURI : " + albumURI);
@@ -263,7 +279,7 @@ public class Recommendation extends Fragment {
 //        cropIntent.putExtra("output", albumURI); // 크랍된 이미지를 해당 경로에 저장
 //        startActivityForResult(cropIntent, REQUEST_IMAGE_CROP);
 //    }
-//
+
 //    @Override
 //    public void onActivityResult(int requestCode, int resultCode, Intent data) {
 //        switch (requestCode) {
@@ -308,7 +324,7 @@ public class Recommendation extends Fragment {
 //                break;
 //        }
 //    }
-//
+
 //    private void checkPermission(){
 //        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 //            // 처음 호출시엔 if()안의 부분은 false로 리턴 됨 -> else{..}의 요청으로 넘어감

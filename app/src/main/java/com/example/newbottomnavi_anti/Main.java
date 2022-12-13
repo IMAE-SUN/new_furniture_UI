@@ -63,7 +63,7 @@ public class Main extends Fragment {
             e.printStackTrace();
         }
 
-        //0~39까지의 중복 없는 난수 4개 생성
+        //0~39까지의 중복 없는 난수 11개 생성
         Set<Integer> set = new HashSet<>();
 
         while (set.size() < 11) {
