@@ -393,17 +393,26 @@
                 android:orientation="vertical"
                 android:layout_marginTop="20dp">
                 <TextView
+                    android:id="@+id/text_seekbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"/>
+
+                <SeekBar
+                    android:id="@+id/seekbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="저장된 내용은 앞으로 이용하실 추천 시스템에 기반이 됩니다."
-                    android:textColor="@color/fur_medium"
-                    android:fontFamily="@font/notosanskr_medium"
-                    android:gravity="center"/>
+                    android:max="100"
+                    android:progress="0"
+                    android:thumb="@drawable/seekbar_thumb"
+                    android:progressDrawable="@drawable/seekbar"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="사용하고 싶지 않으시다면 off 해주시면 됩니다."
+                    android:text="저장된 내용은 앞으로 이용하실 추천 시스템에 기반이 됩니다."
                     android:textColor="@color/fur_medium"
                     android:fontFamily="@font/notosanskr_medium"
                     android:gravity="center"/>
@@ -415,7 +424,16 @@
                     android:text="save"
                     android:textColor="@color/fur_pale"
                     android:layout_gravity="center"
-                    android:layout_marginTop="20dp"/>
+                    android:layout_marginTop="3dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="사용하고 싶지 않으시다면 off 해주시면 됩니다."
+                    android:textColor="@color/fur_medium"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:gravity="center"/>
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

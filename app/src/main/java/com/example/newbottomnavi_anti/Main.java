@@ -11,9 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.newbottomnavi_anti.databinding.FragmentMainBinding;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -31,6 +34,9 @@ public class Main extends Fragment {
     Main mainFragment;
     private FragmentMainBinding binding;
 
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = database.getReference();
+
     public Main() {
         // Required empty public constructor
     }
@@ -43,6 +49,16 @@ public class Main extends Fragment {
         mainFragment = new Main();
 
         Log.e("메인", "메인 들어옴");
+
+        // (firebase) 버튼 누르면 값 저장
+        binding.btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                adduser(binding.edit1.getText().toString(), binding.edit2.getText().toString());
+                Toast.makeText(getActivity(), "추가됐습니다", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         //침대 40개, 책상 36개, 소파36개
         String [][] strarray = new String[112][6];
@@ -127,6 +143,20 @@ public class Main extends Fragment {
         });
 
         return view;
+    }
+
+    public void adduser(String name, String gender) {
+
+        //여기에서 직접 변수를 만들어서 값을 직접 넣는것도 가능합니다.
+        // ex) int age=1; 등을 넣는 경우
+
+        //user.java에서 선언했던 함수.
+        user user = new user(name,gender);
+
+        //child는 해당 키 위치로 이동하는 함수입니다.
+        //키가 없는데 "user"와 name같이 값을 지정한 경우 자동으로 생성합니다.
+        databaseReference.child("user").child(name).setValue(user);
+
     }
 
 //    public void onClick(View v){

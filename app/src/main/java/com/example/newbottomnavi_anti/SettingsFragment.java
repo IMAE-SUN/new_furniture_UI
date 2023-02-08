@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,6 +33,27 @@ public class SettingsFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), "저장되었습니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        SeekBar seekBar = view.findViewById(R.id.seekbar);
+        TextView text_seekbar = view.findViewById(R.id.text_seekbar);
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                //TODO seekbar 조작 중
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                //TODO seekbar 처음 터치했을 때
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                Log.d("값", String.valueOf(seekBar.getProgress()));
+                text_seekbar.setText(String.format("선택 값은 %d 입니다.", seekBar.getProgress()));
             }
         });
 

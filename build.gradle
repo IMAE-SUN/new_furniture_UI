@@ -2,8 +2,11 @@
 buildscript {
     repositories {
         google()
+        jcenter()
+        mavenCentral()
     }
     dependencies {
+        classpath 'com.google.gms:google-services:4.3.15'
         def nav_version = "2.5.3"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
     }
@@ -12,6 +15,7 @@ buildscript {
 plugins {
     id 'com.android.application' version '7.2.0' apply false
     id 'com.android.library' version '7.2.0' apply false
+    id 'com.google.gms.google-services' version '4.3.10' apply false
 }
 
 task clean(type: Delete) {

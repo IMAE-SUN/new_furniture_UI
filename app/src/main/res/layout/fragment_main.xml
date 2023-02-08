@@ -84,8 +84,34 @@
                     </LinearLayout>
                 </LinearLayout>
 
-
             </Toolbar>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/edit1"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="이름"
+                    android:textColorHint="@color/gray"
+                    android:textColor="@color/black"/>
+
+                <EditText
+                    android:id="@+id/edit2"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="성별"
+                    android:textColorHint="@color/gray"
+                    android:textColor="@color/black"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn"
+                    android:text="추가하기"/>
+            </LinearLayout>
 
             <TableLayout
                 android:layout_width="match_parent"
