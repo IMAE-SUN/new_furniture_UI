@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/grad_grey">
+
+<!--1번째 질문-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="@drawable/gray_rounded_shape">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Personal Setting"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:layout_marginTop="20dp"/>
+
+<!--모든 질문 layout 통일 사항-->
+<!--1. marginTop 10dp-->
+<!--2. marginLeft/Right 5dp-->
+<!--3. 색상으로 질문 구분 (현재는 blue)-->
+
+            <!--1번째 질문-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/lightgray_rounded_shape">
+
+                <TextView
+                    android:id="@+id/txt_question_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1. 원하시는 분위기가 있나요? (1순위)"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:textColor="@color/fur_darkNavy"
+                    android:layout_marginLeft="10dp"/>
+                <RadioGroup
+                    android:id="@+id/rg_question_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:weightSum="100">
+<!--                    bright & soft-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:orientation="horizontal"
+                        android:layout_margin="10dp">
+                        <RadioButton
+                            android:id="@+id/rb_question_1_brightsoft"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:text="bright &amp; soft"
+                            android:textColor="@color/fur_darkNavy"
+                            android:fontFamily="@font/notosanskr_medium"
+                            android:layout_marginRight="10dp"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/bright_soft_livingroom2"/>
+                    </LinearLayout>
+
+<!--                    bright & clear-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:orientation="horizontal"
+                        android:layout_margin="10dp">
+                        <RadioButton
+                            android:id="@+id/rb_question_1_brightclear"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="10dp"
+                            android:text="bright &amp; clear"
+                            android:textColor="@color/fur_darkNavy"
+                            android:fontFamily="@font/notosanskr_medium" />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/bright_clear_kitchen2"/>
+                    </LinearLayout>
+
+<!--                    deep & soft-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:orientation="horizontal"
+                        android:layout_margin="10dp">
+                        <RadioButton
+                            android:id="@+id/rb_question_1_deeptsoft"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:text="deep &amp; soft"
+                            android:textColor="@color/fur_darkNavy"
+                            android:fontFamily="@font/notosanskr_medium"
+                            android:layout_marginRight="10dp"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/deep_soft_kitchen2"/>
+                    </LinearLayout>
+
+<!--                    deep & clear-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:orientation="horizontal"
+                        android:layout_margin="10dp">
+                        <RadioButton
+                            android:id="@+id/rb_question_1_deeptclear"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:text="deep &amp; clear"
+                            android:textColor="@color/fur_darkNavy"
+                            android:fontFamily="@font/notosanskr_medium"
+                            android:layout_marginRight="10dp"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/deep_clear_livingroom"/>
+                    </LinearLayout>
+
+
+                </RadioGroup>
+            </LinearLayout>
+
+<!--            &lt;!&ndash;2번째 질문&ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginLeft="5dp"-->
+<!--                android:layout_marginRight="5dp"-->
+<!--                android:background="@drawable/lightgray_rounded_shape">-->
+
+<!--                &lt;!&ndash;2번째 질문&ndash;&gt;-->
+<!--                <TextView-->
+<!--                    android:id="@+id/txt_question_2"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="2. 원하시는 분위기가 있나요? (2순위)"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:fontFamily="@font/notosanskr_medium"-->
+<!--                    android:textColor="@color/fur_darkNavy"-->
+<!--                    android:layout_marginLeft="10dp"/>-->
+<!--                <RadioGroup-->
+<!--                    android:id="@+id/rg_question_2"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:weightSum="100">-->
+<!--                    <RadioButton-->
+<!--                        android:id="@+id/rb_question_2_brightsoft"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="bright &amp; soft"-->
+<!--                        android:textColor="@color/fur_darkNavy"-->
+<!--                        android:fontFamily="@font/notosanskr_medium"-->
+<!--                        android:layout_weight="25"/>-->
+<!--                    <RadioButton-->
+<!--                        android:id="@+id/rb_question_2_brightclear"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="bright &amp; clear"-->
+<!--                        android:textColor="@color/fur_darkNavy"-->
+<!--                        android:fontFamily="@font/notosanskr_medium"-->
+<!--                        android:layout_weight="25"/>-->
+<!--                    <RadioButton-->
+<!--                        android:id="@+id/rb_question_2_deeptsoft"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="deep &amp; soft"-->
+<!--                        android:textColor="@color/fur_darkNavy"-->
+<!--                        android:fontFamily="@font/notosanskr_medium"-->
+<!--                        android:layout_weight="25"/>-->
+<!--                    <RadioButton-->
+<!--                        android:id="@+id/rb_question_2_deeptclear"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="deep &amp; clear"-->
+<!--                        android:textColor="@color/fur_darkNavy"-->
+<!--                        android:fontFamily="@font/notosanskr_medium"-->
+<!--                        android:layout_weight="25"/>-->
+
+<!--                </RadioGroup>-->
+<!--            </LinearLayout>-->
+
+            <!--3번째 질문-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginLeft="5dp"-->
+<!--                android:layout_marginRight="5dp"-->
+<!--                android:background="@drawable/lightgray_rounded_shape">-->
+<!--                <TextView-->
+<!--                    android:id="@+id/txt_question_3"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="3. 원하시는 색상 있나요? (중복가능)"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:fontFamily="@font/notosanskr_medium"-->
+<!--                    android:textColor="@color/fur_darkNavy"-->
+<!--                    android:layout_marginLeft="10dp"/>-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:weightSum="3">-->
+<!--                    <CheckBox-->
+<!--                        android:id="@+id/cb_question_3_blackwhite"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="블랙 &amp; 화이트"-->
+<!--                        android:textColor="@color/fur_darkNavy"-->
+<!--                        android:fontFamily="@font/notosanskr_medium"-->
+<!--                        android:layout_weight="1"/>-->
+<!--                    <CheckBox-->
+<!--                        android:id="@+id/cb_question_3_brownbeige"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="브라운 &amp; 베이지"-->
+<!--                        android:textColor="@color/fur_darkNavy"-->
+<!--                        android:fontFamily="@font/notosanskr_medium"-->
+<!--                        android:layout_weight="1"/>-->
+<!--                    <CheckBox-->
+<!--                        android:id="@+id/cb_question_3_gray"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="차가운 회색"-->
+<!--                        android:textColor="@color/fur_darkNavy"-->
+<!--                        android:fontFamily="@font/notosanskr_medium"-->
+<!--                        android:layout_weight="1"/>-->
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:weightSum="7"-->
+<!--                    android:layout_marginRight="10dp">-->
+<!--                    <CheckBox-->
+<!--                        android:id="@+id/cb_question_3_funky"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="톡톡튀는 과감한 컬러"-->
+<!--                        android:textColor="@color/fur_darkNavy"-->
+<!--                        android:fontFamily="@font/notosanskr_medium"-->
+<!--                        android:layout_weight="3"/>-->
+<!--                    <CheckBox-->
+<!--                        android:id="@+id/cb_question_3_pastel"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="부드러운 파스텔 컬러"-->
+<!--                        android:textColor="@color/fur_darkNavy"-->
+<!--                        android:fontFamily="@font/notosanskr_medium"-->
+<!--                        android:layout_marginLeft="10dp"-->
+<!--                        android:layout_weight="3"/>-->
+<!--                    <CheckBox-->
+<!--                        android:id="@+id/cb_question_3_wood"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="원목"-->
+<!--                        android:textColor="@color/fur_darkNavy"-->
+<!--                        android:fontFamily="@font/notosanskr_medium"-->
+<!--                        android:layout_marginLeft="10dp"-->
+<!--                        android:layout_weight="1"/>-->
+<!--                </LinearLayout>-->
+
+<!--            </LinearLayout>-->
+
+<!--            &lt;!&ndash;4번째 질문&ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginLeft="5dp"-->
+<!--                android:layout_marginRight="5dp"-->
+<!--                android:background="@drawable/lightgray_rounded_shape">-->
+<!--                <TextView-->
+<!--                    android:id="@+id/txt_question_4"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="4. 현재 관심있는 공간은? (중복가능)"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:fontFamily="@font/notosanskr_medium"-->
+<!--                    android:textColor="@color/fur_darkNavy"-->
+<!--                    android:layout_marginLeft="10dp"/>-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:weightSum="100"-->
+<!--                    android:layout_marginRight="10dp">-->
+<!--                    <CheckBox-->
+<!--                        android:id="@+id/cb_question_4_livingroom"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="거실"-->
+<!--                        android:textColor="@color/fur_darkNavy"-->
+<!--                        android:fontFamily="@font/notosanskr_medium"-->
+<!--                        android:layout_weight="25"/>-->
+<!--                    <CheckBox-->
+<!--                        android:id="@+id/cb_question_4_kitchen"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="주방"-->
+<!--                        android:textColor="@color/fur_darkNavy"-->
+<!--                        android:fontFamily="@font/notosanskr_medium"-->
+<!--                        android:layout_weight="25"/>-->
+<!--                    <CheckBox-->
+<!--                        android:id="@+id/cb_question_4_mainroom"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="안방"-->
+<!--                        android:textColor="@color/fur_darkNavy"-->
+<!--                        android:fontFamily="@font/notosanskr_medium"-->
+<!--                        android:layout_weight="25"/>-->
+<!--                    <CheckBox-->
+<!--                        android:id="@+id/cb_question_4_book"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="서재"-->
+<!--                        android:textColor="@color/fur_darkNavy"-->
+<!--                        android:fontFamily="@font/notosanskr_medium"-->
+<!--                        android:layout_weight="25"/>-->
+<!--                    <CheckBox-->
+<!--                        android:id="@+id/cb_question_4_child"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="어린이방"-->
+<!--                        android:textColor="@color/fur_darkNavy"-->
+<!--                        android:fontFamily="@font/notosanskr_medium"-->
+<!--                        android:layout_weight="25"/>-->
+<!--                </LinearLayout>-->
+
+<!--            </LinearLayout>-->
+
+            <!--5번째 질문-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/lightgray_rounded_shape">
+                <TextView
+                    android:id="@+id/txt_question_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2. 현재 관심있는 가구는? (중복가능)"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:textColor="@color/fur_darkNavy"
+                    android:layout_marginLeft="10dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="100"
+                    android:layout_marginRight="10dp">
+                    <CheckBox
+                        android:id="@+id/cb_question_5_sofa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="소파"
+                        android:textColor="@color/fur_darkNavy"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:layout_weight="25"/>
+                    <CheckBox
+                        android:id="@+id/cb_question_5_sofatable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="거실테이블"
+                        android:textColor="@color/fur_darkNavy"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:layout_weight="25"/>
+                    <CheckBox
+                        android:id="@+id/cb_question_5_dining"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="식탁"
+                        android:textColor="@color/fur_darkNavy"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:layout_weight="25"/>
+                    <CheckBox
+                        android:id="@+id/cb_question_5_chair"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="의자"
+                        android:textColor="@color/fur_darkNavy"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:layout_weight="25"/>
+                    <CheckBox
+                        android:id="@+id/cb_question_5_bed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="침대"
+                        android:textColor="@color/fur_darkNavy"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:layout_weight="25"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="100"
+                    android:layout_marginRight="10dp">
+                    <CheckBox
+                        android:id="@+id/cb_question_5_shelf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="선반"
+                        android:textColor="@color/fur_darkNavy"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:layout_weight="25"/>
+                    <CheckBox
+                        android:id="@+id/cb_question_5_study"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="공부용"
+                        android:textColor="@color/fur_darkNavy"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:layout_weight="25"/>
+                    <CheckBox
+                        android:id="@+id/cb_question_5_child"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="아이용"
+                        android:textColor="@color/fur_darkNavy"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:layout_weight="25"/>
+                    <CheckBox
+                        android:id="@+id/cb_question_5_interior"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="인테리어소품"
+                        android:textColor="@color/fur_darkNavy"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:layout_weight="25"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--마지막 문구-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="저장된 내용은 앞으로 이용하실 추천 시스템에 기반이 됩니다."
+                    android:textColor="@color/fur_pale"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="사용하고 싶지 않으시다면 off 해주시면 됩니다."
+                    android:textColor="@color/fur_pale"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:gravity="center"/>
+
+                <Button
+                    android:id="@+id/save_personal_recommendation_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="save"
+                    android:textColor="@color/fur_darkNavy"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="@color/fur_pale"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

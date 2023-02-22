@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_mf">
+
+    <fragment
+        android:id="@+id/navigation_mf"
+        android:name="com.example.newbottomnavi_anti.Main"
+        android:label="Home"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_navigation_home_to_furnitureInfoFragment"
+            app:destination="@id/navigation_finfo" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_rf"
+        android:name="com.example.newbottomnavi_anti.Recommendation"
+        android:label="Recommendation"
+        tools:layout="@layout/fragment_recommendation" />
+
+    <fragment
+        android:id="@+id/navigation_finfo"
+        android:name="com.example.newbottomnavi_anti.FurnitureInfoFragment"
+        android:label="가구 정보"
+        tools:layout="@layout/fragment_furniture_info" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="price"
+            app:argType="string" />
+        <argument
+            android:name="img"
+            app:argType="string" />
+        <argument
+            android:name="material"
+            app:argType="string" />
+        <argument
+            android:name="size"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_sf"
+        android:name="com.example.newbottomnavi_anti.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings"/>
+
+</navigation>
