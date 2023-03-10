@@ -19,4 +19,10 @@
     <color name="primaryLightColor">#ffffff</color>
     <color name="primaryDarkColor">#aeaeae</color>
     <color name="primaryTextColor">#000000</color>
+    <color name="butter_butter">#F5E9CF</color>
+    <color name="butter_mint">#7DB9B6</color>
+    <color name="butter_red">#E96479</color>
+    <color name="butter_navy">#4D455D</color>
+    <color name="butter_light">#fffaee</color>
+
 </resources>
