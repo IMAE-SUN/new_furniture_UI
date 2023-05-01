@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -50,15 +51,15 @@ public class Main extends Fragment {
 
         Log.e("메인", "메인 들어옴");
 
-        // (firebase) 버튼 누르면 값 저장
-        binding.btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                adduser(binding.edit1.getText().toString(), binding.edit2.getText().toString());
-                Toast.makeText(getActivity(), "추가됐습니다", Toast.LENGTH_SHORT).show();
-            }
-        });
-
+//        // (firebase) 버튼 누르면 값 저장
+//        binding.btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                adduser(binding.edit1.getText().toString(), binding.edit2.getText().toString());
+//                Toast.makeText(getActivity(), "추가됐습니다", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
 
         //침대 40개, 책상 36개, 소파36개
         String [][] strarray = new String[112][6];
