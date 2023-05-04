@@ -75,45 +75,21 @@
                             android:padding="12dp"
                             android:textColorHint="@color/butter_navy" />
 
-                        <ImageView
+<!--                        filter 이미지인데 새로고침으로 바꿔둔 상황-->
+                        <ImageButton
+                            android:id="@+id/refresh"
                             android:layout_width="0dp"
                             android:layout_height="28dp"
                             android:layout_gravity="center"
                             android:layout_weight="20"
-                            android:src="@drawable/filter_icon" />
+                            android:background="#00FF0000"
+                            android:src="@drawable/ic_baseline_refresh" />
 
                     </LinearLayout>
                 </LinearLayout>
 
 
             </androidx.appcompat.widget.Toolbar>
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="vertical">-->
-<!--                <EditText-->
-<!--                    android:id="@+id/edit1"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="50dp"-->
-<!--                    android:hint="이름"-->
-<!--                    android:textColorHint="@color/gray"-->
-<!--                    android:textColor="@color/black"/>-->
-
-<!--                <EditText-->
-<!--                    android:id="@+id/edit2"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="50dp"-->
-<!--                    android:hint="성별"-->
-<!--                    android:textColorHint="@color/gray"-->
-<!--                    android:textColor="@color/black"/>-->
-
-<!--                <Button-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:id="@+id/btn"-->
-<!--                    android:text="추가하기"/>-->
-<!--            </LinearLayout>-->
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -215,7 +191,8 @@
                                             android:textStyle="bold"
                                             android:includeFontPadding="false"/>
 
-                                        <TextView
+                                        <Button
+                                            android:id="@+id/star_1"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="20"
@@ -224,6 +201,7 @@
                                             android:text="4.5"
                                             android:layout_marginTop="3dp"
                                             android:textAlignment="textEnd"
+                                            android:background="#00ff0000"
                                             android:textColor="#ffc32d"
                                             android:textSize="14sp"
                                             android:textStyle="bold"
@@ -253,18 +231,6 @@
                                             android:textColor="@color/fur_pink"
                                             android:textSize="24sp"
                                             android:textStyle="bold" />
-
-                                        <!--                                        <TextView-->
-                                        <!--                                            android:layout_width="wrap_content"-->
-                                        <!--                                            android:layout_height="wrap_content"-->
-                                        <!--                                            android:layout_alignEnd="@+id/textView"-->
-                                        <!--                                            android:layout_alignRight="@id/textView"-->
-                                        <!--                                            android:layout_marginEnd="-48dp"-->
-                                        <!--                                            android:layout_marginRight="-48dp"-->
-                                        <!--                                            android:fontFamily="@font/notosanskr_medium"-->
-                                        <!--                                            android:text="single"-->
-                                        <!--                                            android:textColor="@color/fur_pink"-->
-                                        <!--                                            android:textSize="14sp" />-->
 
                                         <TextView
                                             android:layout_width="wrap_content"

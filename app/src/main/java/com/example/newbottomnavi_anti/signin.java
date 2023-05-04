@@ -71,6 +71,7 @@ public class signin extends AppCompatActivity implements View.OnClickListener {
                             Toast.makeText(signin.this, "로그인 성공", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
+
                         }
                         else{
                             Log.e("login", "로그인 실패");

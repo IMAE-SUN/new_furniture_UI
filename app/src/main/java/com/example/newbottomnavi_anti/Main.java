@@ -1,7 +1,9 @@
 package com.example.newbottomnavi_anti;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -9,13 +11,22 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.newbottomnavi_anti.databinding.FragmentMainBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,13 +41,12 @@ import java.util.Set;
 
 public class Main extends Fragment {
 
-    int[] images = new int[] {R.drawable.ic_baseline_electric_bike, R.drawable.ic_baseline_emoji_emotions, R.drawable.ic_baseline_home, R.drawable.ic_baseline_settings};
-
     Main mainFragment;
     private FragmentMainBinding binding;
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = database.getReference();
+    FirebaseAuth firebaseAuth;
 
     public Main() {
         // Required empty public constructor
@@ -51,15 +61,7 @@ public class Main extends Fragment {
 
         Log.e("메인", "메인 들어옴");
 
-//        // (firebase) 버튼 누르면 값 저장
-//        binding.btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                adduser(binding.edit1.getText().toString(), binding.edit2.getText().toString());
-//                Toast.makeText(getActivity(), "추가됐습니다", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
+        firebaseAuth = firebaseAuth.getInstance();
 
         //침대 40개, 책상 36개, 소파36개
         String [][] strarray = new String[112][6];
@@ -143,6 +145,61 @@ public class Main extends Fragment {
             }
         });
 
+
+        Button st1 = view.findViewById(R.id.star_1);
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        String uid = user.getUid();
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference("Users");
+
+        st1.setOnClickListener(new View.OnClickListener() {
+            Boolean flag = false;
+            @Override
+            public void onClick(View v) {
+
+
+                String fur = strarray[list.get(0)][0];
+                Toast.makeText(getContext(), fur, Toast.LENGTH_SHORT).show();
+                Log.e("clicked text", fur);
+                if(!flag){
+                    flag = true;
+                    st1.setTextColor(Color.YELLOW);
+                    Log.e("star", "좋아요");
+                    reference.child(uid).child("Likes").push().setValue(strarray[list.get(0)][0]);
+                    String key = reference.child(uid).child("Likes").child(strarray[list.get(0)][0]).getKey();
+                    Log.e("key", key);
+                    //TODO : 내가 추가한 값에 대한 key 값을 받아오고 싶음
+                }
+                else {
+                    flag = false;
+                    //TODO : 별도 회색으로 가능한가?
+                    st1.setTextColor(Color.GRAY);
+                    Log.e("star", "해제");
+                }
+
+            }
+        });
+
+//        refresh 버튼 누르면 서버에 저장된 내 정보 불러오기
+        ImageButton refresh = view.findViewById(R.id.refresh);
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reference.child(uid).child("Preference").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        if (!task.isSuccessful()) {
+                            Log.e("firebase", "Error getting data", task.getException());
+                        }
+                        else {
+                            Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                        }
+                    }
+                });
+            }
+        });
+
         return view;
     }
 
@@ -160,14 +217,4 @@ public class Main extends Fragment {
 
     }
 
-//    public void onClick(View v){
-//
-//        ImageView frameimg = v.findViewById(R.id.frameimg);
-//
-//        switch (v.getId()) {
-//            case R.id.card_rand1:
-//                Glide.with(getActivity()).load("https://img.danawa.com/prod_img/500000/412/126/img/11126412_1.jpg?shrink=130:130&_v=20220527163310").into(frameimg);
-//                break;
-//        }
-//    }
 }
