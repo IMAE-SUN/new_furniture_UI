@@ -200,6 +200,15 @@ public class Main extends Fragment {
             }
         });
 
+//        filter 버튼 누르면 필터링 옵션 보여주기
+        ImageButton filter = view.findViewById(R.id.filter);
+        filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO : 이거 menu 로 만들기 
+            }
+        });
+
         return view;
     }
 

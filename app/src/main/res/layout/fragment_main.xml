@@ -66,7 +66,7 @@
                         <EditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="80"
+                            android:layout_weight="90"
                             android:background="@drawable/butter_navy_rounded_shape"
                             android:drawableLeft="@drawable/ic_search_gray_24dp"
                             android:drawablePadding="8dp"
@@ -81,7 +81,7 @@
                             android:layout_width="0dp"
                             android:layout_height="28dp"
                             android:layout_gravity="center"
-                            android:layout_weight="20"
+                            android:layout_weight="10"
                             android:background="#00FF0000"
                             android:src="@drawable/ic_baseline_refresh" />
 
@@ -90,6 +90,178 @@
 
 
             </androidx.appcompat.widget.Toolbar>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/filter_sofa"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:text="소파"
+                        android:textColor="@color/fur_darkNavy"
+                        android:textSize="10sp"
+                        android:textAlignment="center"
+                        android:background="@drawable/butter_navy_rounded_shape"/>
+                    <TextView
+                        android:id="@+id/filter_liveTable"
+                        android:layout_width="65dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:text="거실테이블"
+                        android:textColor="@color/fur_darkNavy"
+                        android:textSize="10sp"
+                        android:textAlignment="center"
+                        android:background="@drawable/butter_navy_rounded_shape"/>
+                    <TextView
+                        android:id="@+id/filter_kitTable"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:text="식탁"
+                        android:textColor="@color/fur_darkNavy"
+                        android:textSize="10sp"
+                        android:textAlignment="center"
+                        android:background="@drawable/butter_navy_rounded_shape"/>
+                    <TextView
+                        android:id="@+id/filter_chair"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:text="의자"
+                        android:textColor="@color/fur_darkNavy"
+                        android:textSize="10sp"
+                        android:textAlignment="center"
+                        android:background="@drawable/butter_navy_rounded_shape"/>
+                    <TextView
+                        android:id="@+id/filter_bed"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:text="침대"
+                        android:textColor="@color/fur_darkNavy"
+                        android:textSize="10sp"
+                        android:textAlignment="center"
+                        android:background="@drawable/butter_navy_rounded_shape"/>
+                    <TextView
+                        android:id="@+id/filter_shelf"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:text="선반"
+                        android:textColor="@color/fur_darkNavy"
+                        android:textSize="10sp"
+                        android:textAlignment="center"
+                        android:background="@drawable/butter_navy_rounded_shape"/>
+                    <TextView
+                        android:id="@+id/filter_study"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:text="공부용"
+                        android:textColor="@color/fur_darkNavy"
+                        android:textSize="10sp"
+                        android:textAlignment="center"
+                        android:background="@drawable/butter_navy_rounded_shape"/>
+                    <TextView
+                        android:id="@+id/filter_kids"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:text="아이용"
+                        android:textColor="@color/fur_darkNavy"
+                        android:textSize="10sp"
+                        android:textAlignment="center"
+                        android:background="@drawable/butter_navy_rounded_shape"/>
+                    <TextView
+                        android:id="@+id/filter_interior"
+                        android:layout_width="55dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:text="인테리어"
+                        android:textColor="@color/fur_darkNavy"
+                        android:textSize="10sp"
+                        android:textAlignment="center"
+                        android:background="@drawable/butter_navy_rounded_shape"/>
+
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="100">
+
+                <TextView
+                    android:id="@+id/filter_bright_soft"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:text="bright &amp; soft"
+                    android:textColor="@color/fur_darkNavy"
+                    android:textSize="10sp"
+                    android:textAlignment="center"
+                    android:layout_weight="25"
+                    android:background="@drawable/butter_navy_rounded_shape"/>
+                <TextView
+                    android:id="@+id/filter_bright_clear"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:text="bright &amp; clear"
+                    android:textColor="@color/fur_darkNavy"
+                    android:textSize="10sp"
+                    android:textAlignment="center"
+                    android:layout_weight="25"
+                    android:background="@drawable/butter_navy_rounded_shape"/>
+                <TextView
+                    android:id="@+id/filter_deep_soft"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:text="deep &amp; soft"
+                    android:textColor="@color/fur_darkNavy"
+                    android:textSize="10sp"
+                    android:textAlignment="center"
+                    android:layout_weight="25"
+                    android:background="@drawable/butter_navy_rounded_shape"/>
+                <TextView
+                    android:id="@+id/filter_deep_clear"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:text="deep &amp; clear"
+                    android:textColor="@color/fur_darkNavy"
+                    android:textSize="10sp"
+                    android:textAlignment="center"
+                    android:layout_weight="25"
+                    android:background="@drawable/butter_navy_rounded_shape"/>
+
+            </LinearLayout>
+
 
             <TableLayout
                 android:layout_width="match_parent"
