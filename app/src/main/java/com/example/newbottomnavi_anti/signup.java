@@ -86,7 +86,6 @@ public class signup extends AppCompatActivity implements View.OnClickListener {
             }
         });
 
-        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
 //        if(currentUser != null) {
 //
 //            ActionBar actionBar = getSupportActionBar();
@@ -167,8 +166,6 @@ public class signup extends AppCompatActivity implements View.OnClickListener {
 
                     Toast.makeText(getApplicationContext(), uid, Toast.LENGTH_SHORT).show();
 
-                    user = firebaseAuth.getCurrentUser();
-
                     HashMap<Object, String> hashMap = new HashMap<>();
 
                     hashMap.put("uid", uid);
@@ -180,7 +177,7 @@ public class signup extends AppCompatActivity implements View.OnClickListener {
                     DatabaseReference reference = database.getReference("Users");
                     reference.child(uid).setValue(hashMap);
 
-                    Intent intent = new Intent(signup.this, MainActivity.class);
+                    Intent intent = new Intent(signup.this, PreRate.class);
                     startActivity(intent);
                     finish();
                     Log.e("SignUp", "돌아가기");

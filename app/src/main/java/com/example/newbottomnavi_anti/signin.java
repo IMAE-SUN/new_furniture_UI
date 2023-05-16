@@ -63,13 +63,13 @@ public class signin extends AppCompatActivity implements View.OnClickListener {
                 String email = editTextEmail.getText().toString().trim();
                 String pwd = editTextPassword.getText().toString().trim();
 
-                firebaseAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener((Activity) getApplicationContext(), new OnCompleteListener<AuthResult>() {
+                firebaseAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(signin.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Log.e("login", "로그인 성공");
                             Toast.makeText(signin.this, "로그인 성공", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            Intent intent = new Intent(signin.this, MainActivity.class);
                             startActivity(intent);
 
                         }

@@ -1,10 +1,12 @@
 package com.example.newbottomnavi_anti;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.appcompat.widget.Toolbar;
@@ -200,14 +202,51 @@ public class Main extends Fragment {
             }
         });
 
-//        filter 버튼 누르면 필터링 옵션 보여주기
-        ImageButton filter = view.findViewById(R.id.filter);
-        filter.setOnClickListener(new View.OnClickListener() {
+
+        TextView sofa = view.findViewById(R.id.filter_sofa);
+        TextView liveTable = view.findViewById(R.id.filter_liveTable);
+        TextView kitTable = view.findViewById(R.id.filter_kitTable);
+        TextView chair = view.findViewById(R.id.filter_chair);
+        TextView bed = view.findViewById(R.id.filter_bed);
+        TextView shelf = view.findViewById(R.id.filter_shelf);
+        TextView study = view.findViewById(R.id.filter_study);
+        TextView kids = view.findViewById(R.id.filter_kids);
+        TextView interior = view.findViewById(R.id.filter_interior);
+
+
+
+        sofa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO : 이거 menu 로 만들기 
+                String fur = sofa.getText().toString();
+                Toast.makeText(getContext(), fur, Toast.LENGTH_SHORT).show();
+                Log.e("clicked text", fur);
+
+                //클릭 색상 바꾸기
+                sofa.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.filter_line));
+                sofa.setTextColor(Color.parseColor("#FEFCF3"));
+                //다른 애들 싹다 클릭 안되게 바꾸기
+                liveTable.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.butter_navy_rounded_shape));
+                liveTable.setTextColor(Color.parseColor("#181D31"));
+                kitTable.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.butter_navy_rounded_shape));
+                kitTable.setTextColor(Color.parseColor("#181D31"));
+                chair.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.butter_navy_rounded_shape));
+                chair.setTextColor(Color.parseColor("#181D31"));
+                bed.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.butter_navy_rounded_shape));
+                bed.setTextColor(Color.parseColor("#181D31"));
+                shelf.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.butter_navy_rounded_shape));
+                shelf.setTextColor(Color.parseColor("#181D31"));
+                study.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.butter_navy_rounded_shape));
+                study.setTextColor(Color.parseColor("#181D31"));
+                kids.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.butter_navy_rounded_shape));
+                kids.setTextColor(Color.parseColor("#181D31"));
+                interior.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.butter_navy_rounded_shape));
+                interior.setTextColor(Color.parseColor("#181D31"));
+
+                //TODO : 결과 새로고침
             }
         });
+
 
         return view;
     }
