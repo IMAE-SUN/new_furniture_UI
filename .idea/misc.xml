@@ -50,13 +50,15 @@
         <entry key="..\:/Users/sun56/Downloads/new_furniture_UI-sun/new_furniture_UI-sun/app/src/main/res/drawable/pink_full_rounded_shape.xml" value="0.255" />
         <entry key="..\:/Users/sun56/Downloads/new_furniture_UI-sun/new_furniture_UI-sun/app/src/main/res/drawable/pink_rounded_shape.xml" value="0.255" />
         <entry key="..\:/Users/sun56/Downloads/new_furniture_UI-sun/new_furniture_UI-sun/app/src/main/res/drawable/selector_radio.xml" value="0.1165" />
+        <entry key="..\:/Users/sun56/Downloads/new_furniture_UI-sun/new_furniture_UI-sun/app/src/main/res/drawable/selector_radio_checked.xml" value="0.1355" />
+        <entry key="..\:/Users/sun56/Downloads/new_furniture_UI-sun/new_furniture_UI-sun/app/src/main/res/drawable/selector_radio_unchecked.xml" value="0.1355" />
         <entry key="..\:/Users/sun56/Downloads/new_furniture_UI-sun/new_furniture_UI-sun/app/src/main/res/layout/activity_main.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/sun56/Downloads/new_furniture_UI-sun/new_furniture_UI-sun/app/src/main/res/layout/activity_prerate.xml" value="0.2" />
         <entry key="..\:/Users/sun56/Downloads/new_furniture_UI-sun/new_furniture_UI-sun/app/src/main/res/layout/activity_signin.xml" value="0.2" />
         <entry key="..\:/Users/sun56/Downloads/new_furniture_UI-sun/new_furniture_UI-sun/app/src/main/res/layout/activity_signup.xml" value="0.2" />
         <entry key="..\:/Users/sun56/Downloads/new_furniture_UI-sun/new_furniture_UI-sun/app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="..\:/Users/sun56/Downloads/new_furniture_UI-sun/new_furniture_UI-sun/app/src/main/res/layout/fragment_furniture_info.xml" value="0.2" />
-        <entry key="..\:/Users/sun56/Downloads/new_furniture_UI-sun/new_furniture_UI-sun/app/src/main/res/layout/fragment_main.xml" value="0.2" />
+        <entry key="..\:/Users/sun56/Downloads/new_furniture_UI-sun/new_furniture_UI-sun/app/src/main/res/layout/fragment_main.xml" value="0.264" />
         <entry key="..\:/Users/sun56/Downloads/new_furniture_UI-sun/new_furniture_UI-sun/app/src/main/res/layout/fragment_personal_recommedation.xml" value="0.264" />
         <entry key="..\:/Users/sun56/Downloads/new_furniture_UI-sun/new_furniture_UI-sun/app/src/main/res/layout/fragment_recommendation.xml" value="0.1" />
         <entry key="..\:/Users/sun56/Downloads/new_furniture_UI-sun/new_furniture_UI-sun/app/src/main/res/layout/fragment_setting.xml" value="0.109375" />

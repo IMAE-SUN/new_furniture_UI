@@ -100,157 +100,131 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <RadioGroup
+                        android:id="@+id/radioGroup"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
                         <RadioButton
-                            android:layout_width="80dp"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/radio_all"
+                            android:layout_width="35dp"
+                            android:layout_height="25dp"
+                            android:text="all"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginVertical="1dp"
+                            android:textSize="12dp"
+                            android:textColor="@color/butter_navy"
+                            android:button="@null"
+                            android:textAlignment="center"
+                            android:background="@drawable/selector_radio" />
+                        <RadioButton
+                            android:id="@+id/radio_sofa"
+                            android:layout_width="50dp"
+                            android:layout_height="25dp"
                             android:text="소파"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginVertical="1dp"
+                            android:textSize="12dp"
                             android:textColor="@color/butter_navy"
-                            android:background="@drawable/selector_radio"/>
+                            android:button="@null"
+                            android:textAlignment="center"
+                            android:background="@drawable/selector_radio" />
                         <RadioButton
+                            android:id="@+id/radio_liveTable"
                             android:layout_width="80dp"
-                            android:layout_height="wrap_content"
-                            android:text="침대"
+                            android:layout_height="25dp"
+                            android:text="거실테이블"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginVertical="1dp"
+                            android:textSize="12dp"
                             android:textColor="@color/butter_navy"
-                            android:background="@drawable/selector_radio"/>
+                            android:button="@null"
+                            android:textAlignment="center"
+                            android:background="@drawable/selector_radio" />
                         <RadioButton
-                            android:layout_width="80dp"
-                            android:layout_height="wrap_content"
-                            android:text="책상"
-                            android:textColor="@color/butter_navy"
-                            android:background="@drawable/selector_radio"/>
-                        <RadioButton
-                            android:layout_width="80dp"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/radio_kitTable"
+                            android:layout_width="50dp"
+                            android:layout_height="25dp"
                             android:text="식탁"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginVertical="1dp"
+                            android:textSize="12dp"
                             android:textColor="@color/butter_navy"
-                            android:background="@drawable/selector_radio"/>
+                            android:button="@null"
+                            android:textAlignment="center"
+                            android:background="@drawable/selector_radio" />
+                        <RadioButton
+                            android:id="@+id/radio_chair"
+                            android:layout_width="50dp"
+                            android:layout_height="25dp"
+                            android:text="의자"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginVertical="1dp"
+                            android:textSize="12dp"
+                            android:textColor="@color/butter_navy"
+                            android:button="@null"
+                            android:textAlignment="center"
+                            android:background="@drawable/selector_radio" />
+                        <RadioButton
+                            android:id="@+id/radio_bed"
+                            android:layout_width="50dp"
+                            android:layout_height="25dp"
+                            android:text="침대"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginVertical="1dp"
+                            android:textSize="12dp"
+                            android:textColor="@color/butter_navy"
+                            android:button="@null"
+                            android:textAlignment="center"
+                            android:background="@drawable/selector_radio" />
+                        <RadioButton
+                            android:id="@+id/radio_shelf"
+                            android:layout_width="50dp"
+                            android:layout_height="25dp"
+                            android:text="선반"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginVertical="1dp"
+                            android:textSize="12dp"
+                            android:textColor="@color/butter_navy"
+                            android:button="@null"
+                            android:textAlignment="center"
+                            android:background="@drawable/selector_radio" />
+                        <RadioButton
+                            android:id="@+id/radio_study"
+                            android:layout_width="60dp"
+                            android:layout_height="25dp"
+                            android:text="공부용"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginVertical="1dp"
+                            android:textSize="12dp"
+                            android:textColor="@color/butter_navy"
+                            android:button="@null"
+                            android:textAlignment="center"
+                            android:background="@drawable/selector_radio" />
+                        <RadioButton
+                            android:id="@+id/radio_kids"
+                            android:layout_width="60dp"
+                            android:layout_height="25dp"
+                            android:text="아이용"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginVertical="1dp"
+                            android:textSize="12dp"
+                            android:textColor="@color/butter_navy"
+                            android:button="@null"
+                            android:textAlignment="center"
+                            android:background="@drawable/selector_radio" />
+                        <RadioButton
+                            android:id="@+id/radio_interior"
+                            android:layout_width="80dp"
+                            android:layout_height="25dp"
+                            android:text="인테리어용"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginVertical="1dp"
+                            android:textSize="12dp"
+                            android:textColor="@color/butter_navy"
+                            android:button="@null"
+                            android:textAlignment="center"
+                            android:background="@drawable/selector_radio" />
                     </RadioGroup>
-                </LinearLayout>
-
-            </HorizontalScrollView>
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="none">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/filter_sofa"
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:fontFamily="@font/notosanskr_medium"
-                        android:text="소파"
-                        android:textColor="@color/fur_darkNavy"
-                        android:textSize="10sp"
-                        android:textAlignment="center"
-                        android:textIsSelectable="true"
-                        android:background="@drawable/butter_navy_rounded_shape"/>
-                    <TextView
-                        android:id="@+id/filter_liveTable"
-                        android:layout_width="65dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:fontFamily="@font/notosanskr_medium"
-                        android:text="거실테이블"
-                        android:textColor="@color/fur_darkNavy"
-                        android:textSize="10sp"
-                        android:textAlignment="center"
-                        android:textIsSelectable="true"
-                        android:background="@drawable/butter_navy_rounded_shape"/>
-                    <TextView
-                        android:id="@+id/filter_kitTable"
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:fontFamily="@font/notosanskr_medium"
-                        android:text="식탁"
-                        android:textColor="@color/fur_darkNavy"
-                        android:textSize="10sp"
-                        android:textAlignment="center"
-                        android:textIsSelectable="true"
-                        android:background="@drawable/butter_navy_rounded_shape"/>
-                    <TextView
-                        android:id="@+id/filter_chair"
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:fontFamily="@font/notosanskr_medium"
-                        android:text="의자"
-                        android:textColor="@color/fur_darkNavy"
-                        android:textSize="10sp"
-                        android:textAlignment="center"
-                        android:textIsSelectable="true"
-                        android:background="@drawable/butter_navy_rounded_shape"/>
-                    <TextView
-                        android:id="@+id/filter_bed"
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:fontFamily="@font/notosanskr_medium"
-                        android:text="침대"
-                        android:textColor="@color/fur_darkNavy"
-                        android:textSize="10sp"
-                        android:textAlignment="center"
-                        android:textIsSelectable="true"
-                        android:background="@drawable/butter_navy_rounded_shape"/>
-                    <TextView
-                        android:id="@+id/filter_shelf"
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:fontFamily="@font/notosanskr_medium"
-                        android:text="선반"
-                        android:textColor="@color/fur_darkNavy"
-                        android:textSize="10sp"
-                        android:textAlignment="center"
-                        android:textIsSelectable="true"
-                        android:background="@drawable/butter_navy_rounded_shape"/>
-                    <TextView
-                        android:id="@+id/filter_study"
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:fontFamily="@font/notosanskr_medium"
-                        android:text="공부용"
-                        android:textColor="@color/fur_darkNavy"
-                        android:textSize="10sp"
-                        android:textAlignment="center"
-                        android:textIsSelectable="true"
-                        android:background="@drawable/butter_navy_rounded_shape"/>
-                    <TextView
-                        android:id="@+id/filter_kids"
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:fontFamily="@font/notosanskr_medium"
-                        android:text="아이용"
-                        android:textColor="@color/fur_darkNavy"
-                        android:textSize="10sp"
-                        android:textAlignment="center"
-                        android:textIsSelectable="true"
-                        android:background="@drawable/butter_navy_rounded_shape"/>
-                    <TextView
-                        android:id="@+id/filter_interior"
-                        android:layout_width="55dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:fontFamily="@font/notosanskr_medium"
-                        android:text="인테리어"
-                        android:textColor="@color/fur_darkNavy"
-                        android:textSize="10sp"
-                        android:textAlignment="center"
-                        android:textIsSelectable="true"
-                        android:background="@drawable/butter_navy_rounded_shape"/>
-
-
                 </LinearLayout>
 
             </HorizontalScrollView>
@@ -259,56 +233,76 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_weight="100">
+                android:layout_weight="100"
+                android:layout_marginVertical="10dp">
 
-                <TextView
-                    android:id="@+id/filter_bright_soft"
-                    android:layout_width="0dp"
+                <RadioGroup
+                    android:id="@+id/radioGroup2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:fontFamily="@font/notosanskr_medium"
-                    android:text="bright &amp; soft"
-                    android:textColor="@color/fur_darkNavy"
-                    android:textSize="10sp"
-                    android:textAlignment="center"
-                    android:layout_weight="25"
-                    android:background="@drawable/butter_navy_rounded_shape"/>
-                <TextView
-                    android:id="@+id/filter_bright_clear"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:fontFamily="@font/notosanskr_medium"
-                    android:text="bright &amp; clear"
-                    android:textColor="@color/fur_darkNavy"
-                    android:textSize="10sp"
-                    android:textAlignment="center"
-                    android:layout_weight="25"
-                    android:background="@drawable/butter_navy_rounded_shape"/>
-                <TextView
-                    android:id="@+id/filter_deep_soft"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:fontFamily="@font/notosanskr_medium"
-                    android:text="deep &amp; soft"
-                    android:textColor="@color/fur_darkNavy"
-                    android:textSize="10sp"
-                    android:textAlignment="center"
-                    android:layout_weight="25"
-                    android:background="@drawable/butter_navy_rounded_shape"/>
-                <TextView
-                    android:id="@+id/filter_deep_clear"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:fontFamily="@font/notosanskr_medium"
-                    android:text="deep &amp; clear"
-                    android:textColor="@color/fur_darkNavy"
-                    android:textSize="10sp"
-                    android:textAlignment="center"
-                    android:layout_weight="25"
-                    android:background="@drawable/butter_navy_rounded_shape"/>
+                    android:orientation="horizontal"
+                    android:layout_marginHorizontal="5dp">
+                    <RadioButton
+                        android:id="@+id/filter_all"
+                        android:layout_width="35dp"
+                        android:layout_height="25dp"
+                        android:text="all"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="1dp"
+                        android:textSize="12dp"
+                        android:textColor="@color/butter_navy"
+                        android:button="@null"
+                        android:textAlignment="center"
+                        android:background="@drawable/selector_radio" />
+                    <RadioButton
+                        android:id="@+id/filter_bright_soft"
+                        android:layout_width="90dp"
+                        android:layout_height="25dp"
+                        android:text="bright &amp; soft"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="1dp"
+                        android:textSize="12dp"
+                        android:textColor="@color/butter_navy"
+                        android:button="@null"
+                        android:textAlignment="center"
+                        android:background="@drawable/selector_radio" />
+                    <RadioButton
+                        android:id="@+id/filter_bright_clear"
+                        android:layout_width="90dp"
+                        android:layout_height="25dp"
+                        android:text="bright &amp; clear"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="1dp"
+                        android:textSize="12dp"
+                        android:textColor="@color/butter_navy"
+                        android:button="@null"
+                        android:textAlignment="center"
+                        android:background="@drawable/selector_radio" />
+                    <RadioButton
+                        android:id="@+id/filter_deep_soft"
+                        android:layout_width="90dp"
+                        android:layout_height="25dp"
+                        android:text="deep &amp; soft"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="1dp"
+                        android:textSize="12dp"
+                        android:textColor="@color/butter_navy"
+                        android:button="@null"
+                        android:textAlignment="center"
+                        android:background="@drawable/selector_radio" />
+                    <RadioButton
+                        android:id="@+id/filter_deep_clear"
+                        android:layout_width="90dp"
+                        android:layout_height="25dp"
+                        android:text="deep &amp; clear"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="1dp"
+                        android:textSize="12dp"
+                        android:textColor="@color/butter_navy"
+                        android:button="@null"
+                        android:textAlignment="center"
+                        android:background="@drawable/selector_radio" />
+                </RadioGroup>
 
             </LinearLayout>
 

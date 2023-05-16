@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +55,8 @@ public class Main extends Fragment {
     public Main() {
         // Required empty public constructor
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -184,6 +188,7 @@ public class Main extends Fragment {
         });
 
 //        refresh 버튼 누르면 서버에 저장된 내 정보 불러오기
+        //TODO : 필요한 정보만 불러와서 서버에 전달
         ImageButton refresh = view.findViewById(R.id.refresh);
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,51 +207,119 @@ public class Main extends Fragment {
             }
         });
 
+        RadioButton all, sofa, liveTable, kitTable, bed, chair, shelf, study, kids, interior;
+        RadioButton all2, bns, bnc, dns, dnc;
+        RadioButton[] rb_arr, rb_arr2;
 
-        TextView sofa = view.findViewById(R.id.filter_sofa);
-        TextView liveTable = view.findViewById(R.id.filter_liveTable);
-        TextView kitTable = view.findViewById(R.id.filter_kitTable);
-        TextView chair = view.findViewById(R.id.filter_chair);
-        TextView bed = view.findViewById(R.id.filter_bed);
-        TextView shelf = view.findViewById(R.id.filter_shelf);
-        TextView study = view.findViewById(R.id.filter_study);
-        TextView kids = view.findViewById(R.id.filter_kids);
-        TextView interior = view.findViewById(R.id.filter_interior);
+        RadioGroup radioGroup = view.findViewById(R.id.radioGroup);
+        RadioGroup radioGroup2 = view.findViewById(R.id.radioGroup2);
+        all = view.findViewById(R.id.radio_all);
+        sofa = view.findViewById(R.id.radio_sofa);
+        liveTable = view.findViewById(R.id.radio_liveTable);
+        kitTable = view.findViewById(R.id.radio_kitTable);
+        chair = view.findViewById(R.id.radio_chair);
+        bed = view.findViewById(R.id.radio_bed);
+        shelf = view.findViewById(R.id.radio_shelf);
+        study = view.findViewById(R.id.radio_study);
+        kids = view.findViewById(R.id.radio_kids);
+        interior = view.findViewById(R.id.radio_interior);
+        all2 = view.findViewById(R.id.filter_all);
+        bns = view.findViewById(R.id.filter_bright_soft);
+        bnc = view.findViewById(R.id.filter_bright_clear);
+        dns = view.findViewById(R.id.filter_deep_soft);
+        dnc = view.findViewById(R.id.filter_deep_clear);
 
+        rb_arr = new RadioButton[]{all, sofa, liveTable, kitTable, chair, bed, shelf, study, kids, interior};
+        rb_arr2 = new RadioButton[]{all2, bns, bnc, dns, dnc};
 
-
-        sofa.setOnClickListener(new View.OnClickListener() {
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                String fur = sofa.getText().toString();
-                Toast.makeText(getContext(), fur, Toast.LENGTH_SHORT).show();
-                Log.e("clicked text", fur);
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                for (int i=0; i<rb_arr.length; i++){
+                    rb_arr[i].setTextColor(Color.parseColor("#4D455D"));
+                }
 
-                //클릭 색상 바꾸기
-                sofa.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.filter_line));
-                sofa.setTextColor(Color.parseColor("#FEFCF3"));
-                //다른 애들 싹다 클릭 안되게 바꾸기
-                liveTable.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.butter_navy_rounded_shape));
-                liveTable.setTextColor(Color.parseColor("#181D31"));
-                kitTable.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.butter_navy_rounded_shape));
-                kitTable.setTextColor(Color.parseColor("#181D31"));
-                chair.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.butter_navy_rounded_shape));
-                chair.setTextColor(Color.parseColor("#181D31"));
-                bed.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.butter_navy_rounded_shape));
-                bed.setTextColor(Color.parseColor("#181D31"));
-                shelf.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.butter_navy_rounded_shape));
-                shelf.setTextColor(Color.parseColor("#181D31"));
-                study.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.butter_navy_rounded_shape));
-                study.setTextColor(Color.parseColor("#181D31"));
-                kids.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.butter_navy_rounded_shape));
-                kids.setTextColor(Color.parseColor("#181D31"));
-                interior.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.butter_navy_rounded_shape));
-                interior.setTextColor(Color.parseColor("#181D31"));
+                //TODO : 새로고침
 
-                //TODO : 결과 새로고침
+                switch (checkedId){
+                    case R.id.radio_all:
+                        all.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "전체", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.radio_sofa:
+                        sofa.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "소파", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.radio_liveTable:
+                        liveTable.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "거실테이블", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.radio_kitTable:
+                        kitTable.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "식탁", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.radio_bed:
+                        bed.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "침대", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.radio_shelf:
+                        shelf.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "선반", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.radio_study:
+                        study.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "공부용", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.radio_kids:
+                        kids.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "아이용", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.radio_interior:
+                        interior.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "인테리어용", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.radio_chair:
+                        chair.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "의자", Toast.LENGTH_SHORT).show();
+                        break;
+                }
             }
         });
 
+        radioGroup2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                for (int i=0; i<rb_arr2.length; i++){
+                    rb_arr2[i].setTextColor(Color.parseColor("#4D455D"));
+                }
+
+                //TODO : 새로고침
+
+                switch (checkedId){
+                    case R.id.filter_all:
+                        all2.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "전체", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.filter_bright_soft:
+                        bns.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "bright&soft", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.filter_bright_clear:
+                        bnc.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "bright&clear", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.filter_deep_soft:
+                        dns.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "deep&soft", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.filter_deep_clear:
+                        dnc.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "deep&clear", Toast.LENGTH_SHORT).show();
+                        break;
+
+                }
+            }
+        });
 
         return view;
     }
