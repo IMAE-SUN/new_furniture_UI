@@ -269,7 +269,7 @@ public class Recommendation extends Fragment {
     private String img_path;
     private Bitmap img;
 
-    public void connect() {
+    public void connect() { // 서버 socketHost.py와 연결
         mHandler = new Handler();
         BitmapDrawable drawable = (BitmapDrawable) img_wys_1.getDrawable();
         img = drawable.getBitmap();
@@ -279,7 +279,8 @@ public class Recommendation extends Fragment {
                 ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
                 img.compress(Bitmap.CompressFormat.PNG, 100, byteArray);
                 byte[] bytes = byteArray.toByteArray();
-                String result = new String();
+                String color = new String();
+                String histo_similarity = new String();
                 int data_len=0;
                 byte[] img_result;
                 // 서버 접속
@@ -310,8 +311,10 @@ public class Recommendation extends Fragment {
                     dos.write(bytes);
                     dos.flush();
 
-                    result = readString(dis);
-                    Log.w("done", result);
+                    color = readString(dis);
+                    Log.w("color done", color);
+                    histo_similarity = readString(dis);
+                    Log.w("histo done", histo_similarity);
                     //data_len = dis.readInt();
                     //img_result =InputStreamToByteArray(data_len,dis);
                     //img_path = readString(dis);
