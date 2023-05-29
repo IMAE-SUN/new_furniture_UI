@@ -1,27 +1,20 @@
 package com.example.newbottomnavi_anti;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -39,6 +32,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -51,26 +45,21 @@ public class Main extends Fragment {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = database.getReference();
     FirebaseAuth firebaseAuth;
+    String [][] strarray;
+    List<Integer> list;
 
     public Main() {
         // Required empty public constructor
     }
 
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        binding = FragmentMainBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
-        mainFragment = new Main();
-
-        Log.e("메인", "메인 들어옴");
-
-        firebaseAuth = firebaseAuth.getInstance();
-
+    public void load(){
         //침대 40개, 책상 36개, 소파36개
-        String [][] strarray = new String[112][6];
+        strarray = new String[112][7];
+        int max, min;
+        max = 4;
+        min = 1;
+        int mood_int = (int) Math.random() * (max-min+1) + 1;
+        String mood_str = Integer.toString(mood_int);
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader("/data/data/com.example.newbottomnavi_anti/files/furniture.txt"));
@@ -78,6 +67,7 @@ public class Main extends Fragment {
 
             int i = 0;
             while ((line = reader.readLine()) != null) {
+                line = line.concat(";" + mood_str);
                 strarray[i] = line.split(";");
                 i++;
             }
@@ -96,12 +86,40 @@ public class Main extends Fragment {
             set.add(d.intValue());
         }
 
-        List<Integer> list = new ArrayList<>(set);
+        list = new ArrayList<>(set);
 
-        //random
-        Glide.with(getActivity()).load(strarray[list.get(0)][5]).into(binding.bannerA1);
-        Glide.with(getActivity()).load(strarray[list.get(1)][5]).into(binding.bannerB1);
-        Glide.with(getActivity()).load(strarray[list.get(2)][5]).into(binding.bannerC1);
+        //TODO : 서버에서 받아오는 값을 기준으로 선정해서 glide 에 넣을 수 있도록 하기
+        // 서버에서 받아오는 값 확인 (분위기)
+        // 필터에서 받아오는 값 확인 (가구, 분위기)
+        // 세팅에서 받아오는 값 확인 (분위기, 가구)
+        // 위에서 받아온 정보들을 바탕으로 띄워줄 list 새로 짜기(?)
+
+        int selected_mood = 1;              // 결정된 분위기 값
+        int[] selected = new int[28];       // 분위기가 4개니까 일단 4개로 함..
+        for(int i = 0; i < selected.length; i++){
+            if(Integer.parseInt(strarray[i][6]) == selected_mood)
+            selected[i] = i;
+        }
+
+        Set<Integer> random_pick = new HashSet<>();
+
+        while (random_pick.size() < 4) {
+            int random = (int) Math.random() * 4;
+            random_pick.add(random);
+        }
+
+        List<Integer> random_pick_lst = new ArrayList<>(random_pick);
+
+        //filter
+        Glide.with(getActivity()).load(strarray[list.get(random_pick_lst.get(0))][5]).into(binding.filterImage1);
+        Glide.with(getActivity()).load(strarray[list.get(random_pick_lst.get(1))][5]).into(binding.filterImage2);
+        Glide.with(getActivity()).load(strarray[list.get(random_pick_lst.get(2))][5]).into(binding.filterImage3);
+        Glide.with(getActivity()).load(strarray[list.get(random_pick_lst.get(3))][5]).into(binding.filterImage4);
+
+        //like
+        Glide.with(getActivity()).load(strarray[list.get(0)][5]).into(binding.likeImage1);
+        Glide.with(getActivity()).load(strarray[list.get(1)][5]).into(binding.likeImage2);
+        Glide.with(getActivity()).load(strarray[list.get(2)][5]).into(binding.likeImage3);
 
         //trending
         Glide.with(getActivity()).load(strarray[list.get(3)][5]).into(binding.imgTrending1);
@@ -109,20 +127,40 @@ public class Main extends Fragment {
         Glide.with(getActivity()).load(strarray[list.get(5)][5]).into(binding.imgTrending3);
         Glide.with(getActivity()).load(strarray[list.get(6)][5]).into(binding.imgTrending4);
 
-        //recently
-        Glide.with(getActivity()).load(strarray[list.get(7)][5]).into(binding.imgRecently1);
-        Glide.with(getActivity()).load(strarray[list.get(8)][5]).into(binding.imgRecently2);
-        Glide.with(getActivity()).load(strarray[list.get(9)][5]).into(binding.imgRecently3);
-        Glide.with(getActivity()).load(strarray[list.get(10)][5]).into(binding.imgRecently4);
+        binding.titleRecently1.setText(strarray[random_pick_lst.get(0)][6] + " ₩");
+        binding.titleRecently2.setText(strarray[random_pick_lst.get(1)][6] + " ₩");
+        binding.titleRecently3.setText(strarray[random_pick_lst.get(2)][6] + " ₩");
+        binding.titleRecently4.setText(strarray[random_pick_lst.get(3)][6] + " ₩");
 
 
-        binding.rand1Title.setText(strarray[list.get(0)][0]);
-        binding.rand2Title.setText(strarray[list.get(1)][0]);
-        binding.rand3Title.setText(strarray[list.get(2)][0]);
+        binding.likeTitle1.setText(strarray[list.get(0)][0]);
+        binding.likeTitle2.setText(strarray[list.get(1)][0]);
+        binding.likeTitle3.setText(strarray[list.get(2)][0]);
 
-        binding.rand1Price.setText(strarray[list.get(0)][1] +" ₩");
-        binding.rand2Price.setText(strarray[list.get(1)][1] +" ₩");
-        binding.rand3Price.setText(strarray[list.get(2)][1] +" ₩");
+        binding.likePrice1.setText(strarray[list.get(0)][6] +" ₩");
+        binding.likePrice2.setText(strarray[list.get(1)][6] +" ₩");
+        binding.likePrice3.setText(strarray[list.get(2)][6] +" ₩");
+
+    }
+
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        binding = FragmentMainBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        mainFragment = new Main();
+
+        Log.e("메인", "메인 들어옴");
+
+        firebaseAuth = firebaseAuth.getInstance();
+
+        load();
+
+
+        //TODO : filter 애들도 binding 해서 세부사항 들어갈 수 있도록 묶어줘야 함
+
 
         //HomeFragment에서 FurnitureInfoFragment로 data 넘기기 위해 action 객체 만들어줌. 인자 순서대로 title, price, img
         MainDirections.ActionNavigationHomeToFurnitureInfoFragment action =
@@ -152,7 +190,9 @@ public class Main extends Fragment {
         });
 
 
-        Button st1 = view.findViewById(R.id.star_1);
+
+
+        Button st1 = view.findViewById(R.id.like_star_1);
         FirebaseUser user = firebaseAuth.getCurrentUser();
         String uid = user.getUid();
 
@@ -197,10 +237,22 @@ public class Main extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<DataSnapshot> task) {
                         if (!task.isSuccessful()) {
-                            Log.e("firebase", "Error getting data", task.getException());
+                            Log.e("Preference", "Error getting data", task.getException());
                         }
                         else {
-                            Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                            Log.d("Preference", String.valueOf(task.getResult().getValue()));
+                        }
+                    }
+                });
+
+                reference.child(uid).child("PreRate").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        if (!task.isSuccessful()) {
+                            Log.e("PreRate", "Error getting data", task.getException());
+                        }
+                        else {
+                            Log.d("PreRate", String.valueOf(task.getResult().getValue()));
                         }
                     }
                 });

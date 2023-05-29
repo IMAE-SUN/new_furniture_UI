@@ -2,6 +2,8 @@ package com.example.newbottomnavi_anti;
 
 import static android.app.Activity.RESULT_OK;
 
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -35,13 +37,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.normal.TedPermission;
 
@@ -56,6 +66,7 @@ import java.security.Permission;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class Recommendation extends Fragment {
@@ -64,9 +75,13 @@ public class Recommendation extends Fragment {
         // Required empty public constructor
     }
 
+    FirebaseAuth firebaseAuth;
+    String RadioText, RadioText2;
     ImageView img_wys_1, img_wys_2, img_wys_3, img_wys_4, img_recom_a, img_recom_a_1, img_recom_b, img_recom_b_1, img_recom_c, img_recom_c_1, img_recom_d, img_recom_d_1;
     Button recommend_btn;
     ImageButton refresh_btn;
+    LinearLayout recommend_layout;
+    String selectedCbText = NULL;
     int sum = 0;
     int max = 4;
 
@@ -87,10 +102,105 @@ public class Recommendation extends Fragment {
 
         Log.e("추천", "추천들어옴");
 
+
+        RadioGroup radiogroup = view.findViewById(R.id.radiogroup);
+        RadioButton rb1 = view.findViewById(R.id.radiobutton1);
+        RadioButton rb2 = view.findViewById(R.id.radiobutton2);
+        RadioButton rb3 = view.findViewById(R.id.radiobutton3);
+        RadioButton rb4 = view.findViewById(R.id.radiobutton4);
+
+        RadioGroup radioGroup2 = view.findViewById(R.id.seekbar_radioGroup);
+        RadioButton rb5 = view.findViewById(R.id._seekbar_1_randioButton);
+        RadioButton rb6 = view.findViewById(R.id._seekbar_2_randioButton);
+        RadioButton rb7 = view.findViewById(R.id._seekbar_3_randioButton);
+        RadioButton rb8 = view.findViewById(R.id._seekbar_4_randioButton);
+        RadioButton rb9 = view.findViewById(R.id._seekbar_5_randioButton);
+
+
+//        Radio Button 처리
+        radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+//                String RadioText;
+                switch (checkedId){
+                    case R.id.radiobutton1:
+                        Toast.makeText(getContext(), rb1.getText().toString(), Toast.LENGTH_SHORT).show();
+                        Log.e("Radio Button1", rb1.getText().toString());
+                        RadioText = rb1.getText().toString();
+                        break;
+                    case R.id.radiobutton2:
+                        Toast.makeText(getContext(), rb2.getText().toString(), Toast.LENGTH_SHORT).show();
+                        Log.e("Radio Button2", rb2.getText().toString());
+                        RadioText = rb2.getText().toString();
+                        break;
+                    case R.id.radiobutton3:
+                        Toast.makeText(getContext(), rb3.getText().toString(), Toast.LENGTH_SHORT).show();
+                        Log.e("Radio Button3", rb3.getText().toString());
+                        RadioText = rb3.getText().toString();
+                        break;
+                    case R.id.radiobutton4:
+                        Toast.makeText(getContext(), rb4.getText().toString(), Toast.LENGTH_SHORT).show();
+                        Log.e("Radio Button3", rb4.getText().toString());
+                        RadioText = rb4.getText().toString();
+                        break;
+                }
+            }
+        });
+
+        radioGroup2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+//                String RadioText;
+                switch (checkedId){
+                    case R.id._seekbar_1_randioButton:
+                        Toast.makeText(getContext(), rb5.getText().toString(), Toast.LENGTH_SHORT).show();
+                        Log.e("Radio Button1", rb5.getText().toString());
+                        RadioText2 = rb5.getText().toString();
+                        break;
+                    case R.id._seekbar_2_randioButton:
+                        Toast.makeText(getContext(), rb6.getText().toString(), Toast.LENGTH_SHORT).show();
+                        Log.e("Radio Button2", rb6.getText().toString());
+                        RadioText2 = rb6.getText().toString();
+                        break;
+                    case R.id._seekbar_3_randioButton:
+                        Toast.makeText(getContext(), rb7.getText().toString(), Toast.LENGTH_SHORT).show();
+                        Log.e("Radio Button3", rb7.getText().toString());
+                        RadioText2 = rb7.getText().toString();
+                        break;
+                    case R.id._seekbar_4_randioButton:
+                        Toast.makeText(getContext(), rb8.getText().toString(), Toast.LENGTH_SHORT).show();
+                        Log.e("Radio Button3", rb8.getText().toString());
+                        RadioText2 = rb8.getText().toString();
+                        break;
+                    case R.id._seekbar_5_randioButton:
+                        Toast.makeText(getContext(), rb9.getText().toString(), Toast.LENGTH_SHORT).show();
+                        Log.e("Radio Button3", rb9.getText().toString());
+                        RadioText2 = rb9.getText().toString();
+                        break;
+                }
+            }
+        });
+
+
+        CheckBox cb1 = view.findViewById(R.id.cb_question_2_bed);
+        CheckBox cb2 = view.findViewById(R.id.cb_question_2_chair);
+        CheckBox cb3 = view.findViewById(R.id.cb_question_2_child);
+        CheckBox cb4 = view.findViewById(R.id.cb_question_2_dining);
+        CheckBox cb5 = view.findViewById(R.id.cb_question_2_interior);
+        CheckBox cb6 = view.findViewById(R.id.cb_question_2_shelf);
+        CheckBox cb7 = view.findViewById(R.id.cb_question_2_sofa);
+        CheckBox cb8 = view.findViewById(R.id.cb_question_2_sofatable);
+        CheckBox cb9 = view.findViewById(R.id.cb_question_2_study);
+
+
 //        카메라, 갤러리 버튼
 //        TODO : 연결하기
         Button camera_btn = view.findViewById(R.id.camera_recom);
         Button gallery_btn = view.findViewById(R.id.gallery_recom);
+        Button more_opt = view.findViewById(R.id.btn_more_options);
+        LinearLayout more_opt_layout = view.findViewById(R.id.lo_more_options);
 
 //        그렇게 불러온 사진들 띄워주기 (최대 4개)
 //        TODO : 클릭 시 없어져야 함
@@ -102,6 +212,7 @@ public class Recommendation extends Fragment {
 //        추천하기 버튼
 //        TODO : 클릭 시 python 코드와 연결되도록
         recommend_btn = view.findViewById(R.id.recommend_btn);
+        recommend_layout = view.findViewById(R.id.recommendation_layout);
 
 //        refresh 버튼
 //        TODO : 클릭 시 기존 정보 바탕으로 (연산 x) 다시 추천
@@ -118,6 +229,17 @@ public class Recommendation extends Fragment {
         img_recom_c_1 = view.findViewById(R.id.img_recom_c_1);
         img_recom_d = view.findViewById(R.id.img_recom_d);
         img_recom_d_1 = view.findViewById(R.id.img_recom_d_1);
+
+        more_opt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(more_opt_layout.getVisibility() == View.GONE){
+                    more_opt_layout.setVisibility(View.VISIBLE);
+                }else{
+                    more_opt_layout.setVisibility(View.GONE);
+                }
+            }
+        });
 
         PermissionListener permissionlistener = new PermissionListener() {
             @Override
@@ -158,18 +280,62 @@ public class Recommendation extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d("recommedation", "recommendation 시작함");
-                connect();
+                if(recommend_layout.getVisibility() == View.GONE){
+                    recommend_layout.setVisibility(View.VISIBLE);
+                }
+
+                Toast.makeText(getContext(), RadioText, Toast.LENGTH_SHORT).show();
+                Log.e("Final Radio Button", RadioText);
+
+
+                if(cb1.isChecked()){
+                    selectedCbText += cb1.getText().toString() + " ";
+                }
+                if(cb2.isChecked()){
+                    selectedCbText += cb2.getText().toString() + " ";
+                }
+                if(cb3.isChecked()){
+                    selectedCbText += cb3.getText().toString() + " ";
+                }
+                if(cb4.isChecked()){
+                    selectedCbText += cb4.getText().toString() + " ";
+                }
+                if(cb5.isChecked()){
+                    selectedCbText += cb5.getText().toString() + " ";
+                }
+                if(cb6.isChecked()){
+                    selectedCbText += cb6.getText().toString() + " ";
+                }
+                if(cb7.isChecked()){
+                    selectedCbText += cb7.getText().toString() + " ";
+                }
+                if(cb8.isChecked()){
+                    selectedCbText += cb8.getText().toString() + " ";
+                }
+                if(cb9.isChecked()){
+                    selectedCbText += cb9.getText().toString() + " ";
+                }
+
+                Toast.makeText(getContext(), selectedCbText, Toast.LENGTH_SHORT).show();
+                Log.e("Final CheckBox", selectedCbText);
+
+                if (selectedCbText==NULL){
+                    Toast.makeText(getContext(), "모든 옵션을 선택해주세요", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    connect();
+                }
             }
         });
 
-//        추천 새로고침
-        refresh_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("refresh", "refresh 클릭함");
-                Toast.makeText(getContext(), "refresh", Toast.LENGTH_SHORT).show();
-            }
-        });
+////        추천 새로고침
+//        refresh_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d("refresh", "refresh 클릭함");
+//                Toast.makeText(getContext(), "refresh", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
 //       Glide.with(this).load("https://pix8.agoda.net/hotelImages/111/1110567/1110567_16083113590045958402.jpg?ca=6&ce=1&s=1024x768").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_wys_1);
 //       Glide.with(this).load("https://pix8.agoda.net/hotelImages/111/1110567/1110567_16083113130045955510.jpg?ca=6&ce=1&s=1024x768").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_wys_2);
@@ -259,6 +425,7 @@ public class Recommendation extends Fragment {
         }
     }
 
+
     private final Charset UTF8_CHARSET = Charset.forName("UTF-8");
     private Handler mHandler;
     private Socket socket;
@@ -270,6 +437,31 @@ public class Recommendation extends Fragment {
     private Bitmap img;
 
     public void connect() { // 서버 socketHost.py와 연결
+
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        String uid = user.getUid();
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference("Users");
+
+//                분위기 전달
+        reference.child(uid).child("Preference").child("Mood").setValue(RadioText);
+
+//                가구 전달
+        HashMap<Object, String> hashMap = new HashMap<>();
+        String[] temp = selectedCbText.split(" ");
+        int n = temp.length;
+        for (int i=0; i<n; i++){
+            Log.e("CheckBox", temp[i]);
+            hashMap.put("furniture", temp[i]);
+            reference.child(uid).child("Preference").child("Furniture").push().setValue(hashMap);
+        }
+
+//                퍼센트 전달
+        reference.child(uid).child("Preference").child("seekbar").setValue(RadioText2);
+
+
+
         mHandler = new Handler();
         BitmapDrawable drawable = (BitmapDrawable) img_wys_1.getDrawable();
         img = drawable.getBitmap();
@@ -357,129 +549,5 @@ public class Recommendation extends Fragment {
         }
         return resbytes;
     }
-//
-//    private void galleryAddPic(){
-//        Log.i("galleryAddPic", "Call");
-//        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-//        // 해당 경로에 있는 파일을 객체화(새로 파일을 만든다는 것으로 이해하면 안 됨)
-//        File f = new File(mCurrentPhotoPath);
-//        Uri contentUri = Uri.fromFile(f);
-//        mediaScanIntent.setData(contentUri);
-//        getContext().sendBroadcast(mediaScanIntent);
-//        Toast.makeText(getContext(), "사진이 앨범에 저장되었습니다.", Toast.LENGTH_SHORT).show();
-//    }
-
-    // 카메라 전용 크랍
-//    public void cropImage(){
-//        Log.i("cropImage", "Call");
-//        Log.i("cropImage", "photoURI : " + photoURI + " / albumURI : " + albumURI);
-//
-//        Intent cropIntent = new Intent("com.android.camera.action.CROP");
-//
-//        // 50x50픽셀미만은 편집할 수 없다는 문구 처리 + 갤러리, 포토 둘다 호환하는 방법
-//        cropIntent.setFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-//        cropIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-//        cropIntent.setDataAndType(photoURI, "image/*");
-//        //cropIntent.putExtra("outputX", 200); // crop한 이미지의 x축 크기, 결과물의 크기
-//        //cropIntent.putExtra("outputY", 200); // crop한 이미지의 y축 크기
-//        cropIntent.putExtra("aspectX", 1); // crop 박스의 x축 비율, 1&1이면 정사각형
-//        cropIntent.putExtra("aspectY", 1); // crop 박스의 y축 비율
-//        cropIntent.putExtra("scale", true);
-//        cropIntent.putExtra("output", albumURI); // 크랍된 이미지를 해당 경로에 저장
-//        startActivityForResult(cropIntent, REQUEST_IMAGE_CROP);
-//    }
-
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        switch (requestCode) {
-//            case REQUEST_TAKE_PHOTO:
-//                if (resultCode == Activity.RESULT_OK) {
-//                    try {
-//                        Log.i("REQUEST_TAKE_PHOTO", "OK");
-//                        galleryAddPic();
-//
-//                        img_wys_1.setImageURI(imageUri);
-//                    } catch (Exception e) {
-//                        Log.e("REQUEST_TAKE_PHOTO", e.toString());
-//                    }
-//                } else {
-//                    Toast.makeText(getContext(), "사진찍기를 취소하였습니다.", Toast.LENGTH_SHORT).show();
-//                }
-//                break;
-//
-//            case REQUEST_TAKE_ALBUM:
-//                if (resultCode == Activity.RESULT_OK) {
-//
-//                    if(data.getData() != null){
-//                        try {
-//                            File albumFile = null;
-//                            albumFile = createImageFile();
-//                            photoURI = data.getData();
-//                            albumURI = Uri.fromFile(albumFile);
-//                            cropImage();
-//                        }catch (Exception e){
-//                            Log.e("TAKE_ALBUM_SINGLE ERROR", e.toString());
-//                        }
-//                    }
-//                }
-//                break;
-//
-//            case REQUEST_IMAGE_CROP:
-//                if (resultCode == Activity.RESULT_OK) {
-//
-//                    galleryAddPic();
-//                    img_wys_1.setImageURI(albumURI);
-//                }
-//                break;
-//        }
-//    }
-
-//    private void checkPermission(){
-//        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//            // 처음 호출시엔 if()안의 부분은 false로 리턴 됨 -> else{..}의 요청으로 넘어감
-//            if ((ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)) ||
-//                    (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA))) {
-//                new AlertDialog.Builder(getContext())
-//                        .setTitle("알림")
-//                        .setMessage("저장소 권한이 거부되었습니다. 사용을 원하시면 설정에서 해당 권한을 직접 허용하셔야 합니다.")
-//                        .setNeutralButton("설정", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-//                                intent.setData(Uri.parse("package:" + getActivity().getPackageName()));
-//                                startActivity(intent);
-//                            }
-//                        })
-//                        .setPositiveButton("확인", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                getActivity().finish();
-//                            }
-//                        })
-//                        .setCancelable(false)
-//                        .create()
-//                        .show();
-//            } else {
-//                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, MY_PERMISSION_CAMERA);
-//            }
-//        }
-//    }
-//
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        switch (requestCode) {
-//            case MY_PERMISSION_CAMERA:
-//                for (int i = 0; i < grantResults.length; i++) {
-//                    // grantResults[] : 허용된 권한은 0, 거부한 권한은 -1
-//                    if (grantResults[i] < 0) {
-//                        Toast.makeText(getContext(), "해당 권한을 활성화 하셔야 합니다.", Toast.LENGTH_SHORT).show();
-//                        return;
-//                    }
-//                }
-//                // 허용했다면 이 부분에서..
-//
-//                break;
-//        }
-//    }
 
 }

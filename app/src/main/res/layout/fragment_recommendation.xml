@@ -77,7 +77,7 @@
                             android:layout_height="28dp"
                             android:layout_gravity="center"
                             android:layout_weight="20"
-                            android:src="@drawable/filter_icon" />
+                            android:src="@drawable/ic_baseline_filter_list_off" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -225,516 +225,907 @@
                     </HorizontalScrollView>
 
                     <Button
+                        android:id="@+id/btn_more_options"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="more options"/>
+                    <LinearLayout
+                        android:id="@+id/lo_more_options"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <!--1번째 질문-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/lightgray_rounded_shape">
+
+                            <TextView
+                                android:id="@+id/txt_question_1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="1. 원하시는 분위기가 있나요? (1순위)"
+                                android:textSize="20sp"
+                                android:fontFamily="@font/notosanskr_medium"
+                                android:textColor="@color/fur_darkNavy"
+                                android:layout_marginLeft="10dp"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <RadioGroup
+                                    android:id="@+id/radiogroup"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                    <RadioButton
+                                        android:id="@+id/radiobutton1"
+                                        android:layout_width="100dp"
+                                        android:layout_height="180dp"
+                                        android:text="bright &amp; soft"/>
+
+                                    <RadioButton
+                                        android:id="@+id/radiobutton2"
+                                        android:layout_width="100dp"
+                                        android:layout_height="180dp"
+                                        android:text="bright &amp; clear"/>
+
+                                    <RadioButton
+                                        android:id="@+id/radiobutton3"
+                                        android:layout_width="100dp"
+                                        android:layout_height="180dp"
+                                        android:text="deep &amp; soft"/>
+
+                                    <RadioButton
+                                        android:id="@+id/radiobutton4"
+                                        android:layout_width="100dp"
+                                        android:layout_height="180dp"
+                                        android:text="deep &amp; clear"/>
+                                </RadioGroup>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="180dp"
+                                        android:adjustViewBounds="true"
+                                        android:src="@drawable/bright_soft_livingroom2"/>
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="180dp"
+                                        android:adjustViewBounds="true"
+                                        android:src="@drawable/bright_clear_kitchen2"/>
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="180dp"
+                                        android:adjustViewBounds="true"
+                                        android:src="@drawable/deep_soft_kitchen2"/>
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="180dp"
+                                        android:adjustViewBounds="true"
+                                        android:src="@drawable/deep_clear_livingroom" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+
+
+                            <!--                <TextView-->
+                            <!--                    android:id="@+id/txt_question_1"-->
+                            <!--                    android:layout_width="match_parent"-->
+                            <!--                    android:layout_height="wrap_content"-->
+                            <!--                    android:text="1. 원하시는 분위기가 있나요? (1순위)"-->
+                            <!--                    android:textSize="20sp"-->
+                            <!--                    android:fontFamily="@font/notosanskr_medium"-->
+                            <!--                    android:textColor="@color/fur_darkNavy"-->
+                            <!--                    android:layout_marginLeft="10dp"/>-->
+                            <!--                <RadioGroup-->
+                            <!--                    android:id="@+id/rg_question_1"-->
+                            <!--                    android:layout_width="match_parent"-->
+                            <!--                    android:layout_height="wrap_content"-->
+                            <!--                    android:orientation="vertical"-->
+                            <!--                    android:weightSum="100">-->
+                            <!--                    &lt;!&ndash;                    bright & soft&ndash;&gt;-->
+                            <!--                    <LinearLayout-->
+                            <!--                        android:layout_width="match_parent"-->
+                            <!--                        android:layout_height="150dp"-->
+                            <!--                        android:orientation="horizontal"-->
+                            <!--                        android:layout_margin="10dp">-->
+                            <!--                        <RadioButton-->
+                            <!--                            android:id="@+id/rb_question_1_brightsoft"-->
+                            <!--                            android:layout_width="100dp"-->
+                            <!--                            android:layout_height="match_parent"-->
+                            <!--                            android:text="bright &amp; soft"-->
+                            <!--                            android:textColor="@color/fur_darkNavy"-->
+                            <!--                            android:fontFamily="@font/notosanskr_medium"-->
+                            <!--                            android:layout_marginRight="10dp"/>-->
+                            <!--                        <ImageView-->
+                            <!--                            android:layout_width="wrap_content"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:adjustViewBounds="true"-->
+                            <!--                            android:src="@drawable/bright_soft_livingroom2"/>-->
+                            <!--                    </LinearLayout>-->
+
+                            <!--                    &lt;!&ndash;                    bright & clear&ndash;&gt;-->
+                            <!--                    <LinearLayout-->
+                            <!--                        android:layout_width="match_parent"-->
+                            <!--                        android:layout_height="150dp"-->
+                            <!--                        android:orientation="horizontal"-->
+                            <!--                        android:layout_margin="10dp">-->
+                            <!--                        <RadioButton-->
+                            <!--                            android:id="@+id/rb_question_1_brightclear"-->
+                            <!--                            android:layout_width="100dp"-->
+                            <!--                            android:layout_height="match_parent"-->
+                            <!--                            android:layout_marginRight="10dp"-->
+                            <!--                            android:text="bright &amp; clear"-->
+                            <!--                            android:textColor="@color/fur_darkNavy"-->
+                            <!--                            android:fontFamily="@font/notosanskr_medium" />-->
+                            <!--                        <ImageView-->
+                            <!--                            android:layout_width="wrap_content"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:adjustViewBounds="true"-->
+                            <!--                            android:src="@drawable/bright_clear_kitchen2"/>-->
+                            <!--                    </LinearLayout>-->
+
+                            <!--                    &lt;!&ndash;                    deep & soft&ndash;&gt;-->
+                            <!--                    <LinearLayout-->
+                            <!--                        android:layout_width="match_parent"-->
+                            <!--                        android:layout_height="150dp"-->
+                            <!--                        android:orientation="horizontal"-->
+                            <!--                        android:layout_margin="10dp">-->
+                            <!--                        <RadioButton-->
+                            <!--                            android:id="@+id/rb_question_1_deepsoft"-->
+                            <!--                            android:layout_width="100dp"-->
+                            <!--                            android:layout_height="match_parent"-->
+                            <!--                            android:text="deep &amp; soft"-->
+                            <!--                            android:textColor="@color/fur_darkNavy"-->
+                            <!--                            android:fontFamily="@font/notosanskr_medium"-->
+                            <!--                            android:layout_marginRight="10dp"/>-->
+                            <!--                        <ImageView-->
+                            <!--                            android:layout_width="wrap_content"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:adjustViewBounds="true"-->
+                            <!--                            android:src="@drawable/deep_soft_kitchen2"/>-->
+                            <!--                    </LinearLayout>-->
+
+                            <!--                    &lt;!&ndash;                    deep & clear&ndash;&gt;-->
+                            <!--                    <LinearLayout-->
+                            <!--                        android:layout_width="match_parent"-->
+                            <!--                        android:layout_height="150dp"-->
+                            <!--                        android:orientation="horizontal"-->
+                            <!--                        android:layout_margin="10dp">-->
+                            <!--                        <RadioButton-->
+                            <!--                            android:id="@+id/rb_question_1_deepclear"-->
+                            <!--                            android:layout_width="100dp"-->
+                            <!--                            android:layout_height="match_parent"-->
+                            <!--                            android:text="deep &amp; clear"-->
+                            <!--                            android:textColor="@color/fur_darkNavy"-->
+                            <!--                            android:fontFamily="@font/notosanskr_medium"-->
+                            <!--                            android:layout_marginRight="10dp"/>-->
+                            <!--                        <ImageView-->
+                            <!--                            android:layout_width="wrap_content"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:adjustViewBounds="true"-->
+                            <!--                            android:src="@drawable/deep_clear_livingroom"/>-->
+                            <!--                    </LinearLayout>-->
+
+
+                            <!--                </RadioGroup>-->
+                        </LinearLayout>
+
+                        <!--2번째 질문-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/lightgray_rounded_shape">
+                            <TextView
+                                android:id="@+id/txt_question_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="2. 현재 관심있는 가구는? (중복가능)"
+                                android:textSize="20sp"
+                                android:fontFamily="@font/notosanskr_medium"
+                                android:textColor="@color/fur_darkNavy"
+                                android:layout_marginLeft="10dp"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="100"
+                                android:layout_marginRight="10dp">
+                                <CheckBox
+                                    android:id="@+id/cb_question_2_sofa"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="소파"
+                                    android:textColor="@color/fur_darkNavy"
+                                    android:fontFamily="@font/notosanskr_medium"
+                                    android:layout_weight="25"/>
+                                <CheckBox
+                                    android:id="@+id/cb_question_2_sofatable"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="거실테이블"
+                                    android:textColor="@color/fur_darkNavy"
+                                    android:fontFamily="@font/notosanskr_medium"
+                                    android:layout_weight="25"/>
+                                <CheckBox
+                                    android:id="@+id/cb_question_2_dining"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="식탁"
+                                    android:textColor="@color/fur_darkNavy"
+                                    android:fontFamily="@font/notosanskr_medium"
+                                    android:layout_weight="25"/>
+                                <CheckBox
+                                    android:id="@+id/cb_question_2_chair"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="의자"
+                                    android:textColor="@color/fur_darkNavy"
+                                    android:fontFamily="@font/notosanskr_medium"
+                                    android:layout_weight="25"/>
+                                <CheckBox
+                                    android:id="@+id/cb_question_2_bed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="침대"
+                                    android:textColor="@color/fur_darkNavy"
+                                    android:fontFamily="@font/notosanskr_medium"
+                                    android:layout_weight="25"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="100"
+                                android:layout_marginRight="10dp">
+                                <CheckBox
+                                    android:id="@+id/cb_question_2_shelf"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="선반"
+                                    android:textColor="@color/fur_darkNavy"
+                                    android:fontFamily="@font/notosanskr_medium"
+                                    android:layout_weight="25"/>
+                                <CheckBox
+                                    android:id="@+id/cb_question_2_study"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="공부용"
+                                    android:textColor="@color/fur_darkNavy"
+                                    android:fontFamily="@font/notosanskr_medium"
+                                    android:layout_weight="25"/>
+                                <CheckBox
+                                    android:id="@+id/cb_question_2_child"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="아이용"
+                                    android:textColor="@color/fur_darkNavy"
+                                    android:fontFamily="@font/notosanskr_medium"
+                                    android:layout_weight="25"/>
+                                <CheckBox
+                                    android:id="@+id/cb_question_2_interior"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="인테리어소품"
+                                    android:textColor="@color/fur_darkNavy"
+                                    android:fontFamily="@font/notosanskr_medium"
+                                    android:layout_weight="25"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!--마지막 문구-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="20dp">
+                            <TextView
+                                android:id="@+id/text_seekbar"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:layout_gravity="center"
+                                android:textColor="@color/black"/>
+
+                            <RadioGroup
+                                android:id="@+id/seekbar_radioGroup"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="5">
+                                <RadioButton
+                                    android:id="@+id/_seekbar_1_randioButton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="20%"
+                                    android:layout_weight="1"/>
+                                <RadioButton
+                                    android:id="@+id/_seekbar_2_randioButton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="40%"
+                                    android:layout_weight="1"/>
+                                <RadioButton
+                                    android:id="@+id/_seekbar_3_randioButton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="60%"
+                                    android:layout_weight="1"/>
+                                <RadioButton
+                                    android:id="@+id/_seekbar_4_randioButton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="80%"
+                                    android:layout_weight="1"/>
+                                <RadioButton
+                                    android:id="@+id/_seekbar_5_randioButton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="100%"
+                                    android:layout_weight="1"/>
+
+
+                            </RadioGroup>
+<!--                            <SeekBar-->
+<!--                                android:id="@+id/seekbar"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:max="100"-->
+<!--                                android:progress="0"-->
+<!--                                android:thumb="@drawable/seekbar_thumb"-->
+<!--                                android:progressDrawable="@drawable/seekbar"/>-->
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="저장된 내용은 앞으로 이용하실 추천 시스템에 기반이 됩니다."
+                                android:textColor="@color/fur_pale"
+                                android:fontFamily="@font/notosanskr_medium"
+                                android:gravity="center"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="추가 옵션 반영 비율입니다."
+                                android:textColor="@color/fur_medium"
+                                android:fontFamily="@font/notosanskr_medium"
+                                android:gravity="center"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+
+                    <Button
                         android:id="@+id/recommend_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="get recommendations!"
                         android:layout_gravity="center"/>
 
-
                     <LinearLayout
+                        android:id="@+id/recommendation_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="10dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/notosanskr_medium"
-                            android:text="Our recommendations based on your pictures are..."
-                            android:textColor="@color/fur_darkNavy"
-                            android:textSize="12sp"
-                            android:textStyle="bold"
-                            android:layout_weight="9"
-                            android:layout_gravity="center"/>
-
+                        android:orientation="vertical">
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:weightSum="10"
-                            android:layout_gravity="center">
+                            android:orientation="vertical"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/notosanskr_medium"
-                                android:text="Click refresh to refresh the results"
-                                android:textColor="@color/fur_medium"
+                                android:text="Our recommendations based on your pictures are..."
+                                android:textColor="@color/fur_darkNavy"
                                 android:textSize="12sp"
-                                android:layout_gravity="center"
+                                android:textStyle="bold"
                                 android:layout_weight="9"
-                                android:layout_marginRight="10dp" />
+                                android:layout_gravity="center"/>
 
-                            <ImageButton
-                                android:id="@+id/refresh_imgbtn"
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:text="refresh"
-                                android:textSize="10sp"
-                                android:adjustViewBounds="true"
-                                android:src="@drawable/ic_baseline_refresh"
-                                android:background="@color/fur_pale"/>
+                                android:orientation="horizontal"
+                                android:weightSum="10"
+                                android:layout_gravity="center">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/notosanskr_medium"
+                                    android:text="Click refresh to refresh the results"
+                                    android:textColor="@color/fur_medium"
+                                    android:textSize="12sp"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="9"
+                                    android:layout_marginRight="10dp" />
+
+                                <ImageButton
+                                    android:id="@+id/refresh_imgbtn"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:text="refresh"
+                                    android:textSize="10sp"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/ic_baseline_refresh"
+                                    android:background="@color/fur_pale"/>
+
+                            </LinearLayout>
+
 
                         </LinearLayout>
 
 
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="8dp"
-                        android:weightSum="100">
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="50"
-                            app:cardCornerRadius="4dp"
-                            app:cardElevation="4dp"
-                            app:cardUseCompatPadding="true">
+                            android:orientation="horizontal"
+                            android:padding="8dp"
+                            android:weightSum="100">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <ImageView
-                                    android:id="@+id/img_recom_a"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="110dp"
-                                    android:scaleType="fitXY"
-                                    android:src="@drawable/ic_baseline_home" />
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="8dp"
-                                    android:layout_marginTop="-16dp"
-                                    android:layout_marginRight="8dp"
-                                    android:layout_marginBottom="8dp">
-
-                                    <ImageView
-                                        android:id="@+id/img_recom_a_1"
-                                        android:layout_width="36dp"
-                                        android:layout_height="36dp"
-                                        android:src="@drawable/ic_baseline_home" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_alignParentRight="true"
-                                        android:background="@drawable/gray_rounded_shape"
-                                        android:fontFamily="@font/notosanskr_medium"
-                                        android:padding="8dp"
-                                        android:text="상세정보"
-                                        android:textColor="@color/fur_darkNavy"
-                                        android:textSize="14sp" />
-
-                                </RelativeLayout>
+                                android:layout_weight="50"
+                                app:cardCornerRadius="4dp"
+                                app:cardElevation="4dp"
+                                app:cardUseCompatPadding="true">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_margin="8dp"
                                     android:orientation="vertical">
 
-                                    <TextView
+                                    <ImageView
+                                        android:id="@+id/img_recom_a"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="110dp"
+                                        android:scaleType="fitXY"
+                                        android:src="@drawable/ic_baseline_home" />
+
+                                    <RelativeLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginBottom="4dp"
-                                        android:fontFamily="@font/notosanskr_medium"
-                                        android:text="파로마 앤드리 LED침대 Q "
-                                        android:textColor="@color/fur_darkNavy"
-                                        android:textSize="14sp"
-                                        android:textStyle="bold" />
+                                        android:layout_marginLeft="8dp"
+                                        android:layout_marginTop="-16dp"
+                                        android:layout_marginRight="8dp"
+                                        android:layout_marginBottom="8dp">
 
-                                    <TextView
+                                        <ImageView
+                                            android:id="@+id/img_recom_a_1"
+                                            android:layout_width="36dp"
+                                            android:layout_height="36dp"
+                                            android:src="@drawable/ic_baseline_home" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentRight="true"
+                                            android:background="@drawable/gray_rounded_shape"
+                                            android:fontFamily="@font/notosanskr_medium"
+                                            android:padding="8dp"
+                                            android:text="상세정보"
+                                            android:textColor="@color/fur_darkNavy"
+                                            android:textSize="14sp" />
+
+                                    </RelativeLayout>
+
+                                    <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@font/notosanskr_medium"
-                                        android:text="379000₩"
-                                        android:textColor="@color/fur_medium"
-                                        android:textSize="12sp" />
+                                        android:layout_margin="8dp"
+                                        android:orientation="vertical">
 
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="4dp"
+                                            android:fontFamily="@font/notosanskr_medium"
+                                            android:text="파로마 앤드리 LED침대 Q "
+                                            android:textColor="@color/fur_darkNavy"
+                                            android:textSize="14sp"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/notosanskr_medium"
+                                            android:text="379000₩"
+                                            android:textColor="@color/fur_medium"
+                                            android:textSize="12sp" />
+
+
+                                    </LinearLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="8dp">
+
+                                        <ImageView
+                                            android:layout_width="36dp"
+                                            android:layout_height="36dp"
+                                            android:layout_marginRight="4dp"
+                                            android:src="@drawable/bookmark" />
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginLeft="44dp"
+                                            android:src="@drawable/ic_timeline_gray_24dp" />
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentRight="true"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginRight="0dp"
+                                            android:src="@drawable/ic_more_horiz_gray_24dp" />
+
+                                    </RelativeLayout>
 
                                 </LinearLayout>
 
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="8dp">
 
-                                    <ImageView
-                                        android:layout_width="36dp"
-                                        android:layout_height="36dp"
-                                        android:layout_marginRight="4dp"
-                                        android:src="@drawable/bookmark" />
-
-                                    <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginLeft="44dp"
-                                        android:src="@drawable/ic_timeline_gray_24dp" />
-
-                                    <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_alignParentRight="true"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginRight="0dp"
-                                        android:src="@drawable/ic_more_horiz_gray_24dp" />
-
-                                </RelativeLayout>
-
-                            </LinearLayout>
+                            </androidx.cardview.widget.CardView>
 
 
-                        </androidx.cardview.widget.CardView>
-
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            app:cardCornerRadius="4dp"
-                            app:cardElevation="4dp"
-                            android:layout_weight="50"
-                            app:cardUseCompatPadding="true">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <ImageView
-                                    android:id="@+id/img_recom_b"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="110dp"
-                                    android:src="@drawable/ic_baseline_home"
-                                    android:scaleType="fitXY"
-                                    />
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="-16dp"
-                                    android:layout_marginLeft="8dp"
-                                    android:layout_marginRight="8dp"
-                                    android:layout_marginBottom="8dp">
-
-                                    <ImageView
-                                        android:id="@+id/img_recom_b_1"
-                                        android:layout_width="36dp"
-                                        android:layout_height="36dp"
-                                        android:src="@drawable/ic_baseline_home" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_alignParentRight="true"
-                                        android:background="@drawable/gray_rounded_shape"
-                                        android:fontFamily="@font/notosanskr_medium"
-                                        android:padding="8dp"
-                                        android:text="상세정보"
-                                        android:textColor="@color/fur_darkNavy"
-                                        android:textSize="14sp" />
-
-                                </RelativeLayout>
+                                app:cardCornerRadius="4dp"
+                                app:cardElevation="4dp"
+                                android:layout_weight="50"
+                                app:cardUseCompatPadding="true">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:orientation="vertical"
-                                    android:layout_margin="8dp">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="4dp"
-                                        android:fontFamily="@font/notosanskr_medium"
-                                        android:text="느웰베드 아이번 LED침대 K "
-                                        android:textColor="@color/fur_darkNavy"
-                                        android:textSize="14sp"
-                                        android:textStyle="bold" />
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="@font/notosanskr_medium"
-                                        android:text="968000₩"
-                                        android:textColor="@color/fur_medium"
-                                        android:textSize="12sp" />
-
-
-                                </LinearLayout>
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="8dp">
-
-                                    <ImageView
-                                        android:layout_width="36dp"
-                                        android:layout_height="36dp"
-                                        android:layout_marginRight="4dp"
-                                        android:src="@drawable/bookmark" />
-
-                                    <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginLeft="44dp"
-                                        android:src="@drawable/ic_timeline_gray_24dp" />
-
-                                    <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_alignParentRight="true"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginRight="0dp"
-                                        android:src="@drawable/ic_more_horiz_gray_24dp" />
-
-                                </RelativeLayout>
-
-                            </LinearLayout>
-
-                        </androidx.cardview.widget.CardView>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="8dp"
-                        android:paddingBottom="8dp"
-                        android:weightSum="100">
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="50"
-                            app:cardCornerRadius="4dp"
-                            app:cardElevation="4dp"
-                            app:cardUseCompatPadding="true">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <ImageView
-                                    android:id="@+id/img_recom_c"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="110dp"
-                                    android:scaleType="fitXY"
-                                    android:src="@drawable/ic_baseline_home" />
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="8dp"
-                                    android:layout_marginTop="-16dp"
-                                    android:layout_marginRight="8dp"
-                                    android:layout_marginBottom="8dp">
-
-                                    <ImageView
-                                        android:id="@+id/img_recom_c_1"
-                                        android:layout_width="36dp"
-                                        android:layout_height="36dp"
-                                        android:src="@drawable/ic_baseline_home" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_alignParentRight="true"
-                                        android:background="@drawable/gray_rounded_shape"
-                                        android:fontFamily="@font/notosanskr_medium"
-                                        android:padding="8dp"
-                                        android:text="상세정보"
-                                        android:textColor="@color/fur_darkNavy"
-                                        android:textSize="14sp" />
-
-                                </RelativeLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="8dp"
                                     android:orientation="vertical">
 
-                                    <TextView
+                                    <ImageView
+                                        android:id="@+id/img_recom_b"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="110dp"
+                                        android:src="@drawable/ic_baseline_home"
+                                        android:scaleType="fitXY"
+                                        />
+
+                                    <RelativeLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginBottom="4dp"
-                                        android:fontFamily="@font/notosanskr_medium"
-                                        android:text="에이스 BRA 1430-N 침대 SS "
-                                        android:textColor="@color/fur_darkNavy"
-                                        android:textSize="14sp"
-                                        android:textStyle="bold" />
+                                        android:layout_marginTop="-16dp"
+                                        android:layout_marginLeft="8dp"
+                                        android:layout_marginRight="8dp"
+                                        android:layout_marginBottom="8dp">
 
-                                    <TextView
+                                        <ImageView
+                                            android:id="@+id/img_recom_b_1"
+                                            android:layout_width="36dp"
+                                            android:layout_height="36dp"
+                                            android:src="@drawable/ic_baseline_home" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentRight="true"
+                                            android:background="@drawable/gray_rounded_shape"
+                                            android:fontFamily="@font/notosanskr_medium"
+                                            android:padding="8dp"
+                                            android:text="상세정보"
+                                            android:textColor="@color/fur_darkNavy"
+                                            android:textSize="14sp" />
+
+                                    </RelativeLayout>
+
+                                    <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@font/notosanskr_medium"
-                                        android:text="1078170₩"
-                                        android:textColor="@color/fur_medium"
-                                        android:textSize="12sp" />
+                                        android:orientation="vertical"
+                                        android:layout_margin="8dp">
 
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="4dp"
+                                            android:fontFamily="@font/notosanskr_medium"
+                                            android:text="느웰베드 아이번 LED침대 K "
+                                            android:textColor="@color/fur_darkNavy"
+                                            android:textSize="14sp"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/notosanskr_medium"
+                                            android:text="968000₩"
+                                            android:textColor="@color/fur_medium"
+                                            android:textSize="12sp" />
+
+
+                                    </LinearLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="8dp">
+
+                                        <ImageView
+                                            android:layout_width="36dp"
+                                            android:layout_height="36dp"
+                                            android:layout_marginRight="4dp"
+                                            android:src="@drawable/bookmark" />
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginLeft="44dp"
+                                            android:src="@drawable/ic_timeline_gray_24dp" />
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentRight="true"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginRight="0dp"
+                                            android:src="@drawable/ic_more_horiz_gray_24dp" />
+
+                                    </RelativeLayout>
 
                                 </LinearLayout>
 
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="8dp">
+                            </androidx.cardview.widget.CardView>
 
-                                    <ImageView
-                                        android:layout_width="36dp"
-                                        android:layout_height="36dp"
-                                        android:layout_marginRight="4dp"
-                                        android:src="@drawable/bookmark" />
+                        </LinearLayout>
 
-                                    <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginLeft="44dp"
-                                        android:src="@drawable/ic_timeline_gray_24dp" />
-
-                                    <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_alignParentRight="true"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginRight="0dp"
-                                        android:src="@drawable/ic_more_horiz_gray_24dp" />
-
-                                </RelativeLayout>
-
-                            </LinearLayout>
-
-
-                        </androidx.cardview.widget.CardView>
-
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:cardCornerRadius="4dp"
-                            app:cardElevation="4dp"
-                            android:layout_weight="50"
-                            app:cardUseCompatPadding="true">
+                            android:orientation="horizontal"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:paddingBottom="8dp"
+                            android:weightSum="100">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <ImageView
-                                    android:id="@+id/img_recom_d"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="110dp"
-                                    android:src="@drawable/ic_baseline_home"
-                                    android:scaleType="fitXY"
-                                    />
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="-16dp"
-                                    android:layout_marginLeft="8dp"
-                                    android:layout_marginRight="8dp"
-                                    android:layout_marginBottom="8dp">
-
-                                    <ImageView
-                                        android:id="@+id/img_recom_d_1"
-                                        android:layout_width="36dp"
-                                        android:layout_height="36dp"
-                                        android:src="@drawable/ic_baseline_home" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_alignParentRight="true"
-                                        android:background="@drawable/gray_rounded_shape"
-                                        android:fontFamily="@font/notosanskr_medium"
-                                        android:padding="8dp"
-                                        android:text="상세정보"
-                                        android:textColor="@color/fur_darkNavy"
-                                        android:textSize="14sp" />
-
-                                </RelativeLayout>
+                                android:layout_weight="50"
+                                app:cardCornerRadius="4dp"
+                                app:cardElevation="4dp"
+                                app:cardUseCompatPadding="true">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:orientation="vertical"
-                                    android:layout_margin="8dp">
+                                    android:orientation="vertical">
 
-                                    <TextView
+                                    <ImageView
+                                        android:id="@+id/img_recom_c"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="110dp"
+                                        android:scaleType="fitXY"
+                                        android:src="@drawable/ic_baseline_home" />
+
+                                    <RelativeLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginBottom="4dp"
-                                        android:fontFamily="@font/notosanskr_medium"
-                                        android:text="리바트 온라인 토스트 침대 Q "
-                                        android:textColor="@color/fur_darkNavy"
-                                        android:textSize="14sp"
-                                        android:textStyle="bold" />
+                                        android:layout_marginLeft="8dp"
+                                        android:layout_marginTop="-16dp"
+                                        android:layout_marginRight="8dp"
+                                        android:layout_marginBottom="8dp">
 
-                                    <TextView
+                                        <ImageView
+                                            android:id="@+id/img_recom_c_1"
+                                            android:layout_width="36dp"
+                                            android:layout_height="36dp"
+                                            android:src="@drawable/ic_baseline_home" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentRight="true"
+                                            android:background="@drawable/gray_rounded_shape"
+                                            android:fontFamily="@font/notosanskr_medium"
+                                            android:padding="8dp"
+                                            android:text="상세정보"
+                                            android:textColor="@color/fur_darkNavy"
+                                            android:textSize="14sp" />
+
+                                    </RelativeLayout>
+
+                                    <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@font/notosanskr_medium"
-                                        android:text="523520₩"
-                                        android:textColor="@color/fur_medium"
-                                        android:textSize="12sp" />
+                                        android:layout_margin="8dp"
+                                        android:orientation="vertical">
 
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="4dp"
+                                            android:fontFamily="@font/notosanskr_medium"
+                                            android:text="에이스 BRA 1430-N 침대 SS "
+                                            android:textColor="@color/fur_darkNavy"
+                                            android:textSize="14sp"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/notosanskr_medium"
+                                            android:text="1078170₩"
+                                            android:textColor="@color/fur_medium"
+                                            android:textSize="12sp" />
+
+
+                                    </LinearLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="8dp">
+
+                                        <ImageView
+                                            android:layout_width="36dp"
+                                            android:layout_height="36dp"
+                                            android:layout_marginRight="4dp"
+                                            android:src="@drawable/bookmark" />
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginLeft="44dp"
+                                            android:src="@drawable/ic_timeline_gray_24dp" />
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentRight="true"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginRight="0dp"
+                                            android:src="@drawable/ic_more_horiz_gray_24dp" />
+
+                                    </RelativeLayout>
 
                                 </LinearLayout>
 
-                                <RelativeLayout
+
+                            </androidx.cardview.widget.CardView>
+
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="4dp"
+                                app:cardElevation="4dp"
+                                android:layout_weight="50"
+                                app:cardUseCompatPadding="true">
+
+                                <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_margin="8dp">
+                                    android:orientation="vertical">
 
                                     <ImageView
-                                        android:layout_width="36dp"
-                                        android:layout_height="36dp"
-                                        android:layout_marginRight="4dp"
-                                        android:src="@drawable/bookmark" />
+                                        android:id="@+id/img_recom_d"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="110dp"
+                                        android:src="@drawable/ic_baseline_home"
+                                        android:scaleType="fitXY"
+                                        />
 
-                                    <ImageView
-                                        android:layout_width="wrap_content"
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginLeft="44dp"
-                                        android:src="@drawable/ic_timeline_gray_24dp" />
+                                        android:layout_marginTop="-16dp"
+                                        android:layout_marginLeft="8dp"
+                                        android:layout_marginRight="8dp"
+                                        android:layout_marginBottom="8dp">
 
-                                    <ImageView
-                                        android:layout_width="wrap_content"
+                                        <ImageView
+                                            android:id="@+id/img_recom_d_1"
+                                            android:layout_width="36dp"
+                                            android:layout_height="36dp"
+                                            android:src="@drawable/ic_baseline_home" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentRight="true"
+                                            android:background="@drawable/gray_rounded_shape"
+                                            android:fontFamily="@font/notosanskr_medium"
+                                            android:padding="8dp"
+                                            android:text="상세정보"
+                                            android:textColor="@color/fur_darkNavy"
+                                            android:textSize="14sp" />
+
+                                    </RelativeLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_alignParentRight="true"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginRight="0dp"
-                                        android:src="@drawable/ic_more_horiz_gray_24dp" />
+                                        android:orientation="vertical"
+                                        android:layout_margin="8dp">
 
-                                </RelativeLayout>
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="4dp"
+                                            android:fontFamily="@font/notosanskr_medium"
+                                            android:text="리바트 온라인 토스트 침대 Q "
+                                            android:textColor="@color/fur_darkNavy"
+                                            android:textSize="14sp"
+                                            android:textStyle="bold" />
 
-                            </LinearLayout>
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/notosanskr_medium"
+                                            android:text="523520₩"
+                                            android:textColor="@color/fur_medium"
+                                            android:textSize="12sp" />
 
-                        </androidx.cardview.widget.CardView>
 
+                                    </LinearLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="8dp">
+
+                                        <ImageView
+                                            android:layout_width="36dp"
+                                            android:layout_height="36dp"
+                                            android:layout_marginRight="4dp"
+                                            android:src="@drawable/bookmark" />
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginLeft="44dp"
+                                            android:src="@drawable/ic_timeline_gray_24dp" />
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentRight="true"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginRight="0dp"
+                                            android:src="@drawable/ic_more_horiz_gray_24dp" />
+
+                                    </RelativeLayout>
+
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+                        </LinearLayout>
                     </LinearLayout>
+
 
                 </LinearLayout>
 

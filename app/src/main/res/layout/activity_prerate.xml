@@ -35,249 +35,595 @@
             android:weightSum="3">
 
             <LinearLayout
+                android:id="@+id/layout_1"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginBottom="14dp"
-                android:weightSum="2"
-                android:orientation="horizontal">
-
-                <androidx.cardview.widget.CardView
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    app:cardCornerRadius="20dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:elevation="0dp"
-                    android:layout_margin="10dp"
-                    android:backgroundTint="@color/fur_pale">
+                    android:layout_height="300dp"
+                    android:layout_marginBottom="14dp"
+                    android:weightSum="2"
+                    android:orientation="horizontal">
 
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:paddingVertical="20dp"
-                        android:paddingHorizontal="10dp"
-                        android:layout_marginHorizontal="4dp"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/ic_person_add_black_24dp"
-                            android:layout_weight="1"/>
+                        app:cardCornerRadius="20dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:elevation="0dp"
+                        android:layout_margin="10dp"
+                        android:backgroundTint="@color/fur_pale">
 
-                        <CheckBox
-                            android:id="@+id/cb_ikea_1"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="ikea 1"
-                            android:textColor="@color/butter_navy"
-                            android:layout_marginTop="5dp"
-                            android:textSize="15dp" />
-                    </LinearLayout>
+                            android:gravity="center"
+                            android:paddingVertical="20dp"
+                            android:paddingHorizontal="10dp"
+                            android:layout_marginHorizontal="4dp"
+                            android:orientation="vertical">
+                            <!--                        <ImageView-->
+                            <!--                            android:layout_width="wrap_content"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:scaleType="centerCrop"-->
+                            <!--                            android:src="@drawable/ikea_1"-->
+                            <!--                            android:layout_weight="1"/>-->
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_person_add_black_24dp"
+                                android:layout_weight="1"/>
 
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
+                            <CheckBox
+                                android:id="@+id/cb_ikea_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ikea 1"
+                                android:textColor="@color/butter_navy"
+                                android:layout_marginTop="5dp"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        app:cardCornerRadius="20dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:elevation="0dp"
+                        android:layout_margin="10dp"
+                        android:backgroundTint="@color/fur_pale">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="20dp"
+                            android:layout_marginHorizontal="4dp"
+                            android:orientation="vertical">
+                            <!--                        <ImageView-->
+                            <!--                            android:layout_width="wrap_content"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:scaleType="centerCrop"-->
+                            <!--                            android:src="@drawable/ikea_2"-->
+                            <!--                            android:layout_weight="1"/>-->
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_person_add_black_24dp"
+                                android:layout_weight="1"/>
+
+                            <CheckBox
+                                android:id="@+id/cb_ikea_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ikea 2"
+                                android:textColor="@color/butter_navy"
+                                android:layout_marginTop="5dp"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    app:cardCornerRadius="20dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:elevation="0dp"
-                    android:layout_margin="10dp"
-                    android:backgroundTint="@color/fur_pale">
+                    android:layout_height="300dp"
+                    android:orientation="horizontal">
 
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:paddingHorizontal="10dp"
-                        android:paddingVertical="20dp"
-                        android:layout_marginHorizontal="4dp"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="wrap_content"
+                        app:cardCornerRadius="20dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:elevation="0dp"
+                        android:layout_margin="10dp"
+                        android:backgroundTint="@color/fur_pale">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/ic_person_add_black_24dp"
-                            android:layout_weight="1"/>
+                            android:gravity="center"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="20dp"
+                            android:layout_marginHorizontal="4dp"
+                            android:orientation="vertical">
+                            <!--                        <ImageView-->
+                            <!--                            android:layout_width="wrap_content"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:scaleType="centerCrop"-->
+                            <!--                            android:src="@drawable/ikea_6"-->
+                            <!--                            android:layout_weight="1"/>-->
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_person_add_black_24dp"
+                                android:layout_weight="1"/>
 
-                        <CheckBox
-                            android:id="@+id/cb_ikea_2"
-                            android:layout_width="wrap_content"
+                            <CheckBox
+                                android:id="@+id/cb_ikea_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ikea 3"
+                                android:textColor="@color/butter_navy"
+                                android:layout_marginTop="5dp"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        app:cardCornerRadius="20dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:elevation="0dp"
+                        android:layout_margin="10dp"
+                        android:backgroundTint="@color/fur_pale">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="ikea 2"
-                            android:textColor="@color/butter_navy"
-                            android:layout_marginTop="5dp"
-                            android:textSize="15dp" />
-                    </LinearLayout>
+                            android:gravity="center"
+                            android:paddingVertical="20dp"
+                            android:paddingHorizontal="10dp"
+                            android:layout_marginHorizontal="4dp"
+                            android:orientation="vertical">
+                            <!--                        <ImageView-->
+                            <!--                            android:layout_width="wrap_content"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:scaleType="fitXY"-->
+                            <!--                            android:src="@drawable/ikea_7"-->
+                            <!--                            android:layout_weight="1"/>-->
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_person_add_black_24dp"
+                                android:layout_weight="1"/>
 
-                </androidx.cardview.widget.CardView>
+                            <CheckBox
+                                android:id="@+id/cb_ikea_4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ikea 4"
+                                android:textColor="@color/butter_navy"
+                                android:layout_marginTop="5dp"
+                                android:textSize="15dp" />
+                        </LinearLayout>
 
+                    </androidx.cardview.widget.CardView>
 
-
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/layout_2"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:orientation="horizontal">
-
-                <androidx.cardview.widget.CardView
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    app:cardCornerRadius="20dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:elevation="0dp"
-                    android:layout_margin="10dp"
-                    android:backgroundTint="@color/fur_pale">
+                    android:layout_height="300dp"
+                    android:layout_marginBottom="14dp"
+                    android:weightSum="2"
+                    android:orientation="horizontal">
 
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="20dp"
-                        android:layout_marginHorizontal="4dp"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="wrap_content"
+                        app:cardCornerRadius="20dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:elevation="0dp"
+                        android:layout_margin="10dp"
+                        android:backgroundTint="@color/fur_pale">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/ic_person_add_black_24dp"
-                            android:layout_weight="1"/>
+                            android:gravity="center"
+                            android:paddingVertical="20dp"
+                            android:paddingHorizontal="10dp"
+                            android:layout_marginHorizontal="4dp"
+                            android:orientation="vertical">
+                            <!--                        <ImageView-->
+                            <!--                            android:layout_width="wrap_content"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:scaleType="centerCrop"-->
+                            <!--                            android:src="@drawable/ikea_1"-->
+                            <!--                            android:layout_weight="1"/>-->
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_person_add_black_24dp"
+                                android:layout_weight="1"/>
 
-                        <CheckBox
-                            android:id="@+id/cb_ikea_3"
-                            android:layout_width="wrap_content"
+                            <CheckBox
+                                android:id="@+id/cb_ikea_2_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ikea 5"
+                                android:textColor="@color/butter_navy"
+                                android:layout_marginTop="5dp"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        app:cardCornerRadius="20dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:elevation="0dp"
+                        android:layout_margin="10dp"
+                        android:backgroundTint="@color/fur_pale">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="ikea 3"
-                            android:textColor="@color/butter_navy"
-                            android:layout_marginTop="5dp"
-                            android:textSize="15dp" />
-                    </LinearLayout>
+                            android:gravity="center"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="20dp"
+                            android:layout_marginHorizontal="4dp"
+                            android:orientation="vertical">
+                            <!--                        <ImageView-->
+                            <!--                            android:layout_width="wrap_content"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:scaleType="centerCrop"-->
+                            <!--                            android:src="@drawable/ikea_2"-->
+                            <!--                            android:layout_weight="1"/>-->
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_person_add_black_24dp"
+                                android:layout_weight="1"/>
 
-                </androidx.cardview.widget.CardView>
+                            <CheckBox
+                                android:id="@+id/cb_ikea_2_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ikea 6"
+                                android:textColor="@color/butter_navy"
+                                android:layout_marginTop="5dp"
+                                android:textSize="15dp" />
+                        </LinearLayout>
 
-                <androidx.cardview.widget.CardView
+                    </androidx.cardview.widget.CardView>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    app:cardCornerRadius="20dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:elevation="0dp"
-                    android:layout_margin="10dp"
-                    android:backgroundTint="@color/fur_pale">
+                    android:layout_height="300dp"
+                    android:orientation="horizontal">
 
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:paddingVertical="20dp"
-                        android:paddingHorizontal="10dp"
-                        android:layout_marginHorizontal="4dp"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="wrap_content"
+                        app:cardCornerRadius="20dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:elevation="0dp"
+                        android:layout_margin="10dp"
+                        android:backgroundTint="@color/fur_pale">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/ic_person_add_black_24dp"
-                            android:layout_weight="1"/>
+                            android:gravity="center"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="20dp"
+                            android:layout_marginHorizontal="4dp"
+                            android:orientation="vertical">
+                            <!--                        <ImageView-->
+                            <!--                            android:layout_width="wrap_content"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:scaleType="centerCrop"-->
+                            <!--                            android:src="@drawable/ikea_6"-->
+                            <!--                            android:layout_weight="1"/>-->
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_person_add_black_24dp"
+                                android:layout_weight="1"/>
 
-                        <CheckBox
-                            android:id="@+id/cb_ikea_4"
-                            android:layout_width="wrap_content"
+                            <CheckBox
+                                android:id="@+id/cb_ikea_2_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ikea 7"
+                                android:textColor="@color/butter_navy"
+                                android:layout_marginTop="5dp"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        app:cardCornerRadius="20dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:elevation="0dp"
+                        android:layout_margin="10dp"
+                        android:backgroundTint="@color/fur_pale">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="ikea 4"
-                            android:textColor="@color/butter_navy"
-                            android:layout_marginTop="5dp"
-                            android:textSize="15dp" />
-                    </LinearLayout>
+                            android:gravity="center"
+                            android:paddingVertical="20dp"
+                            android:paddingHorizontal="10dp"
+                            android:layout_marginHorizontal="4dp"
+                            android:orientation="vertical">
+                            <!--                        <ImageView-->
+                            <!--                            android:layout_width="wrap_content"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:scaleType="fitXY"-->
+                            <!--                            android:src="@drawable/ikea_7"-->
+                            <!--                            android:layout_weight="1"/>-->
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_person_add_black_24dp"
+                                android:layout_weight="1"/>
 
-                </androidx.cardview.widget.CardView>
+                            <CheckBox
+                                android:id="@+id/cb_ikea_2_4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ikea 8"
+                                android:textColor="@color/butter_navy"
+                                android:layout_marginTop="5dp"
+                                android:textSize="15dp" />
+                        </LinearLayout>
 
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/layout_3"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:orientation="horizontal">
-                <androidx.cardview.widget.CardView
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    app:cardCornerRadius="20dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:elevation="0dp"
-                    android:layout_margin="10dp"
-                    android:backgroundTint="@color/fur_pale">
+                    android:layout_height="300dp"
+                    android:layout_marginBottom="14dp"
+                    android:weightSum="2"
+                    android:orientation="horizontal">
 
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:paddingHorizontal="10dp"
-                        android:paddingVertical="20dp"
-                        android:layout_marginHorizontal="4dp"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/ic_person_add_black_24dp"
-                            android:layout_weight="1"/>
+                        app:cardCornerRadius="20dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:elevation="0dp"
+                        android:layout_margin="10dp"
+                        android:backgroundTint="@color/fur_pale">
 
-                        <CheckBox
-                            android:id="@+id/cb_ikea_5"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="ikea 5"
-                            android:textColor="@color/butter_navy"
-                            android:layout_marginTop="5dp"
-                            android:textSize="15dp" />
-                    </LinearLayout>
+                            android:gravity="center"
+                            android:paddingVertical="20dp"
+                            android:paddingHorizontal="10dp"
+                            android:layout_marginHorizontal="4dp"
+                            android:orientation="vertical">
+                            <!--                        <ImageView-->
+                            <!--                            android:layout_width="wrap_content"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:scaleType="centerCrop"-->
+                            <!--                            android:src="@drawable/ikea_1"-->
+                            <!--                            android:layout_weight="1"/>-->
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_person_add_black_24dp"
+                                android:layout_weight="1"/>
 
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
+                            <CheckBox
+                                android:id="@+id/cb_ikea_3_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ikea 9"
+                                android:textColor="@color/butter_navy"
+                                android:layout_marginTop="5dp"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        app:cardCornerRadius="20dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:elevation="0dp"
+                        android:layout_margin="10dp"
+                        android:backgroundTint="@color/fur_pale">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="20dp"
+                            android:layout_marginHorizontal="4dp"
+                            android:orientation="vertical">
+                            <!--                        <ImageView-->
+                            <!--                            android:layout_width="wrap_content"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:scaleType="centerCrop"-->
+                            <!--                            android:src="@drawable/ikea_2"-->
+                            <!--                            android:layout_weight="1"/>-->
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_person_add_black_24dp"
+                                android:layout_weight="1"/>
+
+                            <CheckBox
+                                android:id="@+id/cb_ikea_3_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ikea 10"
+                                android:textColor="@color/butter_navy"
+                                android:layout_marginTop="5dp"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    app:cardCornerRadius="20dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:elevation="0dp"
-                    android:layout_margin="10dp"
-                    android:backgroundTint="@color/fur_pale">
+                    android:layout_height="300dp"
+                    android:orientation="horizontal">
 
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="20dp"
-                        android:layout_marginHorizontal="4dp"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/ic_person_add_black_24dp"
-                            android:layout_weight="1"/>
+                        app:cardCornerRadius="20dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:elevation="0dp"
+                        android:layout_margin="10dp"
+                        android:backgroundTint="@color/fur_pale">
 
-                        <CheckBox
-                            android:id="@+id/cb_ikea_6"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="ikea 6"
-                            android:textColor="@color/butter_navy"
-                            android:layout_marginTop="5dp"
-                            android:textSize="15dp" />
-                    </LinearLayout>
+                            android:gravity="center"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="20dp"
+                            android:layout_marginHorizontal="4dp"
+                            android:orientation="vertical">
+                            <!--                        <ImageView-->
+                            <!--                            android:layout_width="wrap_content"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:scaleType="centerCrop"-->
+                            <!--                            android:src="@drawable/ikea_6"-->
+                            <!--                            android:layout_weight="1"/>-->
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_person_add_black_24dp"
+                                android:layout_weight="1"/>
 
-                </androidx.cardview.widget.CardView>
+                            <CheckBox
+                                android:id="@+id/cb_ikea_3_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ikea 11"
+                                android:textColor="@color/butter_navy"
+                                android:layout_marginTop="5dp"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        app:cardCornerRadius="20dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:elevation="0dp"
+                        android:layout_margin="10dp"
+                        android:backgroundTint="@color/fur_pale">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingVertical="20dp"
+                            android:paddingHorizontal="10dp"
+                            android:layout_marginHorizontal="4dp"
+                            android:orientation="vertical">
+                            <!--                        <ImageView-->
+                            <!--                            android:layout_width="wrap_content"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:scaleType="fitXY"-->
+                            <!--                            android:src="@drawable/ikea_7"-->
+                            <!--                            android:layout_weight="1"/>-->
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_person_add_black_24dp"
+                                android:layout_weight="1"/>
+
+                            <CheckBox
+                                android:id="@+id/cb_ikea_3_4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ikea 12"
+                                android:textColor="@color/butter_navy"
+                                android:layout_marginTop="5dp"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
             </LinearLayout>
 
             <Button
-                android:id="@+id/submit"
+                android:id="@+id/next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="submit"
+                android:text="next (1/3)"
                 android:backgroundTint="@color/butter_navy"
                 android:layout_gravity="center"/>
+
+<!--            <Button-->
+<!--                android:id="@+id/submit"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="submit"-->
+<!--                android:backgroundTint="@color/butter_navy"-->
+<!--                android:layout_gravity="center"/>-->
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
