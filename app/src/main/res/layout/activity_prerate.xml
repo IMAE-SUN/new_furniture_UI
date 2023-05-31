@@ -70,6 +70,7 @@
                             <!--                            android:src="@drawable/ikea_1"-->
                             <!--                            android:layout_weight="1"/>-->
                             <ImageView
+                                android:id="@+id/img_pre_1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:scaleType="centerCrop"
@@ -111,6 +112,7 @@
                             <!--                            android:src="@drawable/ikea_2"-->
                             <!--                            android:layout_weight="1"/>-->
                             <ImageView
+                                android:id="@+id/img_pre_2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:scaleType="centerCrop"
@@ -162,6 +164,7 @@
                             <!--                            android:src="@drawable/ikea_6"-->
                             <!--                            android:layout_weight="1"/>-->
                             <ImageView
+                                android:id="@+id/img_pre_3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:scaleType="centerCrop"
@@ -204,6 +207,7 @@
                             <!--                            android:src="@drawable/ikea_7"-->
                             <!--                            android:layout_weight="1"/>-->
                             <ImageView
+                                android:id="@+id/img_pre_4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:scaleType="centerCrop"
@@ -262,6 +266,7 @@
                             <!--                            android:src="@drawable/ikea_1"-->
                             <!--                            android:layout_weight="1"/>-->
                             <ImageView
+                                android:id="@+id/img_pre_2_1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:scaleType="centerCrop"
@@ -303,6 +308,7 @@
                             <!--                            android:src="@drawable/ikea_2"-->
                             <!--                            android:layout_weight="1"/>-->
                             <ImageView
+                                android:id="@+id/img_pre_2_2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:scaleType="centerCrop"
@@ -354,6 +360,7 @@
                             <!--                            android:src="@drawable/ikea_6"-->
                             <!--                            android:layout_weight="1"/>-->
                             <ImageView
+                                android:id="@+id/img_pre_2_3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:scaleType="centerCrop"
@@ -396,6 +403,7 @@
                             <!--                            android:src="@drawable/ikea_7"-->
                             <!--                            android:layout_weight="1"/>-->
                             <ImageView
+                                android:id="@+id/img_pre_2_4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:scaleType="centerCrop"
@@ -454,6 +462,7 @@
                             <!--                            android:src="@drawable/ikea_1"-->
                             <!--                            android:layout_weight="1"/>-->
                             <ImageView
+                                android:id="@+id/img_pre_3_1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:scaleType="centerCrop"
@@ -495,6 +504,7 @@
                             <!--                            android:src="@drawable/ikea_2"-->
                             <!--                            android:layout_weight="1"/>-->
                             <ImageView
+                                android:id="@+id/img_pre_3_2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:scaleType="centerCrop"
@@ -546,6 +556,7 @@
                             <!--                            android:src="@drawable/ikea_6"-->
                             <!--                            android:layout_weight="1"/>-->
                             <ImageView
+                                android:id="@+id/img_pre_3_3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:scaleType="centerCrop"
@@ -588,6 +599,7 @@
                             <!--                            android:src="@drawable/ikea_7"-->
                             <!--                            android:layout_weight="1"/>-->
                             <ImageView
+                                android:id="@+id/img_pre_3_4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:scaleType="centerCrop"
