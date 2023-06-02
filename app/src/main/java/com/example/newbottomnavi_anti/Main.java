@@ -1,5 +1,6 @@
 package com.example.newbottomnavi_anti;
 
+import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -31,6 +32,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -61,8 +64,11 @@ public class Main extends Fragment {
         int mood_int = (int) Math.random() * (max-min+1) + 1;
         String mood_str = Integer.toString(mood_int);
 
+        AssetManager assetManager = getActivity().getAssets();
+        InputStream inputStream = null;
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("/data/data/com.example.newbottomnavi_anti/files/furniture.txt"));
+            inputStream = assetManager.open("furniture.txt");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
 
             int i = 0;
@@ -155,36 +161,36 @@ public class Main extends Fragment {
         Log.e("메인", "메인 들어옴");
 
         firebaseAuth = firebaseAuth.getInstance();
-        //load();
+        load();
 
         //TODO : filter 애들도 binding 해서 세부사항 들어갈 수 있도록 묶어줘야 함
 
         //HomeFragment에서 FurnitureInfoFragment로 data 넘기기 위해 action 객체 만들어줌. 인자 순서대로 title, price, img
-//        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action =
-//                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(0)][0],strarray[list.get(0)][1],strarray[list.get(0)][5],strarray[list.get(0)][2],strarray[list.get(0)][3]);
-//        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action2 =
-//                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(1)][0],strarray[list.get(1)][1],strarray[list.get(1)][5],strarray[list.get(1)][2],strarray[list.get(1)][3]);
-//        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action3 =
-//                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(2)][0],strarray[list.get(2)][1],strarray[list.get(2)][5],strarray[list.get(2)][2],strarray[list.get(2)][3]);
-//
-//        binding.cardRand1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Navigation.findNavController(getView()).navigate(action);
-//            }
-//        });
-//        binding.cardRand2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Navigation.findNavController(getView()).navigate(action2);
-//            }
-//        });
-//        binding.cardRand3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Navigation.findNavController(getView()).navigate(action3);
-//            }
-//        });
+        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action =
+                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(0)][0],strarray[list.get(0)][1],strarray[list.get(0)][5],strarray[list.get(0)][2],strarray[list.get(0)][3]);
+        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action2 =
+                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(1)][0],strarray[list.get(1)][1],strarray[list.get(1)][5],strarray[list.get(1)][2],strarray[list.get(1)][3]);
+        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action3 =
+                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(2)][0],strarray[list.get(2)][1],strarray[list.get(2)][5],strarray[list.get(2)][2],strarray[list.get(2)][3]);
+
+        binding.cardRand1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(getView()).navigate(action);
+            }
+        });
+        binding.cardRand2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(getView()).navigate(action2);
+            }
+        });
+        binding.cardRand3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(getView()).navigate(action3);
+            }
+        });
 
 
 

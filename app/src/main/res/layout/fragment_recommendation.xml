@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:popupTheme="@style/AppTheme.PopupOverlay"
-                app:theme="@style/AppTheme.Toolbar">
+                android:theme="@style/AppTheme.Toolbar">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -84,40 +84,6 @@
 
 
             </Toolbar>
-
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:tabGravity="fill"
-                app:tabSelectedTextColor="#000000"
-                app:tabTextColor="#9ea1b0">
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Explore" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cars" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Trucks" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Scooters" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Helicopters" />
-
-            </TableLayout>
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -683,6 +649,7 @@
                             android:weightSum="100">
 
                             <androidx.cardview.widget.CardView
+                                android:id="@+id/recom_card_a"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="50"
@@ -791,6 +758,7 @@
 
 
                             <androidx.cardview.widget.CardView
+                                android:id="@+id/recom_card_b"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 app:cardCornerRadius="4dp"
@@ -909,6 +877,7 @@
                             android:weightSum="100">
 
                             <androidx.cardview.widget.CardView
+                                android:id="@+id/recom_card_c"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="50"
@@ -1017,6 +986,7 @@
 
 
                             <androidx.cardview.widget.CardView
+                                android:id="@+id/recom_card_d"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 app:cardCornerRadius="4dp"

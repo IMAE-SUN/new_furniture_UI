@@ -1,6 +1,7 @@
 package com.example.newbottomnavi_anti;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -24,6 +25,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -54,10 +57,14 @@ public class PreRate extends AppCompatActivity {
         String[] coldHard = {"Modest", "Quite", "Dapper", "Dignified", "Noble", "Stylish", "Sporty", "Sharp", "Rational", "Masculine", "Metallic"};
 
         for (String fileName : fileNames) {
-
+            AssetManager assetManager = getAssets();
+            InputStream inputStream = null;
             try {
-                BufferedReader reader = new BufferedReader(new FileReader("/data/data/com.example.newbottomnavi_anti/files/" + fileName));
+                inputStream = assetManager.open(fileName);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                 String line;
+//                BufferedReader reader = new BufferedReader(new FileReader("/data/data/com.example.newbottomnavi_anti/files/" + fileName));
+//                String line;
 
                 while ((line = reader.readLine()) != null) {
                     String[] data = line.split(";");
@@ -243,62 +250,140 @@ public class PreRate extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+
+
+
                 if(next_num==1){
                     if(cb1.isChecked()){
-                        total_pick_string += "1 ";
-                        //coldsoft
+                        cb2.setChecked(false);
+                        cb3.setChecked(false);
+                        cb4.setChecked(false);
+                        total_pick_string = "1 ";
                     }
                     if(cb2.isChecked()){
-                        total_pick_string += "2 ";
-                        //warmsoft
+                        cb1.setChecked(false);
+                        cb3.setChecked(false);
+                        cb4.setChecked(false);
+                        total_pick_string = "2 ";
                     }
                     if(cb3.isChecked()){
-                        total_pick_string += "3 ";
-                        //warmhard
+                        cb1.setChecked(false);
+                        cb2.setChecked(false);
+                        cb4.setChecked(false);
+                        total_pick_string = "3 ";
                     }
                     if(cb4.isChecked()){
-                        total_pick_string += "4 ";
-                        //coldhard
+                        cb1.setChecked(false);
+                        cb2.setChecked(false);
+                        cb3.setChecked(false);
+                        total_pick_string = "4 ";
                     }
+//                    if(cb1.isChecked()){
+//                        total_pick_string += "1 ";
+//                        //coldsoft
+//                    }
+//                    if(cb2.isChecked()){
+//                        total_pick_string += "2 ";
+//                        //warmsoft
+//                    }
+//                    if(cb3.isChecked()){
+//                        total_pick_string += "3 ";
+//                        //warmhard
+//                    }
+//                    if(cb4.isChecked()){
+//                        total_pick_string += "4 ";
+//                        //coldhard
+//                    }
                     layout1.setVisibility(View.GONE);
                     layout2.setVisibility(View.VISIBLE);
                     next.setText("next (2/3)");
                     next_num++;
                 }
                 else if(next_num==2){
+                    String temp_string = "";
                     if(cb21.isChecked()){
-                        total_pick_string += "21 ";
+                        cb22.setChecked(false);
+                        cb23.setChecked(false);
+                        cb24.setChecked(false);
+                        temp_string = "21 ";
                     }
                     if(cb22.isChecked()){
-                        total_pick_string += "22 ";
+                        cb21.setChecked(false);
+                        cb23.setChecked(false);
+                        cb24.setChecked(false);
+                        temp_string = "22 ";
                     }
                     if(cb23.isChecked()){
-                        total_pick_string += "23 ";
+                        cb21.setChecked(false);
+                        cb22.setChecked(false);
+                        cb24.setChecked(false);
+                        temp_string = "23 ";
                     }
                     if(cb24.isChecked()){
-                        total_pick_string += "24 ";
+                        cb21.setChecked(false);
+                        cb22.setChecked(false);
+                        cb23.setChecked(false);
+                        temp_string = "24 ";
                     }
+//                    if(cb21.isChecked()){
+//                        total_pick_string += "21 ";
+//                    }
+//                    if(cb22.isChecked()){
+//                        total_pick_string += "22 ";
+//                    }
+//                    if(cb23.isChecked()){
+//                        total_pick_string += "23 ";
+//                    }
+//                    if(cb24.isChecked()){
+//                        total_pick_string += "24 ";
+//                    }
                     //TODO : 해당 정보 서버에 넘기고 다음 값 받기
-                    // 다음 값 받아서 layout2 에 띄우기
+                    // 다음 값 받아서 layout2 에 띄우기\
                     layout2.setVisibility(View.GONE);
                     layout3.setVisibility(View.VISIBLE);
                     next.setText("submit");
                     next_num++;
+                    total_pick_string += temp_string;
                 }
                 else{
+                    String temp_string = "";
                     if(cb31.isChecked()){
-                        total_pick_string += "31 ";
+                        cb32.setChecked(false);
+                        cb33.setChecked(false);
+                        cb34.setChecked(false);
+                        temp_string = "31 ";
                     }
                     if(cb32.isChecked()){
-                        total_pick_string += "32 ";
+                        cb31.setChecked(false);
+                        cb33.setChecked(false);
+                        cb34.setChecked(false);
+                        temp_string = "32 ";
                     }
                     if(cb33.isChecked()){
-                        total_pick_string += "33 ";
+                        cb31.setChecked(false);
+                        cb32.setChecked(false);
+                        cb34.setChecked(false);
+                        temp_string = "33 ";
                     }
                     if(cb34.isChecked()){
-                        total_pick_string += "34 ";
+                        cb31.setChecked(false);
+                        cb32.setChecked(false);
+                        cb33.setChecked(false);
+                        temp_string = "34 ";
                     }
-
+//                    if(cb31.isChecked()){
+//                        total_pick_string += "31 ";
+//                    }
+//                    if(cb32.isChecked()){
+//                        total_pick_string += "32 ";
+//                    }
+//                    if(cb33.isChecked()){
+//                        total_pick_string += "33 ";
+//                    }
+//                    if(cb34.isChecked()){
+//                        total_pick_string += "34 ";
+//                    }
+                    total_pick_string += temp_string;
                     HashMap<Object, String> hashMap = new HashMap<>();
                     String[] temp = total_pick_string.split(" ");
                     int n = temp.length;
