@@ -127,39 +127,41 @@ public class Recommendation extends Fragment {
         RadioButton rb9 = view.findViewById(R.id._seekbar_5_randioButton);
 
         //HomeFragment에서 FurnitureInfoFragment로 data 넘기기 위해 action 객체 만들어줌. 인자 순서대로 title, price, img
-        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action =
-                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(0)][0],strarray[list.get(0)][1],strarray[list.get(0)][5],strarray[list.get(0)][2],strarray[list.get(0)][3]);
-        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action2 =
-                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(1)][0],strarray[list.get(1)][1],strarray[list.get(1)][5],strarray[list.get(1)][2],strarray[list.get(1)][3]);
-        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action3 =
-                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(2)][0],strarray[list.get(2)][1],strarray[list.get(2)][5],strarray[list.get(2)][2],strarray[list.get(2)][3]);
-        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action4 =
-                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(3)][0],strarray[list.get(3)][1],strarray[list.get(3)][5],strarray[list.get(3)][2],strarray[list.get(3)][3]);
 
-        binding.recomCardA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(getView()).navigate(action);
-            }
-        });
-        binding.recomCardB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(getView()).navigate(action2);
-            }
-        });
-        binding.recomCardC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(getView()).navigate(action3);
-            }
-        });
-        binding.recomCardD.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(getView()).navigate(action4);
-            }
-        });
+        //이부분 null떠서 주석해뒀습니다
+//        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action =
+//                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(0)][0],strarray[list.get(0)][1],strarray[list.get(0)][5],strarray[list.get(0)][2],strarray[list.get(0)][3]);
+//        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action2 =
+//                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(1)][0],strarray[list.get(1)][1],strarray[list.get(1)][5],strarray[list.get(1)][2],strarray[list.get(1)][3]);
+//        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action3 =
+//                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(2)][0],strarray[list.get(2)][1],strarray[list.get(2)][5],strarray[list.get(2)][2],strarray[list.get(2)][3]);
+//        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action4 =
+//                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(3)][0],strarray[list.get(3)][1],strarray[list.get(3)][5],strarray[list.get(3)][2],strarray[list.get(3)][3]);
+
+//        binding.recomCardA.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Navigation.findNavController(getView()).navigate(action);
+//            }
+//        });
+//        binding.recomCardB.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Navigation.findNavController(getView()).navigate(action2);
+//            }
+//        });
+//        binding.recomCardC.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Navigation.findNavController(getView()).navigate(action3);
+//            }
+//        });
+//        binding.recomCardD.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Navigation.findNavController(getView()).navigate(action4);
+//            }
+//        });
 
 
 //        Radio Button 처리
@@ -227,8 +229,7 @@ public class Recommendation extends Fragment {
                 }
             }
         });
-
-
+        
         CheckBox cb1 = view.findViewById(R.id.cb_question_2_bed);
         CheckBox cb2 = view.findViewById(R.id.cb_question_2_chair);
         CheckBox cb3 = view.findViewById(R.id.cb_question_2_child);
