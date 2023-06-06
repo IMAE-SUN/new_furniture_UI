@@ -128,7 +128,14 @@ public class Recommendation extends Fragment {
 
         //HomeFragment에서 FurnitureInfoFragment로 data 넘기기 위해 action 객체 만들어줌. 인자 순서대로 title, price, img
 
-        //이부분 null떠서 주석해뒀습니다
+
+        /**
+         * <TODO>
+         *     이부분 null떠서 주석해놨음. 기존 furniture.txt에서 txt파일이 바뀌어서
+         *     PreRate.java의 load()처럼 여러 txt파일 읽어오는식으로 바꿔야함!
+         * </TODO>
+         *
+         */
 //        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action =
 //                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(0)][0],strarray[list.get(0)][1],strarray[list.get(0)][5],strarray[list.get(0)][2],strarray[list.get(0)][3]);
 //        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action2 =
@@ -229,7 +236,7 @@ public class Recommendation extends Fragment {
                 }
             }
         });
-        
+
         CheckBox cb1 = view.findViewById(R.id.cb_question_2_bed);
         CheckBox cb2 = view.findViewById(R.id.cb_question_2_chair);
         CheckBox cb3 = view.findViewById(R.id.cb_question_2_child);
