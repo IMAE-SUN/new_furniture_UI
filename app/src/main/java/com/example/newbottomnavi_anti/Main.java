@@ -1,5 +1,6 @@
 package com.example.newbottomnavi_anti;
 
+import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -24,8 +25,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -48,102 +51,64 @@ public class Main extends Fragment {
     String [][] strarray;
     List<Integer> list;
 
+    int coldSoftCount = 0;
+    int warmHardCount = 0;
+    int coldHardCount = 0;
+    int warmSoftCount = 0;
+
     public Main() {
         // Required empty public constructor
     }
 
     public void load(){
-        //침대 40개, 책상 36개, 소파36개
-        strarray = new String[112][7];
-        int max, min;
-        max = 4;
-        min = 1;
-        int mood_int = (int) Math.random() * (max-min+1) + 1;
-        String mood_str = Integer.toString(mood_int);
 
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader("/data/data/com.example.newbottomnavi_anti/files/furniture.txt"));
-            String line;
+        /**
+         * <TODO>
+         *     1.coldsoft, warmhard... 비율에 따라 Main화면에 처음 추천해주기
+         *     2.그 이후 메인창에서 선택된 가구들은 -> 전체 좋아요 개수를 집계하고,좋아요 개수 n개 이상 됐다 하면
+         *     분위기 별 개수 / 전체 좋아요 개수로 비율을 상정, 다시 동적을 새로고침 될 수 있도록 하기.
+         *     3.여기서 예외처리로, 특정 분위기에 포함된 가구는 몇개 없으면 -> 주변 분위기것까지 포함해서 띄우기
+         * </TODO> :
+         */
 
-            int i = 0;
-            while ((line = reader.readLine()) != null) {
-                line = line.concat(";" + mood_str);
-                strarray[i] = line.split(";");
-                i++;
+        firebaseAuth = firebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        String uid = user.getUid();
+        Log.e("uid", uid);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        //firebase에서 prerate 선택 정보 가져오기
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("PreRate");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String like = snapshot.child("like").getValue(String.class);
+                    Log.e("like", String.valueOf(like));
+                    if (like.equals("1")) {
+                        coldSoftCount++;
+                    } else if (like.equals("2")) {
+                        warmHardCount++;
+                    } else if (like.equals("3")) {
+                        coldHardCount++;
+                    } else if (like.equals("4")) {
+                        warmSoftCount++;
+                    }
+                }
+                Log.e("value", "coldsoft :" + coldSoftCount);
+                Log.e("value", "warmhard" + warmHardCount);
+                Log.e("value", "coldhard" + coldHardCount);
+                Log.e("value", "warmsoft" + warmSoftCount);
+
             }
-            reader.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e ) {
-            e.printStackTrace();
-        }
 
-        //0~39까지의 중복 없는 난수 11개 생성
-        Set<Integer> set = new HashSet<>();
-
-        while (set.size() < 11) {
-            Double d = Math.random() * 112;
-            set.add(d.intValue());
-        }
-
-        list = new ArrayList<>(set);
-
-        //TODO : 서버에서 받아오는 값을 기준으로 선정해서 glide 에 넣을 수 있도록 하기
-        // 서버에서 받아오는 값 확인 (분위기)
-        // 필터에서 받아오는 값 확인 (가구, 분위기)
-        // 세팅에서 받아오는 값 확인 (분위기, 가구)
-        // 위에서 받아온 정보들을 바탕으로 띄워줄 list 새로 짜기(?)
-
-        int selected_mood = 1;              // 결정된 분위기 값
-        int[] selected = new int[28];       // 분위기가 4개니까 일단 4개로 함..
-        for(int i = 0; i < selected.length; i++){
-            if(Integer.parseInt(strarray[i][6]) == selected_mood)
-            selected[i] = i;
-        }
-
-        Set<Integer> random_pick = new HashSet<>();
-
-        while (random_pick.size() < 4) {
-            int random = (int) Math.random() * 4;
-            random_pick.add(random);
-        }
-
-        List<Integer> random_pick_lst = new ArrayList<>(random_pick);
-
-        //filter
-        Glide.with(getActivity()).load(strarray[list.get(random_pick_lst.get(0))][5]).into(binding.filterImage1);
-        Glide.with(getActivity()).load(strarray[list.get(random_pick_lst.get(1))][5]).into(binding.filterImage2);
-        Glide.with(getActivity()).load(strarray[list.get(random_pick_lst.get(2))][5]).into(binding.filterImage3);
-        Glide.with(getActivity()).load(strarray[list.get(random_pick_lst.get(3))][5]).into(binding.filterImage4);
-
-        //like
-        Glide.with(getActivity()).load(strarray[list.get(0)][5]).into(binding.likeImage1);
-        Glide.with(getActivity()).load(strarray[list.get(1)][5]).into(binding.likeImage2);
-        Glide.with(getActivity()).load(strarray[list.get(2)][5]).into(binding.likeImage3);
-
-        //trending
-        Glide.with(getActivity()).load(strarray[list.get(3)][5]).into(binding.imgTrending1);
-        Glide.with(getActivity()).load(strarray[list.get(4)][5]).into(binding.imgTrending2);
-        Glide.with(getActivity()).load(strarray[list.get(5)][5]).into(binding.imgTrending3);
-        Glide.with(getActivity()).load(strarray[list.get(6)][5]).into(binding.imgTrending4);
-
-        binding.titleRecently1.setText(strarray[random_pick_lst.get(0)][6] + " ₩");
-        binding.titleRecently2.setText(strarray[random_pick_lst.get(1)][6] + " ₩");
-        binding.titleRecently3.setText(strarray[random_pick_lst.get(2)][6] + " ₩");
-        binding.titleRecently4.setText(strarray[random_pick_lst.get(3)][6] + " ₩");
-
-
-        binding.likeTitle1.setText(strarray[list.get(0)][0]);
-        binding.likeTitle2.setText(strarray[list.get(1)][0]);
-        binding.likeTitle3.setText(strarray[list.get(2)][0]);
-
-        binding.likePrice1.setText(strarray[list.get(0)][6] +" ₩");
-        binding.likePrice2.setText(strarray[list.get(1)][6] +" ₩");
-        binding.likePrice3.setText(strarray[list.get(2)][6] +" ₩");
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // 에러 처리
+            }
+        });
 
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -151,11 +116,12 @@ public class Main extends Fragment {
         binding = FragmentMainBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         mainFragment = new Main();
+        load();
 
         Log.e("메인", "메인 들어옴");
 
         firebaseAuth = firebaseAuth.getInstance();
-        //load();
+
 
         //TODO : filter 애들도 binding 해서 세부사항 들어갈 수 있도록 묶어줘야 함
 
@@ -166,7 +132,7 @@ public class Main extends Fragment {
 //                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(1)][0],strarray[list.get(1)][1],strarray[list.get(1)][5],strarray[list.get(1)][2],strarray[list.get(1)][3]);
 //        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action3 =
 //                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(2)][0],strarray[list.get(2)][1],strarray[list.get(2)][5],strarray[list.get(2)][2],strarray[list.get(2)][3]);
-//
+
 //        binding.cardRand1.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -185,8 +151,6 @@ public class Main extends Fragment {
 //                Navigation.findNavController(getView()).navigate(action3);
 //            }
 //        });
-
-
 
         Button st1 = view.findViewById(R.id.like_star_1);
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -367,6 +331,8 @@ public class Main extends Fragment {
                 }
             }
         });
+
+
 
         return view;
     }

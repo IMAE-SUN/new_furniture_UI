@@ -1,6 +1,7 @@
 package com.example.newbottomnavi_anti;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -24,6 +25,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -54,9 +57,11 @@ public class PreRate extends AppCompatActivity {
         String[] coldHard = {"Modest", "Quite", "Dapper", "Dignified", "Noble", "Stylish", "Sporty", "Sharp", "Rational", "Masculine", "Metallic"};
 
         for (String fileName : fileNames) {
-
+            AssetManager assetManager = getAssets();
+            InputStream inputStream = null;
             try {
-                BufferedReader reader = new BufferedReader(new FileReader("/data/data/com.example.newbottomnavi_anti/files/" + fileName));
+                inputStream = assetManager.open(fileName);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                 String line;
 
                 while ((line = reader.readLine()) != null) {
@@ -103,9 +108,9 @@ public class PreRate extends AppCompatActivity {
                     }
                 }
 
-                //각 그룹에서 이미지 3개씩을 중복되지 않게 뽑는다
-                if (coldSoftImages.size() >= 3) {
-                    for (int i = 0; i < 3; i++) {
+                //각 그룹에서 이미지 4개씩을 중복되지 않게 뽑는다
+                if (coldSoftImages.size() >= 4) {
+                    for (int i = 0; i < 4; i++) {
                         String image;
                         do {
                             image = coldSoftImages.get(random.nextInt(coldSoftImages.size()));
@@ -116,8 +121,8 @@ public class PreRate extends AppCompatActivity {
                     selectedColdSoftImages.addAll(coldSoftImages);
                 }
 
-                if(warmSoftImages.size() >= 3) {
-                    for (int i = 0; i < 3; i++) {
+                if(warmSoftImages.size() >= 4) {
+                    for (int i = 0; i < 4; i++) {
                         String image;
                         do {
                             image = warmSoftImages.get(random.nextInt(warmSoftImages.size()));
@@ -128,8 +133,8 @@ public class PreRate extends AppCompatActivity {
                     selectedWarmSoftImages.addAll(warmSoftImages);
                 }
 
-                if(warmHardImages.size() >= 3) {
-                    for (int i = 0; i < 3; i++) {
+                if(warmHardImages.size() >= 4) {
+                    for (int i = 0; i < 4; i++) {
                         String image;
                         do {
                             image = warmHardImages.get(random.nextInt(warmHardImages.size()));
@@ -140,8 +145,8 @@ public class PreRate extends AppCompatActivity {
                     selectedWarmHardImages.addAll(warmHardImages);
                 }
 
-                if(coldHardImages.size() >= 3) {
-                    for (int i = 0; i < 3; i++) {
+                if(coldHardImages.size() >= 4) {
+                    for (int i = 0; i < 4; i++) {
                         String image;
                         do {
                             image = coldHardImages.get(random.nextInt(coldHardImages.size()));
@@ -180,10 +185,15 @@ public class PreRate extends AppCompatActivity {
         CheckBox cb32 = findViewById(R.id.cb_ikea_3_2);
         CheckBox cb33 = findViewById(R.id.cb_ikea_3_3);
         CheckBox cb34 = findViewById(R.id.cb_ikea_3_4);
+        CheckBox cb41 = findViewById(R.id.cb_ikea_4_1);
+        CheckBox cb42 = findViewById(R.id.cb_ikea_4_2);
+        CheckBox cb43 = findViewById(R.id.cb_ikea_4_3);
+        CheckBox cb44 = findViewById(R.id.cb_ikea_4_4);
 
         LinearLayout layout1 = findViewById(R.id.layout_1);
         LinearLayout layout2 = findViewById(R.id.layout_2);
         LinearLayout layout3 = findViewById(R.id.layout_3);
+        LinearLayout layout4 = findViewById(R.id.layout_4);
 
         Button next = findViewById(R.id.next);
 
@@ -199,12 +209,13 @@ public class PreRate extends AppCompatActivity {
         ImageView img32 = findViewById(R.id.img_pre_3_2);
         ImageView img33 = findViewById(R.id.img_pre_3_3);
         ImageView img34 = findViewById(R.id.img_pre_3_4);
-
-
+        ImageView img41 = findViewById(R.id.img_pre_4_1);
+        ImageView img42 = findViewById(R.id.img_pre_4_2);
+        ImageView img43 = findViewById(R.id.img_pre_4_3);
+        ImageView img44 = findViewById(R.id.img_pre_4_4);
 
         String [][] strarray;
         List<Integer> list;
-
 
         /**
         COLDSOFT : Dreamy, Charming, Wholesome, Tranqu, Plain, Fresh, Emotional, Fashionable, Delicate, Chic, Agile, Youthful, Refreshing, Clean, Neat
@@ -217,6 +228,7 @@ public class PreRate extends AppCompatActivity {
         firebaseAuth = firebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
         String uid = user.getUid();
+        Log.e("uid", uid);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("Users");
         load();
@@ -238,67 +250,182 @@ public class PreRate extends AppCompatActivity {
         Glide.with(getApplicationContext()).load(selectedWarmSoftImages.get(2)).into(img32);
         Glide.with(getApplicationContext()).load(selectedWarmHardImages.get(2)).into(img33);
         Glide.with(getApplicationContext()).load(selectedColdHardImages.get(2)).into(img34);
+        Glide.with(getApplicationContext()).load(selectedColdSoftImages.get(3)).into(img41);
+        Glide.with(getApplicationContext()).load(selectedWarmSoftImages.get(3)).into(img42);
+        Glide.with(getApplicationContext()).load(selectedWarmHardImages.get(3)).into(img43);
+        Glide.with(getApplicationContext()).load(selectedColdHardImages.get(3)).into(img44);
 
         next.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+
                 if(next_num==1){
                     if(cb1.isChecked()){
-                        total_pick_string += "1 ";
-                        //coldsoft
+                        cb2.setChecked(false);
+                        cb3.setChecked(false);
+                        cb4.setChecked(false);
+                        total_pick_string = "1 ";
                     }
                     if(cb2.isChecked()){
-                        total_pick_string += "2 ";
-                        //warmsoft
+                        cb1.setChecked(false);
+                        cb3.setChecked(false);
+                        cb4.setChecked(false);
+                        total_pick_string = "2 ";
                     }
                     if(cb3.isChecked()){
-                        total_pick_string += "3 ";
-                        //warmhard
+                        cb1.setChecked(false);
+                        cb2.setChecked(false);
+                        cb4.setChecked(false);
+                        total_pick_string = "3 ";
                     }
                     if(cb4.isChecked()){
-                        total_pick_string += "4 ";
-                        //coldhard
+                        cb1.setChecked(false);
+                        cb2.setChecked(false);
+                        cb3.setChecked(false);
+                        total_pick_string = "4 ";
                     }
+//                    if(cb1.isChecked()){
+//                        total_pick_string += "1 ";
+//                        //coldsoft
+//                    }
+//                    if(cb2.isChecked()){
+//                        total_pick_string += "2 ";
+//                        //warmsoft
+//                    }
+//                    if(cb3.isChecked()){
+//                        total_pick_string += "3 ";
+//                        //warmhard
+//                    }
+//                    if(cb4.isChecked()){
+//                        total_pick_string += "4 ";
+//                        //coldhard
+//                    }
                     layout1.setVisibility(View.GONE);
                     layout2.setVisibility(View.VISIBLE);
-                    next.setText("next (2/3)");
+                    next.setText("next (2/4)");
                     next_num++;
                 }
                 else if(next_num==2){
+                    String temp_string = "";
                     if(cb21.isChecked()){
-                        total_pick_string += "21 ";
+                        cb22.setChecked(false);
+                        cb23.setChecked(false);
+                        cb24.setChecked(false);
+                        temp_string = "1 ";
                     }
                     if(cb22.isChecked()){
-                        total_pick_string += "22 ";
+                        cb21.setChecked(false);
+                        cb23.setChecked(false);
+                        cb24.setChecked(false);
+                        temp_string = "2 ";
                     }
                     if(cb23.isChecked()){
-                        total_pick_string += "23 ";
+                        cb21.setChecked(false);
+                        cb22.setChecked(false);
+                        cb24.setChecked(false);
+                        temp_string = "3 ";
                     }
                     if(cb24.isChecked()){
-                        total_pick_string += "24 ";
+                        cb21.setChecked(false);
+                        cb22.setChecked(false);
+                        cb23.setChecked(false);
+                        temp_string = "4 ";
                     }
+//                    if(cb21.isChecked()){
+//                        total_pick_string += "21 ";
+//                    }
+//                    if(cb22.isChecked()){
+//                        total_pick_string += "22 ";
+//                    }
+//                    if(cb23.isChecked()){
+//                        total_pick_string += "23 ";
+//                    }
+//                    if(cb24.isChecked()){
+//                        total_pick_string += "24 ";
+//                    }
                     //TODO : 해당 정보 서버에 넘기고 다음 값 받기
-                    // 다음 값 받아서 layout2 에 띄우기
+                    // 다음 값 받아서 layout2 에 띄우기\
                     layout2.setVisibility(View.GONE);
                     layout3.setVisibility(View.VISIBLE);
-                    next.setText("submit");
+                    next.setText("next (3/4)");
                     next_num++;
+                    total_pick_string += temp_string;
                 }
-                else{
+                else if(next_num==3){
+                    String temp_string = "";
                     if(cb31.isChecked()){
-                        total_pick_string += "31 ";
+                        cb32.setChecked(false);
+                        cb33.setChecked(false);
+                        cb34.setChecked(false);
+                        temp_string = "1 ";
                     }
                     if(cb32.isChecked()){
-                        total_pick_string += "32 ";
+                        cb31.setChecked(false);
+                        cb33.setChecked(false);
+                        cb34.setChecked(false);
+                        temp_string = "2 ";
                     }
                     if(cb33.isChecked()){
-                        total_pick_string += "33 ";
+                        cb31.setChecked(false);
+                        cb32.setChecked(false);
+                        cb34.setChecked(false);
+                        temp_string = "3 ";
                     }
                     if(cb34.isChecked()){
-                        total_pick_string += "34 ";
+                        cb31.setChecked(false);
+                        cb32.setChecked(false);
+                        cb33.setChecked(false);
+                        temp_string = "4 ";
+                    }
+//                    if(cb21.isChecked()){
+//                        total_pick_string += "21 ";
+//                    }
+//                    if(cb22.isChecked()){
+//                        total_pick_string += "22 ";
+//                    }
+//                    if(cb23.isChecked()){
+//                        total_pick_string += "23 ";
+//                    }
+//                    if(cb24.isChecked()){
+//                        total_pick_string += "24 ";
+//                    }
+                    //TODO : 해당 정보 서버에 넘기고 다음 값 받기
+                    // 다음 값 받아서 layout2 에 띄우기\
+                    layout3.setVisibility(View.GONE);
+                    layout4.setVisibility(View.VISIBLE);
+                    next.setText("submit");
+                    next_num++;
+                    total_pick_string += temp_string;
+                }
+                else{
+                    String temp_string = "";
+                    if(cb41.isChecked()){
+                        cb42.setChecked(false);
+                        cb43.setChecked(false);
+                        cb44.setChecked(false);
+                        temp_string = "1 ";
+                    }
+                    if(cb42.isChecked()){
+                        cb41.setChecked(false);
+                        cb43.setChecked(false);
+                        cb44.setChecked(false);
+                        temp_string = "2 ";
+                    }
+                    if(cb43.isChecked()){
+                        cb41.setChecked(false);
+                        cb42.setChecked(false);
+                        cb44.setChecked(false);
+                        temp_string = "3 ";
+                    }
+                    if(cb44.isChecked()){
+                        cb41.setChecked(false);
+                        cb42.setChecked(false);
+                        cb43.setChecked(false);
+                        temp_string = "4 ";
                     }
 
+                    total_pick_string += temp_string;
                     HashMap<Object, String> hashMap = new HashMap<>();
                     String[] temp = total_pick_string.split(" ");
                     int n = temp.length;
