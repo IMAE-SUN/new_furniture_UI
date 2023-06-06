@@ -27,6 +27,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.exifinterface.media.ExifInterface;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.os.Environment;
 import android.os.Handler;
@@ -48,6 +49,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.newbottomnavi_anti.databinding.FragmentMainBinding;
+import com.example.newbottomnavi_anti.databinding.FragmentRecommendationBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -74,7 +77,8 @@ public class Recommendation extends Fragment {
     public Recommendation() {
         // Required empty public constructor
     }
-
+    Recommendation recomFragment;
+    private FragmentRecommendationBinding binding;
     FirebaseAuth firebaseAuth;
     String RadioText, RadioText2;
     ImageView img_wys_1, img_wys_2, img_wys_3, img_wys_4, img_recom_a, img_recom_a_1, img_recom_b, img_recom_b_1, img_recom_c, img_recom_c_1, img_recom_d, img_recom_d_1;
@@ -82,6 +86,8 @@ public class Recommendation extends Fragment {
     ImageButton refresh_btn;
     LinearLayout recommend_layout;
     String selectedCbText = NULL;
+    String [][] strarray;
+    List<Integer> list;
     int sum = 0;
     int max = 4;
 
@@ -98,7 +104,11 @@ public class Recommendation extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_recommendation, container, false);
+//        View view = inflater.inflate(R.layout.fragment_recommendation, container, false);
+
+        binding = FragmentRecommendationBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        recomFragment = new Recommendation();
 
         Log.e("추천", "추천들어옴");
 
@@ -115,6 +125,41 @@ public class Recommendation extends Fragment {
         RadioButton rb7 = view.findViewById(R.id._seekbar_3_randioButton);
         RadioButton rb8 = view.findViewById(R.id._seekbar_4_randioButton);
         RadioButton rb9 = view.findViewById(R.id._seekbar_5_randioButton);
+
+        //HomeFragment에서 FurnitureInfoFragment로 data 넘기기 위해 action 객체 만들어줌. 인자 순서대로 title, price, img
+        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action =
+                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(0)][0],strarray[list.get(0)][1],strarray[list.get(0)][5],strarray[list.get(0)][2],strarray[list.get(0)][3]);
+        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action2 =
+                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(1)][0],strarray[list.get(1)][1],strarray[list.get(1)][5],strarray[list.get(1)][2],strarray[list.get(1)][3]);
+        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action3 =
+                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(2)][0],strarray[list.get(2)][1],strarray[list.get(2)][5],strarray[list.get(2)][2],strarray[list.get(2)][3]);
+        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action4 =
+                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(3)][0],strarray[list.get(3)][1],strarray[list.get(3)][5],strarray[list.get(3)][2],strarray[list.get(3)][3]);
+
+        binding.recomCardA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(getView()).navigate(action);
+            }
+        });
+        binding.recomCardB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(getView()).navigate(action2);
+            }
+        });
+        binding.recomCardC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(getView()).navigate(action3);
+            }
+        });
+        binding.recomCardD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(getView()).navigate(action4);
+            }
+        });
 
 
 //        Radio Button 처리

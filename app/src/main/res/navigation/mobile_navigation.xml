@@ -19,7 +19,11 @@
         android:id="@+id/navigation_rf"
         android:name="com.example.newbottomnavi_anti.Recommendation"
         android:label="Recommendation"
-        tools:layout="@layout/fragment_recommendation" />
+        tools:layout="@layout/fragment_recommendation" >
+        <action
+            android:id="@+id/action_navigation_home_to_furnitureInfoFragment"
+            app:destination="@id/navigation_finfo" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_finfo"

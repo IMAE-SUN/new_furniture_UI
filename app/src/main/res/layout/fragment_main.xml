@@ -331,7 +331,7 @@
                         android:orientation="vertical"
                         android:padding="8dp"
                         android:layout_margin="5dp"
-                        android:background="@drawable/butter_navy_full_rounded_shape">
+                        android:background="#00000000">
 
                         <LinearLayout
                             android:layout_width="match_parent"
