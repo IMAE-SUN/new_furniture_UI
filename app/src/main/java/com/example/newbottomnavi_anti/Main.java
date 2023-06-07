@@ -237,7 +237,6 @@ public class Main extends Fragment {
         btn_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 //filter
                 Glide.with(getActivity()).load(strarray[list.get(6)][5]).into(binding.filterImageMore1);
                 Glide.with(getActivity()).load(strarray[list.get(7)][5]).into(binding.filterImageMore2);
@@ -260,7 +259,7 @@ public class Main extends Fragment {
                 binding.priceRecentlyMore5.setText(strarray[list.get(10)][1] + " ₩");
                 binding.priceRecentlyMore6.setText(strarray[list.get(11)][1] + " ₩");
 
-                if(btn_more.getVisibility()==View.GONE){
+                if(layout_more.getVisibility()==View.GONE){
                     layout_more.setVisibility(View.VISIBLE);
                     btn_more.setText("상품 접기");
                 }
