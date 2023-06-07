@@ -217,6 +217,7 @@ public class PreRate extends AppCompatActivity {
         String [][] strarray;
         List<Integer> list;
 
+
         /**
         COLDSOFT : Dreamy, Charming, Wholesome, Tranqu, Plain, Fresh, Emotional, Fashionable, Delicate, Chic, Agile, Youthful, Refreshing, Clean, Neat
         WARMSOFT : Colorful, Casual, Bright, Enjoyable, Pretty, Childlike, Sweet, Soft, Intimate, Mild, Graceful
@@ -259,6 +260,8 @@ public class PreRate extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+
+
 
                 if(next_num==1){
                     if(cb1.isChecked()){

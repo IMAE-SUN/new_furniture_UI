@@ -15,6 +15,8 @@ import android.widget.FrameLayout;
 import com.example.newbottomnavi_anti.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;

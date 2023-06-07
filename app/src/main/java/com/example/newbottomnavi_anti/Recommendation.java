@@ -2,6 +2,8 @@ package com.example.newbottomnavi_anti;
 
 import static android.app.Activity.RESULT_OK;
 
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -25,6 +27,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.exifinterface.media.ExifInterface;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.os.Environment;
 import android.os.Handler;
@@ -46,8 +49,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.newbottomnavi_anti.databinding.FragmentMainBinding;
 import com.example.newbottomnavi_anti.databinding.FragmentRecommendationBinding;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.normal.TedPermission;
 
@@ -62,6 +69,7 @@ import java.security.Permission;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class Recommendation extends Fragment {
@@ -69,7 +77,6 @@ public class Recommendation extends Fragment {
     public Recommendation() {
         // Required empty public constructor
     }
-
     Recommendation recomFragment;
     private FragmentRecommendationBinding binding;
     FirebaseAuth firebaseAuth;
@@ -78,6 +85,7 @@ public class Recommendation extends Fragment {
     Button recommend_btn;
     ImageButton refresh_btn;
     LinearLayout recommend_layout;
+    String selectedCbText = NULL;
     String [][] strarray;
     List<Integer> list;
     int sum = 0;
@@ -243,6 +251,8 @@ public class Recommendation extends Fragment {
 //        TODO : 연결하기
         Button camera_btn = view.findViewById(R.id.camera_recom);
         Button gallery_btn = view.findViewById(R.id.gallery_recom);
+        Button more_opt = view.findViewById(R.id.btn_more_options);
+        LinearLayout more_opt_layout = view.findViewById(R.id.lo_more_options);
 
 //        그렇게 불러온 사진들 띄워주기 (최대 4개)
 //        TODO : 클릭 시 없어져야 함
@@ -254,6 +264,7 @@ public class Recommendation extends Fragment {
 //        추천하기 버튼
 //        TODO : 클릭 시 python 코드와 연결되도록
         recommend_btn = view.findViewById(R.id.recommend_btn);
+        recommend_layout = view.findViewById(R.id.linearLayout_whatsyourstyle);
 
 //        refresh 버튼
 //        TODO : 클릭 시 기존 정보 바탕으로 (연산 x) 다시 추천
@@ -270,6 +281,19 @@ public class Recommendation extends Fragment {
         img_recom_c_1 = view.findViewById(R.id.img_recom_c_1);
         img_recom_d = view.findViewById(R.id.img_recom_d);
         img_recom_d_1 = view.findViewById(R.id.img_recom_d_1);
+
+        more_opt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(more_opt_layout.getVisibility() == View.GONE){
+                    more_opt_layout.setVisibility(View.VISIBLE);
+                    more_opt.setText("접기");
+                }else{
+                    more_opt_layout.setVisibility(View.GONE);
+                    more_opt.setText("더보기");
+                }
+            }
+        });
 
         PermissionListener permissionlistener = new PermissionListener() {
             @Override
@@ -310,18 +334,64 @@ public class Recommendation extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d("recommedation", "recommendation 시작함");
-                connect();
+//                if(recommend_layout.getVisibility() == View.GONE){
+//                    recommend_layout.setVisibility(View.VISIBLE);
+//                }
+                //추천하기 누르면 카메라, 갤러리 버튼 없어짐
+                recommend_layout.setVisibility(View.GONE);
+
+                Toast.makeText(getContext(), RadioText, Toast.LENGTH_SHORT).show();
+                Log.e("Final Radio Button", RadioText);
+
+
+                if(cb1.isChecked()){
+                    selectedCbText += cb1.getText().toString() + " ";
+                }
+                if(cb2.isChecked()){
+                    selectedCbText += cb2.getText().toString() + " ";
+                }
+                if(cb3.isChecked()){
+                    selectedCbText += cb3.getText().toString() + " ";
+                }
+                if(cb4.isChecked()){
+                    selectedCbText += cb4.getText().toString() + " ";
+                }
+                if(cb5.isChecked()){
+                    selectedCbText += cb5.getText().toString() + " ";
+                }
+                if(cb6.isChecked()){
+                    selectedCbText += cb6.getText().toString() + " ";
+                }
+                if(cb7.isChecked()){
+                    selectedCbText += cb7.getText().toString() + " ";
+                }
+                if(cb8.isChecked()){
+                    selectedCbText += cb8.getText().toString() + " ";
+                }
+                if(cb9.isChecked()){
+                    selectedCbText += cb9.getText().toString() + " ";
+                }
+
+                Toast.makeText(getContext(), selectedCbText, Toast.LENGTH_SHORT).show();
+                Log.e("Final CheckBox", selectedCbText);
+
+                if (selectedCbText==NULL){
+                    Toast.makeText(getContext(), "모든 옵션을 선택해주세요", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    connect();
+                }
             }
         });
 
-//        추천 새로고침
-        refresh_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("refresh", "refresh 클릭함");
-                Toast.makeText(getContext(), "refresh", Toast.LENGTH_SHORT).show();
-            }
-        });
+////        추천 새로고침
+//        refresh_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d("refresh", "refresh 클릭함");
+//                Toast.makeText(getContext(), "refresh", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
 //       Glide.with(this).load("https://pix8.agoda.net/hotelImages/111/1110567/1110567_16083113590045958402.jpg?ca=6&ce=1&s=1024x768").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_wys_1);
 //       Glide.with(this).load("https://pix8.agoda.net/hotelImages/111/1110567/1110567_16083113130045955510.jpg?ca=6&ce=1&s=1024x768").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_wys_2);
@@ -411,6 +481,7 @@ public class Recommendation extends Fragment {
         }
     }
 
+
     private final Charset UTF8_CHARSET = Charset.forName("UTF-8");
     private Handler mHandler;
     private Socket socket;
@@ -422,6 +493,31 @@ public class Recommendation extends Fragment {
     private Bitmap img;
 
     public void connect() { // 서버 socketHost.py와 연결
+
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        String uid = user.getUid();
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference("Users");
+
+//                분위기 전달
+        reference.child(uid).child("Preference").child("Mood").setValue(RadioText);
+
+//                가구 전달
+        HashMap<Object, String> hashMap = new HashMap<>();
+        String[] temp = selectedCbText.split(" ");
+        int n = temp.length;
+        for (int i=0; i<n; i++){
+            Log.e("CheckBox", temp[i]);
+            hashMap.put("furniture", temp[i]);
+            reference.child(uid).child("Preference").child("Furniture").push().setValue(hashMap);
+        }
+
+//                퍼센트 전달
+        reference.child(uid).child("Preference").child("seekbar").setValue(RadioText2);
+
+
+
         mHandler = new Handler();
         BitmapDrawable drawable = (BitmapDrawable) img_wys_1.getDrawable();
         img = drawable.getBitmap();
@@ -431,7 +527,8 @@ public class Recommendation extends Fragment {
                 ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
                 img.compress(Bitmap.CompressFormat.PNG, 100, byteArray);
                 byte[] bytes = byteArray.toByteArray();
-
+                String color = new String();
+                String histo_similarity = new String();
                 int data_len=0;
                 byte[] img_result;
                 // 서버 접속

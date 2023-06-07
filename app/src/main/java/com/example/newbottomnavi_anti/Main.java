@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -34,6 +35,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -50,6 +53,7 @@ public class Main extends Fragment {
     FirebaseAuth firebaseAuth;
     String [][] strarray;
     List<Integer> list;
+    String preRate, like;
 
     int coldSoftCount = 0;
     int warmHardCount = 0;
@@ -70,6 +74,82 @@ public class Main extends Fragment {
          *     3.여기서 예외처리로, 특정 분위기에 포함된 가구는 몇개 없으면 -> 주변 분위기것까지 포함해서 띄우기
          * </TODO> :
          */
+
+        //침대 40개, 책상 36개, 소파36개
+        strarray = new String[112][7];
+        int max, min;
+        max = 4;
+        min = 1;
+        int mood_int = (int) Math.random() * (max-min+1) + 1;
+        String mood_str = Integer.toString(mood_int);
+
+        AssetManager assetManager = getActivity().getAssets();
+        InputStream inputStream = null;
+        try {
+            inputStream = assetManager.open("furniture.txt");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+
+            int i = 0;
+            while ((line = reader.readLine()) != null) {
+                line = line.concat(";" + mood_str);
+                strarray[i] = line.split(";");
+                i++;
+            }
+            reader.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e ) {
+            e.printStackTrace();
+        }
+
+        //0~39까지의 중복 없는 난수 11개 생성
+        Set<Integer> set = new HashSet<>();
+
+        while (set.size() < 12) {
+            Double d = Math.random() * 112;
+            set.add(d.intValue());
+        }
+
+        list = new ArrayList<>(set);
+
+        //filter
+        Glide.with(getActivity()).load(strarray[list.get(0)][5]).into(binding.filterImage1);
+        Glide.with(getActivity()).load(strarray[list.get(1)][5]).into(binding.filterImage2);
+        Glide.with(getActivity()).load(strarray[list.get(2)][5]).into(binding.filterImage3);
+        Glide.with(getActivity()).load(strarray[list.get(3)][5]).into(binding.filterImage4);
+        Glide.with(getActivity()).load(strarray[list.get(4)][5]).into(binding.filterImage5);
+        Glide.with(getActivity()).load(strarray[list.get(5)][5]).into(binding.filterImage6);
+
+        //like
+        Glide.with(getActivity()).load(strarray[list.get(0)][5]).into(binding.likeImage1);
+        Glide.with(getActivity()).load(strarray[list.get(1)][5]).into(binding.likeImage2);
+        Glide.with(getActivity()).load(strarray[list.get(2)][5]).into(binding.likeImage3);
+
+
+        binding.titleRecently1.setText(strarray[list.get(0)][0] + " ₩");
+        binding.titleRecently2.setText(strarray[list.get(1)][0] + " ₩");
+        binding.titleRecently3.setText(strarray[list.get(2)][0] + " ₩");
+        binding.titleRecently4.setText(strarray[list.get(3)][0] + " ₩");
+        binding.titleRecently5.setText(strarray[list.get(4)][0] + " ₩");
+        binding.titleRecently6.setText(strarray[list.get(5)][0] + " ₩");
+
+        binding.priceRecently1.setText(strarray[list.get(0)][1] + " ₩");
+        binding.priceRecently2.setText(strarray[list.get(1)][1] + " ₩");
+        binding.priceRecently3.setText(strarray[list.get(2)][1] + " ₩");
+        binding.priceRecently4.setText(strarray[list.get(3)][1] + " ₩");
+        binding.priceRecently5.setText(strarray[list.get(4)][1] + " ₩");
+        binding.priceRecently6.setText(strarray[list.get(5)][1] + " ₩");
+
+        binding.likeTitle1.setText(strarray[list.get(0)][0]);
+        binding.likeTitle2.setText(strarray[list.get(1)][0]);
+        binding.likeTitle3.setText(strarray[list.get(2)][0]);
+
+        binding.likePrice1.setText(strarray[list.get(0)][1] +" ₩");
+        binding.likePrice2.setText(strarray[list.get(1)][1] +" ₩");
+        binding.likePrice3.setText(strarray[list.get(2)][1] +" ₩");
+
+
 
         firebaseAuth = firebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -152,6 +232,46 @@ public class Main extends Fragment {
 //            }
 //        });
 
+        Button btn_more = view.findViewById(R.id.btn_more_products);
+        LinearLayout layout_more = view.findViewById(R.id.layout_more_products);
+        btn_more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //filter
+                Glide.with(getActivity()).load(strarray[list.get(6)][5]).into(binding.filterImageMore1);
+                Glide.with(getActivity()).load(strarray[list.get(7)][5]).into(binding.filterImageMore2);
+                Glide.with(getActivity()).load(strarray[list.get(8)][5]).into(binding.filterImageMore3);
+                Glide.with(getActivity()).load(strarray[list.get(9)][5]).into(binding.filterImageMore4);
+                Glide.with(getActivity()).load(strarray[list.get(10)][5]).into(binding.filterImageMore5);
+                Glide.with(getActivity()).load(strarray[list.get(11)][5]).into(binding.filterImageMore6);
+
+                binding.titleRecentlyMore1.setText(strarray[list.get(6)][0] + " ₩");
+                binding.titleRecentlyMore2.setText(strarray[list.get(7)][0] + " ₩");
+                binding.titleRecentlyMore3.setText(strarray[list.get(8)][0] + " ₩");
+                binding.titleRecentlyMore4.setText(strarray[list.get(9)][0] + " ₩");
+                binding.titleRecentlyMore5.setText(strarray[list.get(10)][0] + " ₩");
+                binding.titleRecentlyMore6.setText(strarray[list.get(11)][0] + " ₩");
+
+                binding.priceRecentlyMore1.setText(strarray[list.get(6)][1] + " ₩");
+                binding.priceRecentlyMore2.setText(strarray[list.get(7)][1] + " ₩");
+                binding.priceRecentlyMore3.setText(strarray[list.get(8)][1] + " ₩");
+                binding.priceRecentlyMore4.setText(strarray[list.get(9)][1] + " ₩");
+                binding.priceRecentlyMore5.setText(strarray[list.get(10)][1] + " ₩");
+                binding.priceRecentlyMore6.setText(strarray[list.get(11)][1] + " ₩");
+
+                if(btn_more.getVisibility()==View.GONE){
+                    layout_more.setVisibility(View.VISIBLE);
+                    btn_more.setText("상품 접기");
+                }
+                else{
+                    layout_more.setVisibility(View.GONE);
+                    btn_more.setText("상품 더 보기");
+                }
+
+            }
+        });
+
         Button st1 = view.findViewById(R.id.like_star_1);
         FirebaseUser user = firebaseAuth.getCurrentUser();
         String uid = user.getUid();
@@ -196,6 +316,7 @@ public class Main extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<DataSnapshot> task) {
                         if (!task.isSuccessful()) {
+                            Toast.makeText(getContext(), "새로고침", Toast.LENGTH_SHORT).show();
                             Log.e("Preference", "Error getting data", task.getException());
                         }
                         else {
@@ -212,6 +333,20 @@ public class Main extends Fragment {
                         }
                         else {
                             Log.d("PreRate", String.valueOf(task.getResult().getValue()));
+                            preRate = String.valueOf(task.getResult().getValue());
+                        }
+                    }
+                });
+
+                reference.child(uid).child("Like").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        if (!task.isSuccessful()) {
+                            Log.e("Like", "Error getting data", task.getException());
+                        }
+                        else {
+                            Log.d("Like", String.valueOf(task.getResult().getValue()));
+                            like = String.valueOf(task.getResult().getValue());
                         }
                     }
                 });
@@ -327,7 +462,6 @@ public class Main extends Fragment {
                         dnc.setTextColor(Color.parseColor("#FEFCF3"));
                         Toast.makeText(getContext(), "deep&clear", Toast.LENGTH_SHORT).show();
                         break;
-
                 }
             }
         });
