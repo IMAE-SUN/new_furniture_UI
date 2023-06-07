@@ -2,8 +2,6 @@ package com.example.newbottomnavi_anti;
 
 import static android.app.Activity.RESULT_OK;
 
-import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -27,7 +25,6 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.exifinterface.media.ExifInterface;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
 import android.os.Environment;
 import android.os.Handler;
@@ -49,12 +46,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.newbottomnavi_anti.databinding.FragmentMainBinding;
 import com.example.newbottomnavi_anti.databinding.FragmentRecommendationBinding;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.normal.TedPermission;
 
@@ -69,7 +62,6 @@ import java.security.Permission;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 public class Recommendation extends Fragment {
@@ -77,6 +69,7 @@ public class Recommendation extends Fragment {
     public Recommendation() {
         // Required empty public constructor
     }
+
     Recommendation recomFragment;
     private FragmentRecommendationBinding binding;
     FirebaseAuth firebaseAuth;
@@ -85,12 +78,14 @@ public class Recommendation extends Fragment {
     Button recommend_btn;
     ImageButton refresh_btn;
     LinearLayout recommend_layout;
-    String selectedCbText = NULL;
     String [][] strarray;
     List<Integer> list;
     int sum = 0;
     int max = 4;
-
+    public String tone = new String();
+    public String color = new String();
+    public int[][] hsv = new int[3][3];
+    public String histo_similarity = new String();
     private static final int MY_PERMISSION_CAMERA = 1111;
     private static final int REQUEST_TAKE_PHOTO = 2222;
     private static final int REQUEST_TAKE_ALBUM = 3333;
@@ -104,11 +99,7 @@ public class Recommendation extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        View view = inflater.inflate(R.layout.fragment_recommendation, container, false);
-
-        binding = FragmentRecommendationBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
-        recomFragment = new Recommendation();
+        View view = inflater.inflate(R.layout.fragment_recommendation, container, false);
 
         Log.e("추천", "추천들어옴");
 
@@ -252,8 +243,6 @@ public class Recommendation extends Fragment {
 //        TODO : 연결하기
         Button camera_btn = view.findViewById(R.id.camera_recom);
         Button gallery_btn = view.findViewById(R.id.gallery_recom);
-        Button more_opt = view.findViewById(R.id.btn_more_options);
-        LinearLayout more_opt_layout = view.findViewById(R.id.lo_more_options);
 
 //        그렇게 불러온 사진들 띄워주기 (최대 4개)
 //        TODO : 클릭 시 없어져야 함
@@ -265,7 +254,6 @@ public class Recommendation extends Fragment {
 //        추천하기 버튼
 //        TODO : 클릭 시 python 코드와 연결되도록
         recommend_btn = view.findViewById(R.id.recommend_btn);
-        recommend_layout = view.findViewById(R.id.recommendation_layout);
 
 //        refresh 버튼
 //        TODO : 클릭 시 기존 정보 바탕으로 (연산 x) 다시 추천
@@ -282,17 +270,6 @@ public class Recommendation extends Fragment {
         img_recom_c_1 = view.findViewById(R.id.img_recom_c_1);
         img_recom_d = view.findViewById(R.id.img_recom_d);
         img_recom_d_1 = view.findViewById(R.id.img_recom_d_1);
-
-        more_opt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(more_opt_layout.getVisibility() == View.GONE){
-                    more_opt_layout.setVisibility(View.VISIBLE);
-                }else{
-                    more_opt_layout.setVisibility(View.GONE);
-                }
-            }
-        });
 
         PermissionListener permissionlistener = new PermissionListener() {
             @Override
@@ -333,62 +310,18 @@ public class Recommendation extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d("recommedation", "recommendation 시작함");
-                if(recommend_layout.getVisibility() == View.GONE){
-                    recommend_layout.setVisibility(View.VISIBLE);
-                }
-
-                Toast.makeText(getContext(), RadioText, Toast.LENGTH_SHORT).show();
-                Log.e("Final Radio Button", RadioText);
-
-
-                if(cb1.isChecked()){
-                    selectedCbText += cb1.getText().toString() + " ";
-                }
-                if(cb2.isChecked()){
-                    selectedCbText += cb2.getText().toString() + " ";
-                }
-                if(cb3.isChecked()){
-                    selectedCbText += cb3.getText().toString() + " ";
-                }
-                if(cb4.isChecked()){
-                    selectedCbText += cb4.getText().toString() + " ";
-                }
-                if(cb5.isChecked()){
-                    selectedCbText += cb5.getText().toString() + " ";
-                }
-                if(cb6.isChecked()){
-                    selectedCbText += cb6.getText().toString() + " ";
-                }
-                if(cb7.isChecked()){
-                    selectedCbText += cb7.getText().toString() + " ";
-                }
-                if(cb8.isChecked()){
-                    selectedCbText += cb8.getText().toString() + " ";
-                }
-                if(cb9.isChecked()){
-                    selectedCbText += cb9.getText().toString() + " ";
-                }
-
-                Toast.makeText(getContext(), selectedCbText, Toast.LENGTH_SHORT).show();
-                Log.e("Final CheckBox", selectedCbText);
-
-                if (selectedCbText==NULL){
-                    Toast.makeText(getContext(), "모든 옵션을 선택해주세요", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    connect();
-                }
+                connect();
             }
         });
 
-////        추천 새로고침
-//        refresh_btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.d("refresh", "refresh 클릭함");
-//                Toast.makeText(getContext(), "refresh", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+//        추천 새로고침
+        refresh_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("refresh", "refresh 클릭함");
+                Toast.makeText(getContext(), "refresh", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 //       Glide.with(this).load("https://pix8.agoda.net/hotelImages/111/1110567/1110567_16083113590045958402.jpg?ca=6&ce=1&s=1024x768").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_wys_1);
 //       Glide.with(this).load("https://pix8.agoda.net/hotelImages/111/1110567/1110567_16083113130045955510.jpg?ca=6&ce=1&s=1024x768").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_wys_2);
@@ -478,7 +411,6 @@ public class Recommendation extends Fragment {
         }
     }
 
-
     private final Charset UTF8_CHARSET = Charset.forName("UTF-8");
     private Handler mHandler;
     private Socket socket;
@@ -490,31 +422,6 @@ public class Recommendation extends Fragment {
     private Bitmap img;
 
     public void connect() { // 서버 socketHost.py와 연결
-
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        String uid = user.getUid();
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference reference = database.getReference("Users");
-
-//                분위기 전달
-        reference.child(uid).child("Preference").child("Mood").setValue(RadioText);
-
-//                가구 전달
-        HashMap<Object, String> hashMap = new HashMap<>();
-        String[] temp = selectedCbText.split(" ");
-        int n = temp.length;
-        for (int i=0; i<n; i++){
-            Log.e("CheckBox", temp[i]);
-            hashMap.put("furniture", temp[i]);
-            reference.child(uid).child("Preference").child("Furniture").push().setValue(hashMap);
-        }
-
-//                퍼센트 전달
-        reference.child(uid).child("Preference").child("seekbar").setValue(RadioText2);
-
-
-
         mHandler = new Handler();
         BitmapDrawable drawable = (BitmapDrawable) img_wys_1.getDrawable();
         img = drawable.getBitmap();
@@ -524,8 +431,7 @@ public class Recommendation extends Fragment {
                 ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
                 img.compress(Bitmap.CompressFormat.PNG, 100, byteArray);
                 byte[] bytes = byteArray.toByteArray();
-                String color = new String();
-                String histo_similarity = new String();
+
                 int data_len=0;
                 byte[] img_result;
                 // 서버 접속
@@ -558,6 +464,12 @@ public class Recommendation extends Fragment {
 
                     color = readString(dis);
                     Log.w("color done", color);
+                    tone = readString(dis);
+                    for(int i=0;i<3;i++)
+                    {
+                        for(int j =0;j<3;j++)
+                            hsv[i][j] =  Integer.parseInt(readString(dis));
+                    }
                     histo_similarity = readString(dis);
                     Log.w("histo done", histo_similarity);
                     //data_len = dis.readInt();
@@ -602,5 +514,129 @@ public class Recommendation extends Fragment {
         }
         return resbytes;
     }
+//
+//    private void galleryAddPic(){
+//        Log.i("galleryAddPic", "Call");
+//        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+//        // 해당 경로에 있는 파일을 객체화(새로 파일을 만든다는 것으로 이해하면 안 됨)
+//        File f = new File(mCurrentPhotoPath);
+//        Uri contentUri = Uri.fromFile(f);
+//        mediaScanIntent.setData(contentUri);
+//        getContext().sendBroadcast(mediaScanIntent);
+//        Toast.makeText(getContext(), "사진이 앨범에 저장되었습니다.", Toast.LENGTH_SHORT).show();
+//    }
+
+    // 카메라 전용 크랍
+//    public void cropImage(){
+//        Log.i("cropImage", "Call");
+//        Log.i("cropImage", "photoURI : " + photoURI + " / albumURI : " + albumURI);
+//
+//        Intent cropIntent = new Intent("com.android.camera.action.CROP");
+//
+//        // 50x50픽셀미만은 편집할 수 없다는 문구 처리 + 갤러리, 포토 둘다 호환하는 방법
+//        cropIntent.setFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+//        cropIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//        cropIntent.setDataAndType(photoURI, "image/*");
+//        //cropIntent.putExtra("outputX", 200); // crop한 이미지의 x축 크기, 결과물의 크기
+//        //cropIntent.putExtra("outputY", 200); // crop한 이미지의 y축 크기
+//        cropIntent.putExtra("aspectX", 1); // crop 박스의 x축 비율, 1&1이면 정사각형
+//        cropIntent.putExtra("aspectY", 1); // crop 박스의 y축 비율
+//        cropIntent.putExtra("scale", true);
+//        cropIntent.putExtra("output", albumURI); // 크랍된 이미지를 해당 경로에 저장
+//        startActivityForResult(cropIntent, REQUEST_IMAGE_CROP);
+//    }
+
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        switch (requestCode) {
+//            case REQUEST_TAKE_PHOTO:
+//                if (resultCode == Activity.RESULT_OK) {
+//                    try {
+//                        Log.i("REQUEST_TAKE_PHOTO", "OK");
+//                        galleryAddPic();
+//
+//                        img_wys_1.setImageURI(imageUri);
+//                    } catch (Exception e) {
+//                        Log.e("REQUEST_TAKE_PHOTO", e.toString());
+//                    }
+//                } else {
+//                    Toast.makeText(getContext(), "사진찍기를 취소하였습니다.", Toast.LENGTH_SHORT).show();
+//                }
+//                break;
+//
+//            case REQUEST_TAKE_ALBUM:
+//                if (resultCode == Activity.RESULT_OK) {
+//
+//                    if(data.getData() != null){
+//                        try {
+//                            File albumFile = null;
+//                            albumFile = createImageFile();
+//                            photoURI = data.getData();
+//                            albumURI = Uri.fromFile(albumFile);
+//                            cropImage();
+//                        }catch (Exception e){
+//                            Log.e("TAKE_ALBUM_SINGLE ERROR", e.toString());
+//                        }
+//                    }
+//                }
+//                break;
+//
+//            case REQUEST_IMAGE_CROP:
+//                if (resultCode == Activity.RESULT_OK) {
+//
+//                    galleryAddPic();
+//                    img_wys_1.setImageURI(albumURI);
+//                }
+//                break;
+//        }
+//    }
+
+//    private void checkPermission(){
+//        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+//            // 처음 호출시엔 if()안의 부분은 false로 리턴 됨 -> else{..}의 요청으로 넘어감
+//            if ((ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)) ||
+//                    (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA))) {
+//                new AlertDialog.Builder(getContext())
+//                        .setTitle("알림")
+//                        .setMessage("저장소 권한이 거부되었습니다. 사용을 원하시면 설정에서 해당 권한을 직접 허용하셔야 합니다.")
+//                        .setNeutralButton("설정", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+//                                intent.setData(Uri.parse("package:" + getActivity().getPackageName()));
+//                                startActivity(intent);
+//                            }
+//                        })
+//                        .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                getActivity().finish();
+//                            }
+//                        })
+//                        .setCancelable(false)
+//                        .create()
+//                        .show();
+//            } else {
+//                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, MY_PERMISSION_CAMERA);
+//            }
+//        }
+//    }
+//
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        switch (requestCode) {
+//            case MY_PERMISSION_CAMERA:
+//                for (int i = 0; i < grantResults.length; i++) {
+//                    // grantResults[] : 허용된 권한은 0, 거부한 권한은 -1
+//                    if (grantResults[i] < 0) {
+//                        Toast.makeText(getContext(), "해당 권한을 활성화 하셔야 합니다.", Toast.LENGTH_SHORT).show();
+//                        return;
+//                    }
+//                }
+//                // 허용했다면 이 부분에서..
+//
+//                break;
+//        }
+//    }
 
 }
