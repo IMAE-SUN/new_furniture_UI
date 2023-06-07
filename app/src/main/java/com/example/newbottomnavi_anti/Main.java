@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -127,12 +128,12 @@ public class Main extends Fragment {
         Glide.with(getActivity()).load(strarray[list.get(2)][5]).into(binding.likeImage3);
 
 
-        binding.titleRecently1.setText(strarray[list.get(0)][0] + " ₩");
-        binding.titleRecently2.setText(strarray[list.get(1)][0] + " ₩");
-        binding.titleRecently3.setText(strarray[list.get(2)][0] + " ₩");
-        binding.titleRecently4.setText(strarray[list.get(3)][0] + " ₩");
-        binding.titleRecently5.setText(strarray[list.get(4)][0] + " ₩");
-        binding.titleRecently6.setText(strarray[list.get(5)][0] + " ₩");
+        binding.titleRecently1.setText(strarray[list.get(0)][0]);
+        binding.titleRecently2.setText(strarray[list.get(1)][0]);
+        binding.titleRecently3.setText(strarray[list.get(2)][0]);
+        binding.titleRecently4.setText(strarray[list.get(3)][0]);
+        binding.titleRecently5.setText(strarray[list.get(4)][0]);
+        binding.titleRecently6.setText(strarray[list.get(5)][0]);
 
         binding.priceRecently1.setText(strarray[list.get(0)][1] + " ₩");
         binding.priceRecently2.setText(strarray[list.get(1)][1] + " ₩");
@@ -232,6 +233,35 @@ public class Main extends Fragment {
 //            }
 //        });
 
+        Button btn_more_likes = view.findViewById(R.id.btn_more_likes);
+        HorizontalScrollView hsv = view.findViewById(R.id.horizontalScrollView);
+        LinearLayout layout_more_likes = view.findViewById(R.id.layout_more_likes);
+        btn_more_likes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //filter
+                Glide.with(getActivity()).load(strarray[list.get(0)][5]).into(binding.ivMoreLikes1);
+                Glide.with(getActivity()).load(strarray[list.get(1)][5]).into(binding.ivMoreLikes2);
+                Glide.with(getActivity()).load(strarray[list.get(2)][5]).into(binding.ivMoreLikes3);
+
+                binding.tvMoreLikes1.setText(strarray[list.get(0)][0]);
+                binding.tvMoreLikes2.setText(strarray[list.get(1)][0]);
+                binding.tvMoreLikes3.setText(strarray[list.get(2)][0]);
+
+                if(layout_more_likes.getVisibility() == View.GONE){
+                    hsv.setVisibility(View.GONE);
+                    layout_more_likes.setVisibility(View.VISIBLE);
+                    btn_more_likes.setText("접기");
+                }
+                else{
+                    layout_more_likes.setVisibility(View.GONE);
+                    hsv.setVisibility(View.VISIBLE);
+                    btn_more_likes.setText("더보기");
+                }
+
+            }
+        });
+
         Button btn_more = view.findViewById(R.id.btn_more_products);
         LinearLayout layout_more = view.findViewById(R.id.layout_more_products);
         btn_more.setOnClickListener(new View.OnClickListener() {
@@ -245,12 +275,12 @@ public class Main extends Fragment {
                 Glide.with(getActivity()).load(strarray[list.get(10)][5]).into(binding.filterImageMore5);
                 Glide.with(getActivity()).load(strarray[list.get(11)][5]).into(binding.filterImageMore6);
 
-                binding.titleRecentlyMore1.setText(strarray[list.get(6)][0] + " ₩");
-                binding.titleRecentlyMore2.setText(strarray[list.get(7)][0] + " ₩");
-                binding.titleRecentlyMore3.setText(strarray[list.get(8)][0] + " ₩");
-                binding.titleRecentlyMore4.setText(strarray[list.get(9)][0] + " ₩");
-                binding.titleRecentlyMore5.setText(strarray[list.get(10)][0] + " ₩");
-                binding.titleRecentlyMore6.setText(strarray[list.get(11)][0] + " ₩");
+                binding.titleRecentlyMore1.setText(strarray[list.get(6)][0]);
+                binding.titleRecentlyMore2.setText(strarray[list.get(7)][0]);
+                binding.titleRecentlyMore3.setText(strarray[list.get(8)][0]);
+                binding.titleRecentlyMore4.setText(strarray[list.get(9)][0]);
+                binding.titleRecentlyMore5.setText(strarray[list.get(10)][0]);
+                binding.titleRecentlyMore6.setText(strarray[list.get(11)][0]);
 
                 binding.priceRecentlyMore1.setText(strarray[list.get(6)][1] + " ₩");
                 binding.priceRecentlyMore2.setText(strarray[list.get(7)][1] + " ₩");
