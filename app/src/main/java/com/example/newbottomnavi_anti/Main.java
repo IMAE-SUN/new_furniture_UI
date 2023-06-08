@@ -77,27 +77,54 @@ public class Main extends Fragment {
          */
 
         //침대 40개, 책상 36개, 소파36개
-        strarray = new String[112][7];
-        int max, min;
-        max = 4;
-        min = 1;
-        int mood_int = (int) Math.random() * (max-min+1) + 1;
-        String mood_str = Integer.toString(mood_int);
+        strarray = new String[5185][6];
 
+        String[] assets_arr = new String[]{"bed.txt", "chair.txt", "closet.txt", "curtain.txt", "desk.txt", "lamp.txt", "shelf.txt", "sofa.txt", "table.txt"};
+//        String[] category_arr = new String[] {"bed", "chair", "closet", "curtain", "desk", "lamp", "shelf", "sofa", "table"};
+//        String[][] bed, chair, closet, curtain, desk, lamp, shelf, sofa, table;
         AssetManager assetManager = getActivity().getAssets();
         InputStream inputStream = null;
+        int total = 0;
         try {
-            inputStream = assetManager.open("furniture.txt");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            String line;
-
-            int i = 0;
-            while ((line = reader.readLine()) != null) {
-                line = line.concat(";" + mood_str);
-                strarray[i] = line.split(";");
-                i++;
+//            for (int i=0; i<assets_arr.length; i++) {
+//                inputStream = assetManager.open(assets_arr[i]);
+//                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+//                String line;
+//                int j = 0;
+//                j=0;
+//                while ((line = reader.readLine()) != null) {
+//                    Log.e("line", line);
+//                    strarray[j][i] = line;
+//
+//                    j++;
+//                }
+//                Log.e(assets_arr[i], j + "개");
+//                total+= j;
+//                reader.close();
+//            }
+            int j = 0;
+            for(int i=0; i<9; i++){
+                Log.e("assets_arr", assets_arr[i]);
+                inputStream = assetManager.open(assets_arr[i]);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    strarray[j] = line.split(";");
+                    Log.d("j :", String.valueOf(j));
+                    j++;
+                }
+                reader.close();
             }
-            reader.close();
+//            inputStream = assetManager.open("furniture.txt");
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+//            String line;
+//
+//            int i = 0;
+//            while ((line = reader.readLine()) != null) {
+//                strarray[i] = line.split(";");
+//                i++;
+//            }
+//            reader.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e ) {
@@ -107,8 +134,8 @@ public class Main extends Fragment {
         //0~39까지의 중복 없는 난수 11개 생성
         Set<Integer> set = new HashSet<>();
 
-        while (set.size() < 12) {
-            Double d = Math.random() * 112;
+        while (set.size() < 15) {
+            Double d = Math.random() * 5185;
             set.add(d.intValue());
         }
 
@@ -123,9 +150,9 @@ public class Main extends Fragment {
         Glide.with(getActivity()).load(strarray[list.get(5)][5]).into(binding.filterImage6);
 
         //like
-        Glide.with(getActivity()).load(strarray[list.get(0)][5]).into(binding.likeImage1);
-        Glide.with(getActivity()).load(strarray[list.get(1)][5]).into(binding.likeImage2);
-        Glide.with(getActivity()).load(strarray[list.get(2)][5]).into(binding.likeImage3);
+        Glide.with(getActivity()).load(strarray[list.get(12)][5]).into(binding.likeImage1);
+        Glide.with(getActivity()).load(strarray[list.get(13)][5]).into(binding.likeImage2);
+        Glide.with(getActivity()).load(strarray[list.get(14)][5]).into(binding.likeImage3);
 
 
         binding.titleRecently1.setText(strarray[list.get(0)][0]);
@@ -142,13 +169,13 @@ public class Main extends Fragment {
         binding.priceRecently5.setText(strarray[list.get(4)][1] + " ₩");
         binding.priceRecently6.setText(strarray[list.get(5)][1] + " ₩");
 
-        binding.likeTitle1.setText(strarray[list.get(0)][0]);
-        binding.likeTitle2.setText(strarray[list.get(1)][0]);
-        binding.likeTitle3.setText(strarray[list.get(2)][0]);
+        binding.likeTitle1.setText(strarray[list.get(12)][0]);
+        binding.likeTitle2.setText(strarray[list.get(13)][0]);
+        binding.likeTitle3.setText(strarray[list.get(14)][0]);
 
-        binding.likePrice1.setText(strarray[list.get(0)][1] +" ₩");
-        binding.likePrice2.setText(strarray[list.get(1)][1] +" ₩");
-        binding.likePrice3.setText(strarray[list.get(2)][1] +" ₩");
+        binding.likePrice1.setText(strarray[list.get(12)][1] +" ₩");
+        binding.likePrice2.setText(strarray[list.get(13)][1] +" ₩");
+        binding.likePrice3.setText(strarray[list.get(14)][1] +" ₩");
 
 
 
@@ -189,6 +216,54 @@ public class Main extends Fragment {
             }
         });
 
+    }
+
+// 가구 필터 눌렀을 때 로드되기
+    public void loadWithFilter(int n){
+        int size, from;
+        // 0부터 all ~
+        if(n==0) {size = 5185; from = 0;}
+        else if(n==1) {size = 714; from = 0;}
+        else if(n==2) {size = 666; from = 714;}
+        else if(n==3) {size = 680; from = 1380;}
+        else if(n==4) {size = 269; from = 2060;}
+        else if(n==5) {size = 667; from = 2329;}
+        else if(n==6) {size = 176; from = 2996;}
+        else if(n==7) {size = 688; from = 3172;}
+        else if(n==8) {size = 720; from = 3860;}
+        else if(n==9) {size = 605; from = 4580;}
+        else {size = 5185; from = 0;}
+
+        //0~39까지의 중복 없는 난수 11개 생성
+        Set<Integer> set = new HashSet<>();
+
+        while (set.size() < 15) {
+            Double d = Math.random() * size;
+            set.add(d.intValue());
+        }
+
+        list = new ArrayList<>(set);
+
+        Glide.with(getActivity()).load(strarray[from + list.get(0)][5]).into(binding.filterImage1);
+        Glide.with(getActivity()).load(strarray[from + list.get(1)][5]).into(binding.filterImage2);
+        Glide.with(getActivity()).load(strarray[from + list.get(2)][5]).into(binding.filterImage3);
+        Glide.with(getActivity()).load(strarray[from + list.get(3)][5]).into(binding.filterImage4);
+        Glide.with(getActivity()).load(strarray[from + list.get(4)][5]).into(binding.filterImage5);
+        Glide.with(getActivity()).load(strarray[from + list.get(5)][5]).into(binding.filterImage6);
+
+        binding.titleRecently1.setText(strarray[from + list.get(0)][0]);
+        binding.titleRecently2.setText(strarray[from + list.get(1)][0]);
+        binding.titleRecently3.setText(strarray[from + list.get(2)][0]);
+        binding.titleRecently4.setText(strarray[from + list.get(3)][0]);
+        binding.titleRecently5.setText(strarray[from + list.get(4)][0]);
+        binding.titleRecently6.setText(strarray[from + list.get(5)][0]);
+
+        binding.priceRecently1.setText(strarray[from + list.get(0)][1] + " ₩");
+        binding.priceRecently2.setText(strarray[from + list.get(1)][1] + " ₩");
+        binding.priceRecently3.setText(strarray[from + list.get(2)][1] + " ₩");
+        binding.priceRecently4.setText(strarray[from + list.get(3)][1] + " ₩");
+        binding.priceRecently5.setText(strarray[from + list.get(4)][1] + " ₩");
+        binding.priceRecently6.setText(strarray[from + list.get(5)][1] + " ₩");
     }
 
     @Override
@@ -382,7 +457,7 @@ public class Main extends Fragment {
             }
         });
 
-        RadioButton all, sofa, liveTable, kitTable, bed, chair, shelf, study, kids, interior;
+        RadioButton all, bed, chair, closet, curtain, desk, lamp, shelf, sofa, table;
         RadioButton all2, bns, bnc, dns, dnc;
         RadioButton[] rb_arr, rb_arr2;
 
@@ -390,21 +465,21 @@ public class Main extends Fragment {
         RadioGroup radioGroup2 = view.findViewById(R.id.radioGroup2);
         all = view.findViewById(R.id.radio_all);
         sofa = view.findViewById(R.id.radio_sofa);
-        liveTable = view.findViewById(R.id.radio_liveTable);
-        kitTable = view.findViewById(R.id.radio_kitTable);
+        table = view.findViewById(R.id.radio_table);
+        closet = view.findViewById(R.id.radio_closet);
         chair = view.findViewById(R.id.radio_chair);
         bed = view.findViewById(R.id.radio_bed);
         shelf = view.findViewById(R.id.radio_shelf);
-        study = view.findViewById(R.id.radio_study);
-        kids = view.findViewById(R.id.radio_kids);
-        interior = view.findViewById(R.id.radio_interior);
+        lamp = view.findViewById(R.id.radio_lamp);
+        desk = view.findViewById(R.id.radio_desk);
+        curtain = view.findViewById(R.id.radio_curtain);
         all2 = view.findViewById(R.id.filter_all);
         bns = view.findViewById(R.id.filter_bright_soft);
         bnc = view.findViewById(R.id.filter_bright_clear);
         dns = view.findViewById(R.id.filter_deep_soft);
         dnc = view.findViewById(R.id.filter_deep_clear);
 
-        rb_arr = new RadioButton[]{all, sofa, liveTable, kitTable, chair, bed, shelf, study, kids, interior};
+        rb_arr = new RadioButton[]{all, bed, chair, closet, curtain, desk, lamp, shelf, sofa, table};
         rb_arr2 = new RadioButton[]{all2, bns, bnc, dns, dnc};
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -420,42 +495,52 @@ public class Main extends Fragment {
                     case R.id.radio_all:
                         all.setTextColor(Color.parseColor("#FEFCF3"));
                         Toast.makeText(getContext(), "전체", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.radio_sofa:
-                        sofa.setTextColor(Color.parseColor("#FEFCF3"));
-                        Toast.makeText(getContext(), "소파", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.radio_liveTable:
-                        liveTable.setTextColor(Color.parseColor("#FEFCF3"));
-                        Toast.makeText(getContext(), "거실테이블", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.radio_kitTable:
-                        kitTable.setTextColor(Color.parseColor("#FEFCF3"));
-                        Toast.makeText(getContext(), "식탁", Toast.LENGTH_SHORT).show();
+                        loadWithFilter(0);
                         break;
                     case R.id.radio_bed:
                         bed.setTextColor(Color.parseColor("#FEFCF3"));
                         Toast.makeText(getContext(), "침대", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.radio_shelf:
-                        shelf.setTextColor(Color.parseColor("#FEFCF3"));
-                        Toast.makeText(getContext(), "선반", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.radio_study:
-                        study.setTextColor(Color.parseColor("#FEFCF3"));
-                        Toast.makeText(getContext(), "공부용", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.radio_kids:
-                        kids.setTextColor(Color.parseColor("#FEFCF3"));
-                        Toast.makeText(getContext(), "아이용", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.radio_interior:
-                        interior.setTextColor(Color.parseColor("#FEFCF3"));
-                        Toast.makeText(getContext(), "인테리어용", Toast.LENGTH_SHORT).show();
+                        loadWithFilter(1);
                         break;
                     case R.id.radio_chair:
                         chair.setTextColor(Color.parseColor("#FEFCF3"));
                         Toast.makeText(getContext(), "의자", Toast.LENGTH_SHORT).show();
+                        loadWithFilter(2);
+                        break;
+                    case R.id.radio_closet:
+                        closet.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "옷장", Toast.LENGTH_SHORT).show();
+                        loadWithFilter(3);
+                        break;
+                    case R.id.radio_curtain:
+                        curtain.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "커튼", Toast.LENGTH_SHORT).show();
+                        loadWithFilter(4);
+                        break;
+                    case R.id.radio_desk:
+                        desk.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "책상", Toast.LENGTH_SHORT).show();
+                        loadWithFilter(5);
+                        break;
+                    case R.id.radio_lamp:
+                        lamp.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "램프", Toast.LENGTH_SHORT).show();
+                        loadWithFilter(6);
+                        break;
+                    case R.id.radio_shelf:
+                        shelf.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "선반", Toast.LENGTH_SHORT).show();
+                        loadWithFilter(7);
+                        break;
+                    case R.id.radio_sofa:
+                        sofa.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "소파", Toast.LENGTH_SHORT).show();
+                        loadWithFilter(8);
+                        break;
+                    case R.id.radio_table:
+                        table.setTextColor(Color.parseColor("#FEFCF3"));
+                        Toast.makeText(getContext(), "테이블", Toast.LENGTH_SHORT).show();
+                        loadWithFilter(9);
                         break;
                 }
             }
