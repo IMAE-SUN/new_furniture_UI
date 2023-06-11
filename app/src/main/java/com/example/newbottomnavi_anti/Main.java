@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -72,14 +73,57 @@ public class Main extends Fragment {
 
         /**
          * <TODO>
-         *     1.coldsoft, warmhard... 비율에 따라 Main화면에 처음 추천해주기
-         *     2.그 이후 메인창에서 선택된 가구들은 -> 전체 좋아요 개수를 집계하고,좋아요 개수 n개 이상 됐다 하면
-         *     분위기 별 개수 / 전체 좋아요 개수로 비율을 상정, 다시 동적을 새로고침 될 수 있도록 하기.
-         *     3.여기서 예외처리로, 특정 분위기에 포함된 가구는 몇개 없으면 -> 주변 분위기것까지 포함해서 띄우기
+         *     메인창에서 선택된 가구들은 -> 전체 좋아요 개수를 집계하고,좋아요 개수 n개 이상 됐다 하면
+         *     tone 별 개수 / 전체 좋아요 개수로 비율을 상정, 다시 동적으로 새로고침 될 수 있도록 하기.
          * </TODO> :
          */
 
-        //침대 40개, 책상 36개, 소파36개
+        //firebase에서 prerate 선택 정보 가져오기
+        firebaseAuth = firebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        String uid = user.getUid();
+        Log.e("uid", uid);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("PreRate");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String like = snapshot.child("like").getValue(String.class);
+                    Log.e("like", String.valueOf(like));
+                    if (like.equals("1")) {
+                        coldSoftCount++;
+                    } else if (like.equals("2")) {
+                        warmHardCount++;
+                    } else if (like.equals("3")) {
+                        coldHardCount++;
+                    } else if (like.equals("4")) {
+                        warmSoftCount++;
+                    }
+                }
+
+                // prerate에서 선택한 각 tone의 개수 * 2 만큼 Main에서 띄우기 위함
+                coldSoftCount = coldSoftCount * 2;
+                warmHardCount = warmHardCount * 2;
+                coldHardCount = coldHardCount * 2;
+                warmSoftCount = warmSoftCount * 2;
+                Log.e("moodcount", "coldsoft * 2 : " + coldSoftCount);
+                Log.e("moodcount", "warmhard * 2 : " + warmHardCount);
+                Log.e("moodcount", "coldhard * 2 : " + coldHardCount);
+                Log.e("moodcount", "warmsoft * 2 : " + warmSoftCount);
+
+                onLoaded();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // 에러 처리
+            }
+        });
+
+
         strarray = new String[5185][6];
 
         String[] assets_arr = new String[]{"bed.txt", "chair.txt", "closet.txt", "curtain.txt", "desk.txt", "lamp.txt", "shelf.txt", "sofa.txt", "table.txt"};
@@ -127,111 +171,21 @@ public class Main extends Fragment {
                 }
                 reader.close();
             }
-//            inputStream = assetManager.open("furniture.txt");
-//            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-//            String line;
-//
-//            int i = 0;
-//            while ((line = reader.readLine()) != null) {
-//                strarray[i] = line.split(";");
-//                i++;
-//            }
-//            reader.close();
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e ) {
             e.printStackTrace();
         }
 
-        //0~39까지의 중복 없는 난수 11개 생성
-        Set<Integer> set = new HashSet<>();
+    }
 
-        while (set.size() < 15) {
-            Double d = Math.random() * 5185;
-            set.add(d.intValue());
-        }
-
-        list = new ArrayList<>(set);
-
-        //filter
-        Glide.with(getActivity()).load(strarray[list.get(0)][4]).into(binding.filterImage1);
-        Glide.with(getActivity()).load(strarray[list.get(1)][4]).into(binding.filterImage2);
-        Glide.with(getActivity()).load(strarray[list.get(2)][4]).into(binding.filterImage3);
-        Glide.with(getActivity()).load(strarray[list.get(3)][4]).into(binding.filterImage4);
-        Glide.with(getActivity()).load(strarray[list.get(4)][4]).into(binding.filterImage5);
-        Glide.with(getActivity()).load(strarray[list.get(5)][4]).into(binding.filterImage6);
-
-        //like
-        Glide.with(getActivity()).load(strarray[list.get(12)][4]).into(binding.likeImage1);
-        Glide.with(getActivity()).load(strarray[list.get(13)][4]).into(binding.likeImage2);
-        Glide.with(getActivity()).load(strarray[list.get(14)][4]).into(binding.likeImage3);
-
-
-        binding.titleRecently1.setText(strarray[list.get(0)][0]);
-        binding.titleRecently2.setText(strarray[list.get(1)][0]);
-        binding.titleRecently3.setText(strarray[list.get(2)][0]);
-        binding.titleRecently4.setText(strarray[list.get(3)][0]);
-        binding.titleRecently5.setText(strarray[list.get(4)][0]);
-        binding.titleRecently6.setText(strarray[list.get(5)][0]);
-
-        binding.priceRecently1.setText(strarray[list.get(0)][1] + " ₩");
-        binding.priceRecently2.setText(strarray[list.get(1)][1] + " ₩");
-        binding.priceRecently3.setText(strarray[list.get(2)][1] + " ₩");
-        binding.priceRecently4.setText(strarray[list.get(3)][1] + " ₩");
-        binding.priceRecently5.setText(strarray[list.get(4)][1] + " ₩");
-        binding.priceRecently6.setText(strarray[list.get(5)][1] + " ₩");
-
-        binding.likeTitle1.setText(strarray[list.get(12)][0]);
-        binding.likeTitle2.setText(strarray[list.get(13)][0]);
-        binding.likeTitle3.setText(strarray[list.get(14)][0]);
-
-        binding.likePrice1.setText(strarray[list.get(12)][1] +" ₩");
-        binding.likePrice2.setText(strarray[list.get(13)][1] +" ₩");
-        binding.likePrice3.setText(strarray[list.get(14)][1] +" ₩");
-
-
-
-        firebaseAuth = firebaseAuth.getInstance();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        String uid = user.getUid();
-        Log.e("uid", uid);
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-        //firebase에서 prerate 선택 정보 가져오기
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("PreRate");
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String like = snapshot.child("like").getValue(String.class);
-                    Log.e("like", String.valueOf(like));
-                    if (like.equals("1")) {
-                        coldSoftCount++;
-                    } else if (like.equals("2")) {
-                        warmHardCount++;
-                    } else if (like.equals("3")) {
-                        coldHardCount++;
-                    } else if (like.equals("4")) {
-                        warmSoftCount++;
-                    }
-                }
-                Log.e("value", "coldsoft :" + coldSoftCount);
-                Log.e("value", "warmhard" + warmHardCount);
-                Log.e("value", "coldhard" + coldHardCount);
-                Log.e("value", "warmsoft" + warmSoftCount);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // 에러 처리
-            }
-        });
-
+    private void onLoaded() {
+        displayMain();
     }
 
 // 가구 필터 눌렀을 때 로드되기
-    public void loadWithFilter(int n1, int n2){
+    public void loadWithFilter(int n1, int n2){ // n1 = 가구 카테고리, n2 = tone
         Log.e("loadWithFilter", "n1 : " + n1 + " n2 : " + n2);
         // 0부터 all ~
         if(n1==0) {size = 5185; from = 0;}
@@ -314,14 +268,98 @@ public class Main extends Fragment {
         binding.priceRecently6.setText(strarray[from + list.get(5)][1] + " ₩");
     }
 
+
+    public void displayMain() { //prerate 비율대로 첫 Main화면에 띄우는 함수
+
+        String[] coldSoft = {"Dreamy", "Charming", "Wholesome", "Tranqu", "Plain", "Fresh", "Emotional", "Fashionable", "Delicate", "Chic", "Agile", "Youthful", "Refreshing", "Clean", "Neat"};
+        String[] warmSoft = {"Colorful", "Casual", "Bright", "Enjoyable", "Pretty", "Childlike", "Sweet", "Soft", "Intimate", "Mild", "Graceful"};
+        String[] warmHard = {"Lively", "Bold", "Active", "Wild", "Extravagant", "Alluring", "Mellow", "Luxurious", "Trational", "Elaborate", "Heavy&Deep", "Calm"};
+        String[] coldHard = {"Modest", "Quite", "Dapper", "Dignified", "Noble", "Stylish", "Sporty", "Sharp", "Rational", "Masculine", "Metallic"};
+
+        // filterImage에 띄울 가구 8개 - 가져온 tone 비중에 맞게
+        List<Integer> indices = new ArrayList<>();
+
+        List<Integer> shuffledIndices = new ArrayList<>();
+        for (int i = 0; i < strarray.length; i++) {
+            shuffledIndices.add(i);
+        }
+        Collections.shuffle(shuffledIndices);
+
+        for (int i : shuffledIndices) {
+            String atmosphere = strarray[i][5];
+            Log.e("atmos", strarray[i][5]);
+
+            if (Arrays.asList(coldSoft).contains(atmosphere) && coldSoftCount > 0) {
+                Log.e("atmos", "in");
+                indices.add(i);
+                coldSoftCount--;
+            } else if (Arrays.asList(warmHard).contains(atmosphere) && warmHardCount > 0) {
+                indices.add(i);
+                warmHardCount--;
+            } else if (Arrays.asList(coldHard).contains(atmosphere) && coldHardCount > 0) {
+                indices.add(i);
+                coldHardCount--;
+            } else if (Arrays.asList(warmSoft).contains(atmosphere) && warmSoftCount > 0) {
+                indices.add(i);
+                warmSoftCount--;
+            }
+            if (coldSoftCount == 0 && warmHardCount == 0 && coldHardCount == 0 && warmSoftCount == 0) {
+                break;
+            }
+        }
+
+        Glide.with(getActivity()).load(strarray[indices.get(0)][4]).into(binding.filterImage1);
+        Glide.with(getActivity()).load(strarray[indices.get(1)][4]).into(binding.filterImage2);
+        Glide.with(getActivity()).load(strarray[indices.get(2)][4]).into(binding.filterImage3);
+        Glide.with(getActivity()).load(strarray[indices.get(3)][4]).into(binding.filterImage4);
+        Glide.with(getActivity()).load(strarray[indices.get(4)][4]).into(binding.filterImage5);
+        Glide.with(getActivity()).load(strarray[indices.get(5)][4]).into(binding.filterImage6);
+        Glide.with(getActivity()).load(strarray[indices.get(6)][4]).into(binding.filterImage7);
+        Glide.with(getActivity()).load(strarray[indices.get(7)][4]).into(binding.filterImage8);
+
+        binding.titleRecently1.setText(strarray[indices.get(0)][0]);
+        binding.titleRecently2.setText(strarray[indices.get(1)][0]);
+        binding.titleRecently3.setText(strarray[indices.get(2)][0]);
+        binding.titleRecently4.setText(strarray[indices.get(3)][0]);
+        binding.titleRecently5.setText(strarray[indices.get(4)][0]);
+        binding.titleRecently6.setText(strarray[indices.get(5)][0]);
+        binding.titleRecently7.setText(strarray[indices.get(6)][0]);
+        binding.titleRecently8.setText(strarray[indices.get(7)][0]);
+
+        binding.priceRecently1.setText(strarray[indices.get(0)][1] + " ₩");
+        binding.priceRecently2.setText(strarray[indices.get(1)][1] + " ₩");
+        binding.priceRecently3.setText(strarray[indices.get(2)][1] + " ₩");
+        binding.priceRecently4.setText(strarray[indices.get(3)][1] + " ₩");
+        binding.priceRecently5.setText(strarray[indices.get(4)][1] + " ₩");
+        binding.priceRecently6.setText(strarray[indices.get(5)][1] + " ₩");
+        binding.priceRecently7.setText(strarray[indices.get(6)][1] + " ₩");
+        binding.priceRecently8.setText(strarray[indices.get(7)][1] + " ₩");
+
+        //like
+//        Glide.with(getActivity()).load(strarray[list.get(12)][4]).into(binding.likeImage1);
+//        Glide.with(getActivity()).load(strarray[list.get(13)][4]).into(binding.likeImage2);
+//        Glide.with(getActivity()).load(strarray[list.get(14)][4]).into(binding.likeImage3);
+//
+//        binding.likeTitle1.setText(strarray[list.get(12)][0]);
+//        binding.likeTitle2.setText(strarray[list.get(13)][0]);
+//        binding.likeTitle3.setText(strarray[list.get(14)][0]);
+//
+//        binding.likePrice1.setText(strarray[list.get(12)][1] +" ₩");
+//        binding.likePrice2.setText(strarray[list.get(13)][1] +" ₩");
+//        binding.likePrice3.setText(strarray[list.get(14)][1] +" ₩");
+
+    }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentMainBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         mainFragment = new Main();
-        load();
 
+
+        load();
         Log.e("메인", "메인 들어옴");
 
         firebaseAuth = firebaseAuth.getInstance();
