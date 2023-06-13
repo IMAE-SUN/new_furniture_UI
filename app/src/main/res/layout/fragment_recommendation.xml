@@ -325,30 +325,12 @@
                             android:weightSum="100">
 
                             <CheckBox
-                                android:id="@+id/cb_question_2_sofa"
+                                android:id="@+id/cb_question_2_bed"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="25"
                                 android:fontFamily="@font/notosanskr_medium"
-                                android:text="소파"
-                                android:textColor="@color/fur_darkNavy" />
-
-                            <CheckBox
-                                android:id="@+id/cb_question_2_sofatable"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="25"
-                                android:fontFamily="@font/notosanskr_medium"
-                                android:text="거실테이블"
-                                android:textColor="@color/fur_darkNavy" />
-
-                            <CheckBox
-                                android:id="@+id/cb_question_2_dining"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="25"
-                                android:fontFamily="@font/notosanskr_medium"
-                                android:text="식탁"
+                                android:text="침대"
                                 android:textColor="@color/fur_darkNavy" />
 
                             <CheckBox
@@ -361,12 +343,30 @@
                                 android:textColor="@color/fur_darkNavy" />
 
                             <CheckBox
-                                android:id="@+id/cb_question_2_bed"
+                                android:id="@+id/cb_question_2_closet"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="25"
                                 android:fontFamily="@font/notosanskr_medium"
-                                android:text="침대"
+                                android:text="옷장"
+                                android:textColor="@color/fur_darkNavy" />
+
+                            <CheckBox
+                                android:id="@+id/cb_question_2_curtain"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="25"
+                                android:fontFamily="@font/notosanskr_medium"
+                                android:text="커튼"
+                                android:textColor="@color/fur_darkNavy" />
+
+                            <CheckBox
+                                android:id="@+id/cb_question_2_desk"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="25"
+                                android:fontFamily="@font/notosanskr_medium"
+                                android:text="책상"
                                 android:textColor="@color/fur_darkNavy" />
                         </LinearLayout>
 
@@ -378,6 +378,15 @@
                             android:weightSum="100">
 
                             <CheckBox
+                                android:id="@+id/cb_question_2_lamp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="25"
+                                android:fontFamily="@font/notosanskr_medium"
+                                android:text="램프"
+                                android:textColor="@color/fur_darkNavy" />
+
+                            <CheckBox
                                 android:id="@+id/cb_question_2_shelf"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -387,30 +396,21 @@
                                 android:textColor="@color/fur_darkNavy" />
 
                             <CheckBox
-                                android:id="@+id/cb_question_2_study"
+                                android:id="@+id/cb_question_2_sofa"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="25"
                                 android:fontFamily="@font/notosanskr_medium"
-                                android:text="공부용"
+                                android:text="소파"
                                 android:textColor="@color/fur_darkNavy" />
 
                             <CheckBox
-                                android:id="@+id/cb_question_2_child"
+                                android:id="@+id/cb_question_2_table"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="25"
                                 android:fontFamily="@font/notosanskr_medium"
-                                android:text="아이용"
-                                android:textColor="@color/fur_darkNavy" />
-
-                            <CheckBox
-                                android:id="@+id/cb_question_2_interior"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="25"
-                                android:fontFamily="@font/notosanskr_medium"
-                                android:text="인테리어소품"
+                                android:text="테이블"
                                 android:textColor="@color/fur_darkNavy" />
                         </LinearLayout>
                     </LinearLayout>

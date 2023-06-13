@@ -7,6 +7,7 @@ import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.N
 import static java.util.Arrays.stream;
 
 import java.util.Arrays;
+import java.util.Map;
 import java.util.stream.Stream;
 
 import android.Manifest;
@@ -92,7 +93,7 @@ public class Recommendation extends Fragment {
     Button recommend_btn;
     ImageButton refresh_btn;
     LinearLayout recommend_layout;
-    String selectedCbText = NULL;
+    String selectedCbText = "";
     String[][] strarray;
     List<Integer> list;
     int sum = 0;
@@ -250,13 +251,13 @@ public class Recommendation extends Fragment {
 
         CheckBox cb1 = view.findViewById(R.id.cb_question_2_bed);
         CheckBox cb2 = view.findViewById(R.id.cb_question_2_chair);
-        CheckBox cb3 = view.findViewById(R.id.cb_question_2_child);
-        CheckBox cb4 = view.findViewById(R.id.cb_question_2_dining);
-        CheckBox cb5 = view.findViewById(R.id.cb_question_2_interior);
-        CheckBox cb6 = view.findViewById(R.id.cb_question_2_shelf);
-        CheckBox cb7 = view.findViewById(R.id.cb_question_2_sofa);
-        CheckBox cb8 = view.findViewById(R.id.cb_question_2_sofatable);
-        CheckBox cb9 = view.findViewById(R.id.cb_question_2_study);
+        CheckBox cb3 = view.findViewById(R.id.cb_question_2_closet);
+        CheckBox cb4 = view.findViewById(R.id.cb_question_2_curtain);
+        CheckBox cb5 = view.findViewById(R.id.cb_question_2_desk);
+        CheckBox cb6 = view.findViewById(R.id.cb_question_2_lamp);
+        CheckBox cb7 = view.findViewById(R.id.cb_question_2_shelf);
+        CheckBox cb8 = view.findViewById(R.id.cb_question_2_sofa);
+        CheckBox cb9 = view.findViewById(R.id.cb_question_2_table);
 
 
 //        카메라, 갤러리 버튼
@@ -364,37 +365,37 @@ public class Recommendation extends Fragment {
 
 
                 if (cb1.isChecked()) {
-                    selectedCbText += cb1.getText().toString() + " ";
+                    selectedCbText += "1 ";
                 }
                 if (cb2.isChecked()) {
-                    selectedCbText += cb2.getText().toString() + " ";
+                    selectedCbText += "2 ";
                 }
                 if (cb3.isChecked()) {
-                    selectedCbText += cb3.getText().toString() + " ";
+                    selectedCbText += "3 ";
                 }
                 if (cb4.isChecked()) {
-                    selectedCbText += cb4.getText().toString() + " ";
+                    selectedCbText += "4 ";
                 }
                 if (cb5.isChecked()) {
-                    selectedCbText += cb5.getText().toString() + " ";
+                    selectedCbText += "5 ";
                 }
                 if (cb6.isChecked()) {
-                    selectedCbText += cb6.getText().toString() + " ";
+                    selectedCbText += "6 ";
                 }
                 if (cb7.isChecked()) {
-                    selectedCbText += cb7.getText().toString() + " ";
+                    selectedCbText += "7 ";
                 }
                 if (cb8.isChecked()) {
-                    selectedCbText += cb8.getText().toString() + " ";
+                    selectedCbText += "8 ";
                 }
                 if (cb9.isChecked()) {
-                    selectedCbText += cb9.getText().toString() + " ";
+                    selectedCbText += "9 ";
                 }
 
                 Toast.makeText(getContext(), selectedCbText, Toast.LENGTH_SHORT).show();
                 Log.e("Final CheckBox", selectedCbText);
 
-                if (selectedCbText == NULL) {
+                if (selectedCbText == null) {
                     Toast.makeText(getContext(), "모든 옵션을 선택해주세요", Toast.LENGTH_SHORT).show();
                 } else {
                     connect();
@@ -558,14 +559,17 @@ public class Recommendation extends Fragment {
         reference.child(uid).child("Preference").child("Mood").setValue(RadioText);
 
 //                가구 전달
-        HashMap<Object, String> hashMap = new HashMap<>();
-        String[] temp = selectedCbText.split(" ");
-        int n = temp.length;
-        for (int i = 0; i < n; i++) {
-            Log.e("CheckBox", temp[i]);
-            hashMap.put("furniture", temp[i]);
-            reference.child(uid).child("Preference").child("Furniture").push().setValue(hashMap);
+        if (selectedCbText != null) {
+            String[] temp = selectedCbText.split(" ");
+            int n = temp.length;
+            for (int i = 0; i < n; i++) {
+                Log.e("CheckBox", temp[i]);
+                Map<String, String> hashMap = new HashMap<>();
+                hashMap.put("furniture", temp[i]);
+                reference.child(uid).child("Preference").child("Furniture").push().setValue(hashMap);
+            }
         }
+
 
 //                퍼센트 전달
         reference.child(uid).child("Preference").child("seekbar").setValue(RadioText2);
