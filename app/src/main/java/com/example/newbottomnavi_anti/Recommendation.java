@@ -4,6 +4,11 @@ import static android.app.Activity.RESULT_OK;
 
 import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 
+import static java.util.Arrays.stream;
+
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -68,6 +73,7 @@ import java.nio.charset.Charset;
 import java.security.Permission;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -77,6 +83,7 @@ public class Recommendation extends Fragment {
     public Recommendation() {
         // Required empty public constructor
     }
+
     Recommendation recomFragment;
     private FragmentRecommendationBinding binding;
     FirebaseAuth firebaseAuth;
@@ -86,12 +93,14 @@ public class Recommendation extends Fragment {
     ImageButton refresh_btn;
     LinearLayout recommend_layout;
     String selectedCbText = NULL;
-    String [][] strarray;
+    String[][] strarray;
     List<Integer> list;
     int sum = 0;
     int max = 4;
+    public String category = new String();
     public String tone = new String();
     public String color = new String();
+    public int numOfCat;
     public int[][] hsv = new int[3][3];
     public String histo_similarity = new String();
     private static final int MY_PERMISSION_CAMERA = 1111;
@@ -179,7 +188,7 @@ public class Recommendation extends Fragment {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
 //                String RadioText;
-                switch (checkedId){
+                switch (checkedId) {
                     case R.id.radiobutton1:
                         Toast.makeText(getContext(), rb1.getText().toString(), Toast.LENGTH_SHORT).show();
                         Log.e("Radio Button1", rb1.getText().toString());
@@ -209,7 +218,7 @@ public class Recommendation extends Fragment {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
 //                String RadioText;
-                switch (checkedId){
+                switch (checkedId) {
                     case R.id._seekbar_1_randioButton:
                         Toast.makeText(getContext(), rb5.getText().toString(), Toast.LENGTH_SHORT).show();
                         Log.e("Radio Button1", rb5.getText().toString());
@@ -288,10 +297,10 @@ public class Recommendation extends Fragment {
         more_opt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(more_opt_layout.getVisibility() == View.GONE){
+                if (more_opt_layout.getVisibility() == View.GONE) {
                     more_opt_layout.setVisibility(View.VISIBLE);
                     more_opt.setText("접기");
-                }else{
+                } else {
                     more_opt_layout.setVisibility(View.GONE);
                     more_opt.setText("더보기");
                 }
@@ -354,41 +363,40 @@ public class Recommendation extends Fragment {
                 Log.e("Final Radio Button", RadioText);
 
 
-                if(cb1.isChecked()){
+                if (cb1.isChecked()) {
                     selectedCbText += cb1.getText().toString() + " ";
                 }
-                if(cb2.isChecked()){
+                if (cb2.isChecked()) {
                     selectedCbText += cb2.getText().toString() + " ";
                 }
-                if(cb3.isChecked()){
+                if (cb3.isChecked()) {
                     selectedCbText += cb3.getText().toString() + " ";
                 }
-                if(cb4.isChecked()){
+                if (cb4.isChecked()) {
                     selectedCbText += cb4.getText().toString() + " ";
                 }
-                if(cb5.isChecked()){
+                if (cb5.isChecked()) {
                     selectedCbText += cb5.getText().toString() + " ";
                 }
-                if(cb6.isChecked()){
+                if (cb6.isChecked()) {
                     selectedCbText += cb6.getText().toString() + " ";
                 }
-                if(cb7.isChecked()){
+                if (cb7.isChecked()) {
                     selectedCbText += cb7.getText().toString() + " ";
                 }
-                if(cb8.isChecked()){
+                if (cb8.isChecked()) {
                     selectedCbText += cb8.getText().toString() + " ";
                 }
-                if(cb9.isChecked()){
+                if (cb9.isChecked()) {
                     selectedCbText += cb9.getText().toString() + " ";
                 }
 
                 Toast.makeText(getContext(), selectedCbText, Toast.LENGTH_SHORT).show();
                 Log.e("Final CheckBox", selectedCbText);
 
-                if (selectedCbText==NULL){
+                if (selectedCbText == NULL) {
                     Toast.makeText(getContext(), "모든 옵션을 선택해주세요", Toast.LENGTH_SHORT).show();
-                }
-                else{
+                } else {
                     connect();
                 }
             }
@@ -452,7 +460,6 @@ public class Recommendation extends Fragment {
             }
         }
     }
-
 
 
     //        카메라 계속 오류나서 잠시 주석처리 함
@@ -540,7 +547,7 @@ public class Recommendation extends Fragment {
     private Bitmap img;
 
     public void connect() { // 서버 socketHost.py와 연결
-
+        firebaseAuth = firebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
         String uid = user.getUid();
 
@@ -554,7 +561,7 @@ public class Recommendation extends Fragment {
         HashMap<Object, String> hashMap = new HashMap<>();
         String[] temp = selectedCbText.split(" ");
         int n = temp.length;
-        for (int i=0; i<n; i++){
+        for (int i = 0; i < n; i++) {
             Log.e("CheckBox", temp[i]);
             hashMap.put("furniture", temp[i]);
             reference.child(uid).child("Preference").child("Furniture").push().setValue(hashMap);
@@ -564,7 +571,7 @@ public class Recommendation extends Fragment {
         reference.child(uid).child("Preference").child("seekbar").setValue(RadioText2);
 
 
-
+        //yolo 사용하는 서버와 연결
         mHandler = new Handler();
         BitmapDrawable drawable = (BitmapDrawable) img_wys_1.getDrawable();
         img = drawable.getBitmap();
@@ -574,9 +581,7 @@ public class Recommendation extends Fragment {
                 ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
                 img.compress(Bitmap.CompressFormat.PNG, 100, byteArray);
                 byte[] bytes = byteArray.toByteArray();
-                String color = new String();
-                String histo_similarity = new String();
-                int data_len=0;
+                int data_len = 0;
                 byte[] img_result;
                 // 서버 접속
                 try {
@@ -606,16 +611,27 @@ public class Recommendation extends Fragment {
                     dos.write(bytes);
                     dos.flush();
 
+                    category = "0 1 4";
+                    numOfCat = 3;
+                    dos.writeUTF(category);
+                    dos.flush();
+
                     color = readString(dis);
-                    Log.w("color done", color);
                     tone = readString(dis);
-                    for(int i=0;i<3;i++)
-                    {
-                        for(int j =0;j<3;j++)
-                            hsv[i][j] =  Integer.parseInt(readString(dis));
+                    Log.w("color,tone done", color);
+
+                    int[][] recByCat = new int[numOfCat][10];
+                    for (int i = 0; i < numOfCat; i++) {
+                        String[] strTmp = new String[10];
+                        strTmp = readString(dis).split(" ");
+                        for (int j = 0; j < 10; j++) {
+                            recByCat[i][j] = Integer.parseInt(strTmp[j]);
+                        }
                     }
-                    histo_similarity = readString(dis);
-                    Log.w("histo done", histo_similarity);
+
+                    //histo_similarity = readString(dis);
+                    //Log.w("histo done", histo_similarity);
+
                     //data_len = dis.readInt();
                     //img_result =InputStreamToByteArray(data_len,dis);
                     //img_path = readString(dis);
@@ -634,7 +650,7 @@ public class Recommendation extends Fragment {
         }
     }
 
-    public String readString (DataInputStream dis) throws IOException{
+    public String readString(DataInputStream dis) throws IOException {
         int length = dis.readInt();
         byte[] data = new byte[length];
         dis.readFully(data, 0, length);
@@ -643,17 +659,17 @@ public class Recommendation extends Fragment {
     }
 
     public byte[] InputStreamToByteArray(int data_len, DataInputStream in) {
-        int loop = (int)(data_len/1024);
-        System.out.println("loop"+Integer.toString(loop));
+        int loop = (int) (data_len / 1024);
+        System.out.println("loop" + Integer.toString(loop));
         byte[] resbytes = new byte[data_len];
         int offset = 0;
         try {
-            for (int i=0; i<loop; i++){
+            for (int i = 0; i < loop; i++) {
                 in.readFully(resbytes, offset, 1024);
                 offset += 1024;
             }
-            in.readFully(resbytes, offset, data_len-(loop*1024));
-        } catch (IOException e){
+            in.readFully(resbytes, offset, data_len - (loop * 1024));
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return resbytes;
