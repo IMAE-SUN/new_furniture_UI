@@ -22,22 +22,6 @@
 
 
     </RelativeLayout>
-    <RadioGroup
-        android:id="@+id/RadioGroup_temp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RadioButton
-            android:id="@+id/rb_temp1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1"/>
-        <RadioButton
-            android:id="@+id/rb_temp2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2"/>
-    </RadioGroup>
-
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -96,14 +80,6 @@
                                     android:src="@drawable/ic_person_add_black_24dp"
                                     android:layout_weight="1"/>
 
-                                <RadioButton
-                                    android:id="@+id/rb_ikea1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="ikea 1"
-                                    android:textColor="@color/butter_navy"
-                                    android:layout_marginTop="5dp"
-                                    android:textSize="15dp" />
                                 <CheckBox
                                     android:id="@+id/cb_ikea_1"
                                     android:layout_width="wrap_content"
@@ -145,14 +121,7 @@
                                     android:scaleType="centerCrop"
                                     android:src="@drawable/ic_person_add_black_24dp"
                                     android:layout_weight="1"/>
-                                <RadioButton
-                                    android:id="@+id/rb_ikea2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="ikea 2"
-                                    android:textColor="@color/butter_navy"
-                                    android:layout_marginTop="5dp"
-                                    android:textSize="15dp" />
+
                                 <CheckBox
                                     android:id="@+id/cb_ikea_2"
                                     android:layout_width="wrap_content"
@@ -204,14 +173,7 @@
                                     android:scaleType="centerCrop"
                                     android:src="@drawable/ic_person_add_black_24dp"
                                     android:layout_weight="1"/>
-                                <RadioButton
-                                    android:id="@+id/rb_ikea3"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="ikea 3"
-                                    android:textColor="@color/butter_navy"
-                                    android:layout_marginTop="5dp"
-                                    android:textSize="15dp" />
+
                                 <CheckBox
                                     android:id="@+id/cb_ikea_3"
                                     android:layout_width="wrap_content"
@@ -254,14 +216,7 @@
                                     android:scaleType="centerCrop"
                                     android:src="@drawable/ic_person_add_black_24dp"
                                     android:layout_weight="1"/>
-                                <RadioButton
-                                    android:id="@+id/rb_ikea4"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="ikea 4"
-                                    android:textColor="@color/butter_navy"
-                                    android:layout_marginTop="5dp"
-                                    android:textSize="15dp" />
+
                                 <CheckBox
                                     android:id="@+id/cb_ikea_4"
                                     android:layout_width="wrap_content"
