@@ -561,8 +561,8 @@ public class Recommendation extends Fragment {
 //                가구 전달
         if (selectedCbText != null) {
             String[] temp = selectedCbText.split(" ");
-            int n = temp.length;
-            for (int i = 0; i < n; i++) {
+            numOfCat = temp.length;
+            for (int i = 0; i < numOfCat; i++) {
                 Log.e("CheckBox", temp[i]);
                 Map<String, String> hashMap = new HashMap<>();
                 hashMap.put("furniture", temp[i]);
@@ -615,9 +615,7 @@ public class Recommendation extends Fragment {
                     dos.write(bytes);
                     dos.flush();
 
-                    category = "0 1 4";
-                    numOfCat = 3;
-                    dos.writeUTF(category);
+                    dos.writeUTF(selectedCbText);
                     dos.flush();
 
                     color = readString(dis);
