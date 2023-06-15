@@ -93,7 +93,6 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        //하단바에 가림.
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -104,7 +103,8 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="?attr/actionBarSize">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -402,7 +402,7 @@
                                             android:layout_height="36dp"
                                             android:layout_alignParentLeft="true"
                                             android:layout_centerVertical="true"
-                                            android:src="@drawable/ic_star_yellow_24dp" />
+                                            android:src="@drawable/ic_baseline_star_border_24" />
 
                                         <TextView
                                             android:id="@+id/filter_detail1"
@@ -488,7 +488,7 @@
                                             android:layout_height="36dp"
                                             android:layout_alignParentLeft="true"
                                             android:layout_centerVertical="true"
-                                            android:src="@drawable/ic_star_yellow_24dp" />
+                                            android:src="@drawable/ic_baseline_star_border_24" />
 
                                         <TextView
                                             android:id="@+id/filter_detail2"
@@ -579,7 +579,7 @@
                                             android:layout_height="36dp"
                                             android:layout_alignParentLeft="true"
                                             android:layout_centerVertical="true"
-                                            android:src="@drawable/ic_star_yellow_24dp" />
+                                            android:src="@drawable/ic_baseline_star_border_24" />
 
                                         <TextView
                                             android:id="@+id/filter_detail3"
@@ -665,7 +665,7 @@
                                             android:layout_height="36dp"
                                             android:layout_alignParentLeft="true"
                                             android:layout_centerVertical="true"
-                                            android:src="@drawable/ic_star_yellow_24dp" />
+                                            android:src="@drawable/ic_baseline_star_border_24" />
 
                                         <TextView
                                             android:id="@+id/filter_detail4"
@@ -756,7 +756,7 @@
                                             android:layout_height="36dp"
                                             android:layout_alignParentLeft="true"
                                             android:layout_centerVertical="true"
-                                            android:src="@drawable/ic_star_yellow_24dp" />
+                                            android:src="@drawable/ic_baseline_star_border_24" />
 
                                         <TextView
                                             android:id="@+id/filter_detail5"
@@ -842,7 +842,7 @@
                                             android:layout_height="36dp"
                                             android:layout_alignParentLeft="true"
                                             android:layout_centerVertical="true"
-                                            android:src="@drawable/ic_star_yellow_24dp" />
+                                            android:src="@drawable/ic_baseline_star_border_24" />
 
                                         <TextView
                                             android:id="@+id/filter_detail6"
@@ -933,7 +933,7 @@
                                             android:layout_height="36dp"
                                             android:layout_alignParentLeft="true"
                                             android:layout_centerVertical="true"
-                                            android:src="@drawable/ic_star_yellow_24dp" />
+                                            android:src="@drawable/ic_baseline_star_border_24" />
 
                                         <TextView
                                             android:id="@+id/filter_detail7"
@@ -1019,7 +1019,7 @@
                                             android:layout_height="36dp"
                                             android:layout_alignParentLeft="true"
                                             android:layout_centerVertical="true"
-                                            android:src="@drawable/ic_star_yellow_24dp" />
+                                            android:src="@drawable/ic_baseline_star_border_24" />
 
                                         <TextView
                                             android:id="@+id/filter_detail8"
@@ -1700,22 +1700,6 @@
                                             android:textStyle="bold"
                                             android:includeFontPadding="false"/>
 
-                                        <Button
-                                            android:id="@+id/like_star_1"
-                                            android:layout_width="70dp"
-                                            android:layout_height="40dp"
-                                            android:layout_weight="10"
-                                            android:drawableLeft="@drawable/ic_star_yellow_24dp"
-                                            android:fontFamily="@font/notosanskr_medium"
-                                            android:text="4.5"
-                                            android:layout_marginTop="3dp"
-                                            android:textAlignment="textEnd"
-                                            android:background="#00ff0000"
-                                            android:textColor="#ffc32d"
-                                            android:textSize="14sp"
-                                            android:textStyle="bold"
-                                            android:includeFontPadding="false"/>
-
                                     </LinearLayout>
 
                                     <ImageView
@@ -1792,22 +1776,6 @@
                                             android:textSize="20sp"
                                             android:textStyle="bold"
                                             android:includeFontPadding="false"/>
-
-                                        <Button
-                                        android:id="@+id/like_star_2"
-                                        android:layout_width="70dp"
-                                        android:layout_height="40dp"
-                                        android:layout_weight="10"
-                                        android:drawableLeft="@drawable/ic_star_yellow_24dp"
-                                        android:fontFamily="@font/notosanskr_medium"
-                                        android:text="4.5"
-                                        android:layout_marginTop="3dp"
-                                        android:textAlignment="textEnd"
-                                        android:background="#00ff0000"
-                                        android:textColor="#ffc32d"
-                                        android:textSize="14sp"
-                                        android:textStyle="bold"
-                                        android:includeFontPadding="false"/>
 
                                     </LinearLayout>
 
@@ -1886,20 +1854,6 @@
                                             android:textColor="@color/fur_darkNavy"
                                             android:textSize="18sp"
                                             android:textStyle="bold" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="10"
-                                            android:drawableLeft="@drawable/ic_star_yellow_24dp"
-                                            android:fontFamily="@font/notosanskr_medium"
-                                            android:layout_marginTop="3dp"
-                                            android:text="4.5"
-                                            android:textAlignment="textEnd"
-                                            android:textColor="#ffc32d"
-                                            android:textSize="14sp"
-                                            android:textStyle="bold"
-                                            android:includeFontPadding="false"/>
 
                                     </LinearLayout>
 

@@ -360,8 +360,8 @@ public class Recommendation extends Fragment {
                 //추천하기 누르면 카메라, 갤러리 버튼 없어짐
                 recommend_layout.setVisibility(View.GONE);
 
-                Toast.makeText(getContext(), RadioText, Toast.LENGTH_SHORT).show();
-                Log.e("Final Radio Button", RadioText);
+                //Toast.makeText(getContext(), RadioText, Toast.LENGTH_SHORT).show();
+                //Log.e("Final Radio Button", RadioText);
 
 
                 if (cb1.isChecked()) {
@@ -628,6 +628,7 @@ public class Recommendation extends Fragment {
                         strTmp = readString(dis).split(" ");
                         for (int j = 0; j < 10; j++) {
                             recByCat[i][j] = Integer.parseInt(strTmp[j]);
+                            Log.e("rec", String.valueOf(recByCat[i][j]));
                         }
                     }
 

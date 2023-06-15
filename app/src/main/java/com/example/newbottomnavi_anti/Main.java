@@ -750,9 +750,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -761,6 +759,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -780,7 +779,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -797,18 +795,22 @@ public class Main extends Fragment {
     private FragmentMainBinding binding;
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference databaseReference = database.getReference();
+    private DatabaseReference databaseReference = database.getReference("Users");
     FirebaseAuth firebaseAuth;
     String [][] strarray;
     List<Integer> list;
     String preRate, like;
     int from = 0, size = 5185;
     int n1 = 0, n2 = 0;
+    String uid;
 
     int coldSoftCount = 0;
     int warmHardCount = 0;
     int coldHardCount = 0;
     int warmSoftCount = 0;
+
+    List<Integer> indices = new ArrayList<>();
+
 
     public Main() {
         // Required empty public constructor
@@ -826,7 +828,7 @@ public class Main extends Fragment {
         //firebase에서 prerate 선택 정보 가져오기
         firebaseAuth = firebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        String uid = user.getUid();
+        uid = user.getUid();
         Log.e("uid", uid);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -867,7 +869,6 @@ public class Main extends Fragment {
                 // 에러 처리
             }
         });
-
 
         strarray = new String[5185][6];
 
@@ -1022,7 +1023,7 @@ public class Main extends Fragment {
         String[] coldHard = {"Modest", "Quite", "Dapper", "Dignified", "Noble", "Stylish", "Sporty", "Sharp", "Rational", "Masculine", "Metallic"};
 
         // filterImage에 띄울 가구 8개 - 가져온 tone 비중에 맞게
-        List<Integer> indices = new ArrayList<>();
+
 
         List<Integer> shuffledIndices = new ArrayList<>();
         for (int i = 0; i < strarray.length; i++) {
@@ -1080,16 +1081,27 @@ public class Main extends Fragment {
         binding.priceRecently7.setText(strarray[indices.get(6)][1] + " ₩");
         binding.priceRecently8.setText(strarray[indices.get(7)][1] + " ₩");
 
+        // 좋아요 누르면
+        setupLikeButton(binding.filterStar1, uid, String.valueOf(indices.get(0)),0);
+        setupLikeButton(binding.filterStar2, uid, String.valueOf(indices.get(1)),1);
+        setupLikeButton(binding.filterStar3, uid, String.valueOf(indices.get(2)),2);
+        setupLikeButton(binding.filterStar4, uid, String.valueOf(indices.get(3)),3);
+        setupLikeButton(binding.filterStar5, uid, String.valueOf(indices.get(4)),4);
+        setupLikeButton(binding.filterStar6, uid, String.valueOf(indices.get(5)),5);
+        setupLikeButton(binding.filterStar7, uid, String.valueOf(indices.get(6)),6);
+        setupLikeButton(binding.filterStar8, uid, String.valueOf(indices.get(7)),7);
+
+
         //like
-//        Glide.with(getActivity()).load(strarray[list.get(12)][4]).into(binding.likeImage1);
+//        Glide.with(getActivity()).load(strarray[indices.get(0)][4]).into(binding.likeImage1);
 //        Glide.with(getActivity()).load(strarray[list.get(13)][4]).into(binding.likeImage2);
 //        Glide.with(getActivity()).load(strarray[list.get(14)][4]).into(binding.likeImage3);
 //
-//        binding.likeTitle1.setText(strarray[list.get(12)][0]);
+//        binding.likeTitle1.setText(strarray[indices.get(0)][0]);
 //        binding.likeTitle2.setText(strarray[list.get(13)][0]);
 //        binding.likeTitle3.setText(strarray[list.get(14)][0]);
 //
-//        binding.likePrice1.setText(strarray[list.get(12)][1] +" ₩");
+//        binding.likePrice1.setText(strarray[indices.get(0)][1] +" ₩");
 //        binding.likePrice2.setText(strarray[list.get(13)][1] +" ₩");
 //        binding.likePrice3.setText(strarray[list.get(14)][1] +" ₩");
 
@@ -1138,6 +1150,8 @@ public class Main extends Fragment {
 //                Navigation.findNavController(getView()).navigate(action3);
 //            }
 //        });
+
+
 
         Button btn_more_likes = view.findViewById(R.id.btn_more_likes);
         HorizontalScrollView hsv = view.findViewById(R.id.horizontalScrollView);
@@ -1207,39 +1221,39 @@ public class Main extends Fragment {
             }
         });
 
-        Button st1 = view.findViewById(R.id.like_star_1);
+       // Button st1 = view.findViewById(R.id.like_star_1);
         FirebaseUser user = firebaseAuth.getCurrentUser();
         String uid = user.getUid();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("Users");
-
-        st1.setOnClickListener(new View.OnClickListener() {
-            Boolean flag = false;
-            @Override
-            public void onClick(View v) {
-
-                String fur = strarray[list.get(0)][0];
-                Toast.makeText(getContext(), fur, Toast.LENGTH_SHORT).show();
-                Log.e("clicked text", fur);
-                if(!flag){
-                    flag = true;
-                    st1.setTextColor(Color.YELLOW);
-                    Log.e("star", "좋아요");
-                    reference.child(uid).child("Likes").push().setValue(strarray[list.get(0)][0]);
-                    String key = reference.child(uid).child("Likes").child(strarray[list.get(0)][0]).getKey();
-                    Log.e("key", key);
-                    //TODO : 내가 추가한 값에 대한 key 값을 받아오고 싶음
-                }
-                else {
-                    flag = false;
-                    //TODO : 별도 회색으로 가능한가?
-                    st1.setTextColor(Color.GRAY);
-                    Log.e("star", "해제");
-                }
-
-            }
-        });
+//
+//        st1.setOnClickListener(new View.OnClickListener() {
+//            Boolean flag = false;
+//            @Override
+//            public void onClick(View v) {
+//
+//                String fur = strarray[list.get(0)][0];
+//                Toast.makeText(getContext(), fur, Toast.LENGTH_SHORT).show();
+//                Log.e("clicked text", fur);
+//                if(!flag){
+//                    flag = true;
+//                    st1.setTextColor(Color.YELLOW);
+//                    Log.e("star", "좋아요");
+//                    reference.child(uid).child("Likes").push().setValue(strarray[list.get(0)][0]);
+//                    String key = reference.child(uid).child("Likes").child(strarray[list.get(0)][0]).getKey();
+//                    Log.e("key", key);
+//                    //TODO : 내가 추가한 값에 대한 key 값을 받아오고 싶음
+//                }
+//                else {
+//                    flag = false;
+//                    //TODO : 별도 회색으로 가능한가?
+//                    st1.setTextColor(Color.GRAY);
+//                    Log.e("star", "해제");
+//                }
+//
+//            }
+//        });
 
 //        refresh 버튼 누르면 서버에 저장된 내 정보 불러오기
         //TODO : 필요한 정보만 불러와서 서버에 전달
@@ -1419,6 +1433,77 @@ public class Main extends Fragment {
         });
         return view;
     }
+
+    //좋아요 누르면 메소드
+    private int likeCount = 0;
+
+    private void setupLikeButton(ImageView likeButton, String userId, String itemId, int index) {
+        likeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Firebase Realtime Database에서 해당 물품의 좋아요 상태 조회
+                getLikedItems(userId, new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        boolean isLiked = dataSnapshot.hasChild(itemId);
+                        if (isLiked) {
+                            // 이미 좋아요 상태인 경우, 좋아요 취소
+                            setLiked(userId, itemId, false);
+                            likeButton.setImageResource(R.drawable.ic_baseline_star_border_24);
+                        } else {
+                            // 좋아요 상태가 아닌 경우
+                            setLiked(userId, itemId, true);
+                            likeButton.setImageResource(R.drawable.ic_star_yellow_24dp);
+                        }
+
+                        // 좋아요 누른 항목에 정보 표시
+                        switch (likeCount) {
+                            case 0:
+                                Glide.with(getActivity()).load(strarray[indices.get(index)][4]).into(binding.likeImage1);
+                                binding.likeTitle1.setText(strarray[indices.get(index)][0]);
+                                binding.likePrice1.setText(strarray[indices.get(index)][1] +" ₩");
+                                break;
+                            case 1:
+                                Glide.with(getActivity()).load(strarray[indices.get(index)][4]).into(binding.likeImage2);
+                                binding.likeTitle2.setText(strarray[indices.get(index)][0]);
+                                binding.likePrice2.setText(strarray[indices.get(index)][1] +" ₩");
+                                break;
+                            case 2:
+                                Glide.with(getActivity()).load(strarray[indices.get(index)][4]).into(binding.likeImage3);
+                                binding.likeTitle3.setText(strarray[indices.get(index)][0]);
+                                binding.likePrice3.setText(strarray[indices.get(index)][1] +" ₩");
+                                break;
+                            // ...
+                        }
+
+                        likeCount++;
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        // 에러 처리
+                    }
+                });
+            }
+        });
+    }
+
+
+    // 사용자가 좋아요를 누른 물품 목록 조회
+    private void getLikedItems(String userId, ValueEventListener listener) {
+        databaseReference.child(userId).child("likes").addListenerForSingleValueEvent(listener);
+    }
+
+    // 물품의 좋아요 상태 변경
+    private void setLiked(String userId, String itemId, boolean isLiked) {
+        if (isLiked) {
+            databaseReference.child(userId).child("likes").child(itemId).setValue(true);
+        } else {
+            databaseReference.child(userId).child("likes").child(itemId).removeValue();
+        }
+    }
+
+
 
     public void adduser(String name, String gender) {
 
