@@ -793,11 +793,10 @@ public class Main extends Fragment {
 
     Main mainFragment;
     private FragmentMainBinding binding;
-
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = database.getReference("Users");
     FirebaseAuth firebaseAuth;
-    String [][] strarray;
+    private String [][] strarray;
     List<Integer> list;
     String preRate, like;
     int from = 0, size = 5185;
@@ -1517,6 +1516,10 @@ public class Main extends Fragment {
         //키가 없는데 "user"와 name같이 값을 지정한 경우 자동으로 생성합니다.
         databaseReference.child("user").child(name).setValue(user);
 
+    }
+
+    public String[][] getStrarray() {
+        return strarray;
     }
 
 }

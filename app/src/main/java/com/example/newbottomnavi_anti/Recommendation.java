@@ -2,43 +2,30 @@ package com.example.newbottomnavi_anti;
 
 import static android.app.Activity.RESULT_OK;
 
-import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
-
 import static java.util.Arrays.stream;
 
-import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Map;
-import java.util.stream.Stream;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.cardview.widget.CardView;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
-import androidx.exifinterface.media.ExifInterface;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
-import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,32 +37,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.SeekBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.newbottomnavi_anti.databinding.FragmentMainBinding;
 import com.example.newbottomnavi_anti.databinding.FragmentRecommendationBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.gun0912.tedpermission.PermissionListener;
-import com.gun0912.tedpermission.normal.TedPermission;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
 import java.nio.charset.Charset;
-import java.security.Permission;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -89,10 +66,11 @@ public class Recommendation extends Fragment {
     private FragmentRecommendationBinding binding;
     FirebaseAuth firebaseAuth;
     String RadioText, RadioText2;
-    ImageView img_wys_1, img_wys_2, img_wys_3, img_wys_4, img_recom_a, img_recom_a_1, img_recom_b, img_recom_b_1, img_recom_c, img_recom_c_1, img_recom_d, img_recom_d_1;
+    ImageView img_wys_1, img_wys_2, img_wys_3, img_wys_4, rimg1, rimg2, rimg3,
+            rimg4, rimg5, rimg6, rimg7, rimg8, rimg9, rimg10;
     Button recommend_btn;
     ImageButton refresh_btn;
-    LinearLayout recommend_layout;
+    LinearLayout recommend_layout, recommend_result_layout;
     String selectedCbText = "";
     String[][] strarray;
     List<Integer> list;
@@ -117,6 +95,8 @@ public class Recommendation extends Fragment {
     Uri imageUri;
     Uri photoURI, albumURI;
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -131,23 +111,45 @@ public class Recommendation extends Fragment {
         RadioButton rb3 = view.findViewById(R.id.radiobutton3);
         RadioButton rb4 = view.findViewById(R.id.radiobutton4);
 
-        RadioGroup radioGroup2 = view.findViewById(R.id.seekbar_radioGroup);
-        RadioButton rb5 = view.findViewById(R.id._seekbar_1_randioButton);
-        RadioButton rb6 = view.findViewById(R.id._seekbar_2_randioButton);
-        RadioButton rb7 = view.findViewById(R.id._seekbar_3_randioButton);
-        RadioButton rb8 = view.findViewById(R.id._seekbar_4_randioButton);
-        RadioButton rb9 = view.findViewById(R.id._seekbar_5_randioButton);
+        strarray = new String[5185][6];
+
+        String[] assets_arr = new String[]{"bed.txt", "chair.txt", "closet.txt", "curtain.txt", "desk.txt", "lamp.txt", "shelf.txt", "sofa.txt", "table.txt"};
+        AssetManager assetManager = getActivity().getAssets();
+        InputStream inputStream = null;
+        int total = 0;
+        try {
+            int j = 0;
+            for(int i=0; i<9; i++){
+                inputStream = assetManager.open(assets_arr[i]);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    if(i==3 || i==5){
+                        String[] temp = new String[6];
+                        temp = line.split(";");
+                        strarray[j][5] = temp[4];
+                        strarray[j][4] = temp[3];
+                        strarray[j][3] = "크기(가로x세로x높이):0";
+                        strarray[j][2] = temp[2];
+                        strarray[j][1] = temp[1];
+                        strarray[j][0] = temp[0];
+                    }else{
+                        strarray[j] = line.split(";");
+                    }
+                    j++;
+                }
+                reader.close();
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e ) {
+            e.printStackTrace();
+        }
 
         //HomeFragment에서 FurnitureInfoFragment로 data 넘기기 위해 action 객체 만들어줌. 인자 순서대로 title, price, img
 
 
-        /**
-         * <TODO>
-         *     이부분 null떠서 주석해놨음. 기존 furniture.txt에서 txt파일이 바뀌어서
-         *     PreRate.java의 load()처럼 여러 txt파일 읽어오는식으로 바꿔야함!
-         * </TODO>
-         *
-         */
 //        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action =
 //                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(0)][0],strarray[list.get(0)][1],strarray[list.get(0)][5],strarray[list.get(0)][2],strarray[list.get(0)][3]);
 //        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action2 =
@@ -184,70 +186,36 @@ public class Recommendation extends Fragment {
 
 
 //        Radio Button 처리
-        radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//        radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//
+////                String RadioText;
+//                switch (checkedId) {
+//                    case R.id.radiobutton1:
+//                        Toast.makeText(getContext(), rb1.getText().toString(), Toast.LENGTH_SHORT).show();
+//                        Log.e("Radio Button1", rb1.getText().toString());
+//                        RadioText = rb1.getText().toString();
+//                        break;
+//                    case R.id.radiobutton2:
+//                        Toast.makeText(getContext(), rb2.getText().toString(), Toast.LENGTH_SHORT).show();
+//                        Log.e("Radio Button2", rb2.getText().toString());
+//                        RadioText = rb2.getText().toString();
+//                        break;
+//                    case R.id.radiobutton3:
+//                        Toast.makeText(getContext(), rb3.getText().toString(), Toast.LENGTH_SHORT).show();
+//                        Log.e("Radio Button3", rb3.getText().toString());
+//                        RadioText = rb3.getText().toString();
+//                        break;
+//                    case R.id.radiobutton4:
+//                        Toast.makeText(getContext(), rb4.getText().toString(), Toast.LENGTH_SHORT).show();
+//                        Log.e("Radio Button3", rb4.getText().toString());
+//                        RadioText = rb4.getText().toString();
+//                        break;
+//                }
+//            }
+//        });
 
-//                String RadioText;
-                switch (checkedId) {
-                    case R.id.radiobutton1:
-                        Toast.makeText(getContext(), rb1.getText().toString(), Toast.LENGTH_SHORT).show();
-                        Log.e("Radio Button1", rb1.getText().toString());
-                        RadioText = rb1.getText().toString();
-                        break;
-                    case R.id.radiobutton2:
-                        Toast.makeText(getContext(), rb2.getText().toString(), Toast.LENGTH_SHORT).show();
-                        Log.e("Radio Button2", rb2.getText().toString());
-                        RadioText = rb2.getText().toString();
-                        break;
-                    case R.id.radiobutton3:
-                        Toast.makeText(getContext(), rb3.getText().toString(), Toast.LENGTH_SHORT).show();
-                        Log.e("Radio Button3", rb3.getText().toString());
-                        RadioText = rb3.getText().toString();
-                        break;
-                    case R.id.radiobutton4:
-                        Toast.makeText(getContext(), rb4.getText().toString(), Toast.LENGTH_SHORT).show();
-                        Log.e("Radio Button3", rb4.getText().toString());
-                        RadioText = rb4.getText().toString();
-                        break;
-                }
-            }
-        });
-
-        radioGroup2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-//                String RadioText;
-                switch (checkedId) {
-                    case R.id._seekbar_1_randioButton:
-                        Toast.makeText(getContext(), rb5.getText().toString(), Toast.LENGTH_SHORT).show();
-                        Log.e("Radio Button1", rb5.getText().toString());
-                        RadioText2 = rb5.getText().toString();
-                        break;
-                    case R.id._seekbar_2_randioButton:
-                        Toast.makeText(getContext(), rb6.getText().toString(), Toast.LENGTH_SHORT).show();
-                        Log.e("Radio Button2", rb6.getText().toString());
-                        RadioText2 = rb6.getText().toString();
-                        break;
-                    case R.id._seekbar_3_randioButton:
-                        Toast.makeText(getContext(), rb7.getText().toString(), Toast.LENGTH_SHORT).show();
-                        Log.e("Radio Button3", rb7.getText().toString());
-                        RadioText2 = rb7.getText().toString();
-                        break;
-                    case R.id._seekbar_4_randioButton:
-                        Toast.makeText(getContext(), rb8.getText().toString(), Toast.LENGTH_SHORT).show();
-                        Log.e("Radio Button3", rb8.getText().toString());
-                        RadioText2 = rb8.getText().toString();
-                        break;
-                    case R.id._seekbar_5_randioButton:
-                        Toast.makeText(getContext(), rb9.getText().toString(), Toast.LENGTH_SHORT).show();
-                        Log.e("Radio Button3", rb9.getText().toString());
-                        RadioText2 = rb9.getText().toString();
-                        break;
-                }
-            }
-        });
 
         CheckBox cb1 = view.findViewById(R.id.cb_question_2_bed);
         CheckBox cb2 = view.findViewById(R.id.cb_question_2_chair);
@@ -264,7 +232,6 @@ public class Recommendation extends Fragment {
 //        TODO : 연결하기
         Button camera_btn = view.findViewById(R.id.camera_recom);
         Button gallery_btn = view.findViewById(R.id.gallery_recom);
-        Button more_opt = view.findViewById(R.id.btn_more_options);
         LinearLayout more_opt_layout = view.findViewById(R.id.lo_more_options);
 
 //        그렇게 불러온 사진들 띄워주기 (최대 4개)
@@ -274,39 +241,17 @@ public class Recommendation extends Fragment {
         img_wys_3 = view.findViewById(R.id.img_whatsyourstle_3);
         img_wys_4 = view.findViewById(R.id.img_whatsyourstle_4);
 
+        rimg1 = view.findViewById(R.id.result_img1);
+
 //        추천하기 버튼
 //        TODO : 클릭 시 python 코드와 연결되도록
         recommend_btn = view.findViewById(R.id.recommend_btn);
         recommend_layout = view.findViewById(R.id.linearLayout_whatsyourstyle);
+        recommend_result_layout = view.findViewById(R.id.layout_result);
 
 //        refresh 버튼
 //        TODO : 클릭 시 기존 정보 바탕으로 (연산 x) 다시 추천
         refresh_btn = view.findViewById(R.id.refresh_imgbtn);
-
-//        추천해주는 제품들 사진
-//        a, b, c, d 가 각 제품
-//        _1, _2 이런게 그 속에 속하는 부 사진들
-        img_recom_a = view.findViewById(R.id.img_recom_a);
-        img_recom_a_1 = view.findViewById(R.id.img_recom_a_1);
-        img_recom_b = view.findViewById(R.id.img_recom_b);
-        img_recom_b_1 = view.findViewById(R.id.img_recom_b_1);
-        img_recom_c = view.findViewById(R.id.img_recom_c);
-        img_recom_c_1 = view.findViewById(R.id.img_recom_c_1);
-        img_recom_d = view.findViewById(R.id.img_recom_d);
-        img_recom_d_1 = view.findViewById(R.id.img_recom_d_1);
-
-        more_opt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (more_opt_layout.getVisibility() == View.GONE) {
-                    more_opt_layout.setVisibility(View.VISIBLE);
-                    more_opt.setText("접기");
-                } else {
-                    more_opt_layout.setVisibility(View.GONE);
-                    more_opt.setText("더보기");
-                }
-            }
-        });
 
         PermissionListener permissionlistener = new PermissionListener() {
             @Override
@@ -360,6 +305,10 @@ public class Recommendation extends Fragment {
                 //추천하기 누르면 카메라, 갤러리 버튼 없어짐
                 recommend_layout.setVisibility(View.GONE);
 
+                //resultlayout 나오게
+                recommend_result_layout.setVisibility(View.VISIBLE);
+
+
                 //Toast.makeText(getContext(), RadioText, Toast.LENGTH_SHORT).show();
                 //Log.e("Final Radio Button", RadioText);
 
@@ -395,11 +344,39 @@ public class Recommendation extends Fragment {
                 Toast.makeText(getContext(), selectedCbText, Toast.LENGTH_SHORT).show();
                 Log.e("Final CheckBox", selectedCbText);
 
+//                if (selectedCbText == null) {
+//                    Toast.makeText(getContext(), "모든 옵션을 선택해주세요", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    int[][] recByCat = connect();
+//                    Glide.with(getActivity()).load(strarray[recByCat[0][0]][4]).into(result_img1);
+//                }
+
                 if (selectedCbText == null) {
                     Toast.makeText(getContext(), "모든 옵션을 선택해주세요", Toast.LENGTH_SHORT).show();
                 } else {
-                    connect();
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            final int[][] recByCat = connect();
+
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ImageView[] resultImgViews = new ImageView[] {rimg1, rimg2, rimg3, rimg4, rimg5, rimg6, rimg7, rimg8, rimg9, rimg10};
+                                    int index = 0;
+                                    for (int i = 0; i < recByCat.length; i++) {
+                                        for (int j = 0; j < recByCat[i].length; j++) {
+                                            Glide.with(getActivity()).load(strarray[recByCat[i][j]][4]).into(resultImgViews[index]);
+                                            index++;
+                                        }
+                                    }
+
+                                }
+                            });
+                        }
+                    }).start();
                 }
+
             }
         });
 
@@ -415,15 +392,6 @@ public class Recommendation extends Fragment {
 //       Glide.with(this).load("https://pix8.agoda.net/hotelImages/111/1110567/1110567_16083113590045958402.jpg?ca=6&ce=1&s=1024x768").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_wys_1);
 //       Glide.with(this).load("https://pix8.agoda.net/hotelImages/111/1110567/1110567_16083113130045955510.jpg?ca=6&ce=1&s=1024x768").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_wys_2);
 
-
-        Glide.with(this).load("https://pix8.agoda.net/hotelImages/111/1110567/1110567_17020812280050853336.jpg?ca=6&ce=1&s=1024x768").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_a);
-        Glide.with(this).load("https://q-xx.bstatic.com/xdata/images/hotel/840x460/58416127.jpg?k=0b4774030b77e017dc0b8a587f392f9dfab4283e3652a5ef357ccaee4d292ba7&o=").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_a_1);
-        Glide.with(this).load("https://img.danawa.com/prod_img/500000/043/638/img/1638043_1.jpg?shrink=500:500").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_b);
-        Glide.with(this).load("https://img.danawa.com/prod_img/500000/043/638/img/1638043_3.jpg?shrink=500:500").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_b_1);
-        Glide.with(this).load("https://img.danawa.com/prod_img/500000/063/627/img/4627063_1.jpg?shrink=500:500").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_c);
-        Glide.with(this).load("https://img.danawa.com/prod_img/500000/063/627/img/4627063_3.jpg?shrink=500:500").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_c_1);
-        Glide.with(this).load("https://img.danawa.com/prod_img/500000/392/235/img/5235392_1.jpg?shrink=500:500").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_d);
-        Glide.with(this).load("https://img.danawa.com/prod_img/500000/392/235/img/5235392_3.jpg?shrink=500:500").placeholder(R.drawable.ic_baseline_emoji_emotions).into(img_recom_d_1);
 
         return view;
     }
@@ -547,7 +515,7 @@ public class Recommendation extends Fragment {
     private String img_path;
     private Bitmap img;
 
-    public void connect() { // 서버 socketHost.py와 연결
+    public int[][] connect() { // 서버 socketHost.py와 연결
         firebaseAuth = firebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
         String uid = user.getUid();
@@ -570,13 +538,14 @@ public class Recommendation extends Fragment {
             }
         }
 
+        int[][] recByCat = new int[numOfCat][10];
 
 //                퍼센트 전달
         reference.child(uid).child("Preference").child("seekbar").setValue(RadioText2);
 
 
         //yolo 사용하는 서버와 연결
-        mHandler = new Handler();
+        //mHandler = new Handler();
         BitmapDrawable drawable = (BitmapDrawable) img_wys_1.getDrawable();
         img = drawable.getBitmap();
         Log.w("connect", "연결 하는중");
@@ -622,7 +591,6 @@ public class Recommendation extends Fragment {
                     tone = readString(dis);
                     Log.w("color,tone done", color);
 
-                    int[][] recByCat = new int[numOfCat][14];
                     for (int i = 0; i < numOfCat; i++) {
                         String[] strTmp = new String[10];
                         strTmp = readString(dis).split(" ");
@@ -651,6 +619,8 @@ public class Recommendation extends Fragment {
         } catch (InterruptedException e) {
 
         }
+
+        return recByCat;
     }
 
     public String readString(DataInputStream dis) throws IOException {
