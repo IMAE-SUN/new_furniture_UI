@@ -335,6 +335,26 @@
                                 android:layout_gravity="center"
                                 android:fontFamily="@font/notosanskr_medium"/>
 
+
+                            <!--침대-->
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.3dp"
+                                android:layout_centerInParent="true"
+                                android:background="#939597"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_margin="15dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="침대"
+                                android:textSize="20sp"
+                                android:textColor="@color/fur_darkNavy"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/notosanskr_medium"/>
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -343,7 +363,6 @@
                                 android:weightSum="100">
 
                                 <androidx.cardview.widget.CardView
-                                    android:id="@+id/card_filter_1"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="50"
@@ -357,7 +376,7 @@
                                         android:orientation="vertical">
 
                                         <ImageView
-                                            android:id="@+id/result_img1"
+                                            android:id="@+id/rimg1"
                                             android:layout_width="match_parent"
                                             android:layout_height="160dp"
                                             android:scaleType="fitXY"
@@ -370,7 +389,7 @@
                                             android:orientation="vertical">
 
                                             <TextView
-                                                android:id="@+id/result_title1"
+                                                android:id="@+id/rtitle1"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginBottom="4dp"
@@ -381,7 +400,6 @@
                                                 android:textStyle="bold" />
 
                                             <TextView
-                                                android:id="@+id/result_price1"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
                                                 android:fontFamily="@font/notosanskr_medium"
@@ -426,7 +444,6 @@
 
 
                                 <androidx.cardview.widget.CardView
-                                    android:id="@+id/card_filter_2"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="50"
@@ -440,7 +457,7 @@
                                         android:orientation="vertical">
 
                                         <ImageView
-                                            android:id="@+id/filter_image_2"
+                                            android:id="@+id/rimg2"
                                             android:layout_width="match_parent"
                                             android:layout_height="160dp"
                                             android:src="@drawable/ic_baseline_home"
@@ -454,7 +471,7 @@
                                             android:layout_margin="8dp">
 
                                             <TextView
-                                                android:id="@+id/title_recently_2"
+                                                android:id="@+id/rtitle2"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginBottom="4dp"
@@ -465,7 +482,6 @@
                                                 android:textStyle="bold" />
 
                                             <TextView
-                                                android:id="@+id/price_recently_2"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
                                                 android:fontFamily="@font/notosanskr_medium"
@@ -483,7 +499,6 @@
                                             android:layout_marginBottom="8dp">
 
                                             <ImageView
-                                                android:id="@+id/filter_star2"
                                                 android:layout_width="36dp"
                                                 android:layout_height="36dp"
                                                 android:layout_alignParentLeft="true"
@@ -491,7 +506,6 @@
                                                 android:src="@drawable/ic_baseline_star_border_24" />
 
                                             <TextView
-                                                android:id="@+id/filter_detail2"
                                                 android:layout_width="120dp"
                                                 android:layout_height="60dp"
                                                 android:layout_alignParentRight="true"
@@ -509,6 +523,1547 @@
 
                                 </androidx.cardview.widget.CardView>
                             </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="8dp"
+                                android:weightSum="100">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    app:cardCornerRadius="4dp"
+                                    app:cardElevation="4dp"
+                                    app:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/rimg3"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:scaleType="fitXY"
+                                            android:src="@drawable/ic_baseline_home" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="8dp"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/rtitle3"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="4dp"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_darkNavy"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_medium"
+                                                android:textSize="12sp" />
+
+
+                                        </LinearLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="8dp"
+                                            android:layout_marginBottom="8dp">
+
+                                            <ImageView
+                                                android:layout_width="36dp"
+                                                android:layout_height="36dp"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_centerVertical="true"
+                                                android:src="@drawable/ic_baseline_star_border_24" />
+
+                                            <TextView
+                                                android:layout_width="120dp"
+                                                android:layout_height="60dp"
+                                                android:layout_alignParentRight="true"
+                                                android:background="@drawable/gray_rounded_shape"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:padding="8dp"
+                                                android:text="자세히보기"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/fur_navy"
+                                                android:textSize="16sp" />
+
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+
+                                </androidx.cardview.widget.CardView>
+
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    app:cardCornerRadius="4dp"
+                                    app:cardElevation="4dp"
+                                    app:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/rimg4"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:src="@drawable/ic_baseline_home"
+                                            android:scaleType="fitXY"
+                                            />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            android:layout_margin="8dp">
+
+                                            <TextView
+                                                android:id="@+id/rtitle4"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="4dp"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_darkNavy"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_medium"
+                                                android:textSize="12sp" />
+
+
+                                        </LinearLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="8dp"
+                                            android:layout_marginBottom="8dp">
+
+                                            <ImageView
+                                                android:layout_width="36dp"
+                                                android:layout_height="36dp"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_centerVertical="true"
+                                                android:src="@drawable/ic_baseline_star_border_24" />
+
+                                            <TextView
+                                                android:layout_width="120dp"
+                                                android:layout_height="60dp"
+                                                android:layout_alignParentRight="true"
+                                                android:background="@drawable/gray_rounded_shape"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:padding="8dp"
+                                                android:text="자세히보기"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/fur_navy"
+                                                android:textSize="16sp" />
+
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="8dp"
+                                android:weightSum="100">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    app:cardCornerRadius="4dp"
+                                    app:cardElevation="4dp"
+                                    app:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/rimg5"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:scaleType="fitXY"
+                                            android:src="@drawable/ic_baseline_home" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="8dp"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/rtitle5"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="4dp"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_darkNavy"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_medium"
+                                                android:textSize="12sp" />
+
+
+                                        </LinearLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="8dp"
+                                            android:layout_marginBottom="8dp">
+
+                                            <ImageView
+                                                android:layout_width="36dp"
+                                                android:layout_height="36dp"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_centerVertical="true"
+                                                android:src="@drawable/ic_baseline_star_border_24" />
+
+                                            <TextView
+                                                android:layout_width="120dp"
+                                                android:layout_height="60dp"
+                                                android:layout_alignParentRight="true"
+                                                android:background="@drawable/gray_rounded_shape"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:padding="8dp"
+                                                android:text="자세히보기"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/fur_navy"
+                                                android:textSize="16sp" />
+
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+
+                                </androidx.cardview.widget.CardView>
+
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    app:cardCornerRadius="4dp"
+                                    app:cardElevation="4dp"
+                                    app:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/rimg6"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:src="@drawable/ic_baseline_home"
+                                            android:scaleType="fitXY"
+                                            />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            android:layout_margin="8dp">
+
+                                            <TextView
+                                                android:id="@+id/rtitle6"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="4dp"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_darkNavy"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_medium"
+                                                android:textSize="12sp" />
+
+
+                                        </LinearLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="8dp"
+                                            android:layout_marginBottom="8dp">
+
+                                            <ImageView
+                                                android:layout_width="36dp"
+                                                android:layout_height="36dp"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_centerVertical="true"
+                                                android:src="@drawable/ic_baseline_star_border_24" />
+
+                                            <TextView
+                                                android:layout_width="120dp"
+                                                android:layout_height="60dp"
+                                                android:layout_alignParentRight="true"
+                                                android:background="@drawable/gray_rounded_shape"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:padding="8dp"
+                                                android:text="자세히보기"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/fur_navy"
+                                                android:textSize="16sp" />
+
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="8dp"
+                                android:weightSum="100">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    app:cardCornerRadius="4dp"
+                                    app:cardElevation="4dp"
+                                    app:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/rimg7"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:scaleType="fitXY"
+                                            android:src="@drawable/ic_baseline_home" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="8dp"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/rtitle7"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="4dp"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_darkNavy"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_medium"
+                                                android:textSize="12sp" />
+
+
+                                        </LinearLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="8dp"
+                                            android:layout_marginBottom="8dp">
+
+                                            <ImageView
+                                                android:layout_width="36dp"
+                                                android:layout_height="36dp"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_centerVertical="true"
+                                                android:src="@drawable/ic_baseline_star_border_24" />
+
+                                            <TextView
+                                                android:layout_width="120dp"
+                                                android:layout_height="60dp"
+                                                android:layout_alignParentRight="true"
+                                                android:background="@drawable/gray_rounded_shape"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:padding="8dp"
+                                                android:text="자세히보기"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/fur_navy"
+                                                android:textSize="16sp" />
+
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+
+                                </androidx.cardview.widget.CardView>
+
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    app:cardCornerRadius="4dp"
+                                    app:cardElevation="4dp"
+                                    app:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/rimg8"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:src="@drawable/ic_baseline_home"
+                                            android:scaleType="fitXY"
+                                            />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            android:layout_margin="8dp">
+
+                                            <TextView
+                                                android:id="@+id/rtitle8"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="4dp"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_darkNavy"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_medium"
+                                                android:textSize="12sp" />
+
+
+                                        </LinearLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="8dp"
+                                            android:layout_marginBottom="8dp">
+
+                                            <ImageView
+                                                android:layout_width="36dp"
+                                                android:layout_height="36dp"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_centerVertical="true"
+                                                android:src="@drawable/ic_baseline_star_border_24" />
+
+                                            <TextView
+                                                android:layout_width="120dp"
+                                                android:layout_height="60dp"
+                                                android:layout_alignParentRight="true"
+                                                android:background="@drawable/gray_rounded_shape"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:padding="8dp"
+                                                android:text="자세히보기"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/fur_navy"
+                                                android:textSize="16sp" />
+
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="8dp"
+                                android:weightSum="100">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    app:cardCornerRadius="4dp"
+                                    app:cardElevation="4dp"
+                                    app:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/rimg9"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:scaleType="fitXY"
+                                            android:src="@drawable/ic_baseline_home" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="8dp"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/rtitle9"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="4dp"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_darkNavy"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_medium"
+                                                android:textSize="12sp" />
+
+
+                                        </LinearLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="8dp"
+                                            android:layout_marginBottom="8dp">
+
+                                            <ImageView
+                                                android:layout_width="36dp"
+                                                android:layout_height="36dp"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_centerVertical="true"
+                                                android:src="@drawable/ic_baseline_star_border_24" />
+
+                                            <TextView
+                                                android:layout_width="120dp"
+                                                android:layout_height="60dp"
+                                                android:layout_alignParentRight="true"
+                                                android:background="@drawable/gray_rounded_shape"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:padding="8dp"
+                                                android:text="자세히보기"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/fur_navy"
+                                                android:textSize="16sp" />
+
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+
+                                </androidx.cardview.widget.CardView>
+
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    app:cardCornerRadius="4dp"
+                                    app:cardElevation="4dp"
+                                    app:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/rimg10"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:src="@drawable/ic_baseline_home"
+                                            android:scaleType="fitXY"
+                                            />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            android:layout_margin="8dp">
+
+                                            <TextView
+                                                android:id="@+id/rtitle10"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="4dp"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_darkNavy"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_medium"
+                                                android:textSize="12sp" />
+
+
+                                        </LinearLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="8dp"
+                                            android:layout_marginBottom="8dp">
+
+                                            <ImageView
+                                                android:layout_width="36dp"
+                                                android:layout_height="36dp"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_centerVertical="true"
+                                                android:src="@drawable/ic_baseline_star_border_24" />
+
+                                            <TextView
+                                                android:layout_width="120dp"
+                                                android:layout_height="60dp"
+                                                android:layout_alignParentRight="true"
+                                                android:background="@drawable/gray_rounded_shape"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:padding="8dp"
+                                                android:text="자세히보기"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/fur_navy"
+                                                android:textSize="16sp" />
+
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+
+                            <!-- 의자-->
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.3dp"
+                                android:layout_centerInParent="true"
+                                android:background="#939597"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_margin="15dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="의자"
+                                android:textSize="20sp"
+                                android:textColor="@color/fur_darkNavy"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/notosanskr_medium"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="8dp"
+                                android:weightSum="100">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    app:cardCornerRadius="4dp"
+                                    app:cardElevation="4dp"
+                                    app:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/rimg11"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:scaleType="fitXY"
+                                            android:src="@drawable/ic_baseline_home" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="8dp"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/rtitle11"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="4dp"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_darkNavy"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_medium"
+                                                android:textSize="12sp" />
+
+
+                                        </LinearLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="8dp"
+                                            android:layout_marginBottom="8dp">
+
+                                            <ImageView
+                                                android:layout_width="36dp"
+                                                android:layout_height="36dp"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_centerVertical="true"
+                                                android:src="@drawable/ic_baseline_star_border_24" />
+
+                                            <TextView
+                                                android:layout_width="120dp"
+                                                android:layout_height="60dp"
+                                                android:layout_alignParentRight="true"
+                                                android:background="@drawable/gray_rounded_shape"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:padding="8dp"
+                                                android:text="자세히보기"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/fur_navy"
+                                                android:textSize="16sp" />
+
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+
+                                </androidx.cardview.widget.CardView>
+
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    app:cardCornerRadius="4dp"
+                                    app:cardElevation="4dp"
+                                    app:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/rimg12"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:src="@drawable/ic_baseline_home"
+                                            android:scaleType="fitXY"
+                                            />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            android:layout_margin="8dp">
+
+                                            <TextView
+                                                android:id="@+id/rtitle12"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="4dp"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_darkNavy"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_medium"
+                                                android:textSize="12sp" />
+
+
+                                        </LinearLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="8dp"
+                                            android:layout_marginBottom="8dp">
+
+                                            <ImageView
+                                                android:layout_width="36dp"
+                                                android:layout_height="36dp"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_centerVertical="true"
+                                                android:src="@drawable/ic_baseline_star_border_24" />
+
+                                            <TextView
+                                                android:layout_width="120dp"
+                                                android:layout_height="60dp"
+                                                android:layout_alignParentRight="true"
+                                                android:background="@drawable/gray_rounded_shape"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:padding="8dp"
+                                                android:text="자세히보기"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/fur_navy"
+                                                android:textSize="16sp" />
+
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="8dp"
+                                android:weightSum="100">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    app:cardCornerRadius="4dp"
+                                    app:cardElevation="4dp"
+                                    app:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/rimg13"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:scaleType="fitXY"
+                                            android:src="@drawable/ic_baseline_home" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="8dp"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/rtitle13"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="4dp"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_darkNavy"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_medium"
+                                                android:textSize="12sp" />
+
+
+                                        </LinearLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="8dp"
+                                            android:layout_marginBottom="8dp">
+
+                                            <ImageView
+                                                android:layout_width="36dp"
+                                                android:layout_height="36dp"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_centerVertical="true"
+                                                android:src="@drawable/ic_baseline_star_border_24" />
+
+                                            <TextView
+                                                android:layout_width="120dp"
+                                                android:layout_height="60dp"
+                                                android:layout_alignParentRight="true"
+                                                android:background="@drawable/gray_rounded_shape"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:padding="8dp"
+                                                android:text="자세히보기"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/fur_navy"
+                                                android:textSize="16sp" />
+
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+
+                                </androidx.cardview.widget.CardView>
+
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    app:cardCornerRadius="4dp"
+                                    app:cardElevation="4dp"
+                                    app:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/rimg14"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:src="@drawable/ic_baseline_home"
+                                            android:scaleType="fitXY"
+                                            />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            android:layout_margin="8dp">
+
+                                            <TextView
+                                                android:id="@+id/rtitle14"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="4dp"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_darkNavy"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_medium"
+                                                android:textSize="12sp" />
+
+
+                                        </LinearLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="8dp"
+                                            android:layout_marginBottom="8dp">
+
+                                            <ImageView
+                                                android:layout_width="36dp"
+                                                android:layout_height="36dp"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_centerVertical="true"
+                                                android:src="@drawable/ic_baseline_star_border_24" />
+
+                                            <TextView
+                                                android:layout_width="120dp"
+                                                android:layout_height="60dp"
+                                                android:layout_alignParentRight="true"
+                                                android:background="@drawable/gray_rounded_shape"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:padding="8dp"
+                                                android:text="자세히보기"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/fur_navy"
+                                                android:textSize="16sp" />
+
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="8dp"
+                                android:weightSum="100">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    app:cardCornerRadius="4dp"
+                                    app:cardElevation="4dp"
+                                    app:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/rimg15"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:scaleType="fitXY"
+                                            android:src="@drawable/ic_baseline_home" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="8dp"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/rtitle15"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="4dp"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_darkNavy"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_medium"
+                                                android:textSize="12sp" />
+
+
+                                        </LinearLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="8dp"
+                                            android:layout_marginBottom="8dp">
+
+                                            <ImageView
+                                                android:layout_width="36dp"
+                                                android:layout_height="36dp"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_centerVertical="true"
+                                                android:src="@drawable/ic_baseline_star_border_24" />
+
+                                            <TextView
+                                                android:layout_width="120dp"
+                                                android:layout_height="60dp"
+                                                android:layout_alignParentRight="true"
+                                                android:background="@drawable/gray_rounded_shape"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:padding="8dp"
+                                                android:text="자세히보기"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/fur_navy"
+                                                android:textSize="16sp" />
+
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+
+                                </androidx.cardview.widget.CardView>
+
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    app:cardCornerRadius="4dp"
+                                    app:cardElevation="4dp"
+                                    app:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/rimg16"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:src="@drawable/ic_baseline_home"
+                                            android:scaleType="fitXY"
+                                            />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            android:layout_margin="8dp">
+
+                                            <TextView
+                                                android:id="@+id/rtitle16"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="4dp"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_darkNavy"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_medium"
+                                                android:textSize="12sp" />
+
+
+                                        </LinearLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="8dp"
+                                            android:layout_marginBottom="8dp">
+
+                                            <ImageView
+                                                android:layout_width="36dp"
+                                                android:layout_height="36dp"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_centerVertical="true"
+                                                android:src="@drawable/ic_baseline_star_border_24" />
+
+                                            <TextView
+                                                android:layout_width="120dp"
+                                                android:layout_height="60dp"
+                                                android:layout_alignParentRight="true"
+                                                android:background="@drawable/gray_rounded_shape"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:padding="8dp"
+                                                android:text="자세히보기"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/fur_navy"
+                                                android:textSize="16sp" />
+
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="8dp"
+                                android:weightSum="100">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    app:cardCornerRadius="4dp"
+                                    app:cardElevation="4dp"
+                                    app:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/rimg17"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:scaleType="fitXY"
+                                            android:src="@drawable/ic_baseline_home" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="8dp"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/rtitle17"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="4dp"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_darkNavy"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_medium"
+                                                android:textSize="12sp" />
+
+
+                                        </LinearLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="8dp"
+                                            android:layout_marginBottom="8dp">
+
+                                            <ImageView
+                                                android:layout_width="36dp"
+                                                android:layout_height="36dp"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_centerVertical="true"
+                                                android:src="@drawable/ic_baseline_star_border_24" />
+
+                                            <TextView
+                                                android:layout_width="120dp"
+                                                android:layout_height="60dp"
+                                                android:layout_alignParentRight="true"
+                                                android:background="@drawable/gray_rounded_shape"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:padding="8dp"
+                                                android:text="자세히보기"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/fur_navy"
+                                                android:textSize="16sp" />
+
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+
+                                </androidx.cardview.widget.CardView>
+
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    app:cardCornerRadius="4dp"
+                                    app:cardElevation="4dp"
+                                    app:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/rimg18"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:src="@drawable/ic_baseline_home"
+                                            android:scaleType="fitXY"
+                                            />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            android:layout_margin="8dp">
+
+                                            <TextView
+                                                android:id="@+id/rtitle18"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="4dp"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_darkNavy"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_medium"
+                                                android:textSize="12sp" />
+
+
+                                        </LinearLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="8dp"
+                                            android:layout_marginBottom="8dp">
+
+                                            <ImageView
+                                                android:layout_width="36dp"
+                                                android:layout_height="36dp"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_centerVertical="true"
+                                                android:src="@drawable/ic_baseline_star_border_24" />
+
+                                            <TextView
+                                                android:layout_width="120dp"
+                                                android:layout_height="60dp"
+                                                android:layout_alignParentRight="true"
+                                                android:background="@drawable/gray_rounded_shape"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:padding="8dp"
+                                                android:text="자세히보기"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/fur_navy"
+                                                android:textSize="16sp" />
+
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="8dp"
+                                android:weightSum="100">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    app:cardCornerRadius="4dp"
+                                    app:cardElevation="4dp"
+                                    app:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/rimg19"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:scaleType="fitXY"
+                                            android:src="@drawable/ic_baseline_home" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="8dp"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/rtitle19"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="4dp"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_darkNavy"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_medium"
+                                                android:textSize="12sp" />
+
+
+                                        </LinearLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="8dp"
+                                            android:layout_marginBottom="8dp">
+
+                                            <ImageView
+                                                android:layout_width="36dp"
+                                                android:layout_height="36dp"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_centerVertical="true"
+                                                android:src="@drawable/ic_baseline_star_border_24" />
+
+                                            <TextView
+                                                android:layout_width="120dp"
+                                                android:layout_height="60dp"
+                                                android:layout_alignParentRight="true"
+                                                android:background="@drawable/gray_rounded_shape"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:padding="8dp"
+                                                android:text="자세히보기"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/fur_navy"
+                                                android:textSize="16sp" />
+
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+
+                                </androidx.cardview.widget.CardView>
+
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    app:cardCornerRadius="4dp"
+                                    app:cardElevation="4dp"
+                                    app:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/rimg20"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:src="@drawable/ic_baseline_home"
+                                            android:scaleType="fitXY"
+                                            />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            android:layout_margin="8dp">
+
+                                            <TextView
+                                                android:id="@+id/rtitle20"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="4dp"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_darkNavy"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:text=""
+                                                android:textColor="@color/fur_medium"
+                                                android:textSize="12sp" />
+
+
+                                        </LinearLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="8dp"
+                                            android:layout_marginBottom="8dp">
+
+                                            <ImageView
+                                                android:layout_width="36dp"
+                                                android:layout_height="36dp"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_centerVertical="true"
+                                                android:src="@drawable/ic_baseline_star_border_24" />
+
+                                            <TextView
+                                                android:layout_width="120dp"
+                                                android:layout_height="60dp"
+                                                android:layout_alignParentRight="true"
+                                                android:background="@drawable/gray_rounded_shape"
+                                                android:fontFamily="@font/notosanskr_medium"
+                                                android:padding="8dp"
+                                                android:text="자세히보기"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/fur_navy"
+                                                android:textSize="16sp" />
+
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>

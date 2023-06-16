@@ -37,6 +37,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -66,8 +67,7 @@ public class Recommendation extends Fragment {
     private FragmentRecommendationBinding binding;
     FirebaseAuth firebaseAuth;
     String RadioText, RadioText2;
-    ImageView img_wys_1, img_wys_2, img_wys_3, img_wys_4, rimg1, rimg2, rimg3,
-            rimg4, rimg5, rimg6, rimg7, rimg8, rimg9, rimg10;
+    ImageView img_wys_1, img_wys_2, img_wys_3, img_wys_4, rimg1;
     Button recommend_btn;
     ImageButton refresh_btn;
     LinearLayout recommend_layout, recommend_result_layout;
@@ -243,7 +243,48 @@ public class Recommendation extends Fragment {
 //        TODO : 클릭 시 없어져야 함
         img_wys_1 = view.findViewById(R.id.img_whatsyourstle_1);
 
-        rimg1 = view.findViewById(R.id.result_img1);
+        rimg1 = view.findViewById(R.id.rimg1);
+        ImageView rimg2 = view.findViewById(R.id.rimg2);
+        ImageView rimg3 = view.findViewById(R.id.rimg3);
+        ImageView rimg4 = view.findViewById(R.id.rimg4);
+        ImageView rimg5 = view.findViewById(R.id.rimg5);
+        ImageView rimg6 = view.findViewById(R.id.rimg6);
+        ImageView rimg7 = view.findViewById(R.id.rimg7);
+        ImageView rimg8 = view.findViewById(R.id.rimg8);
+        ImageView rimg9 = view.findViewById(R.id.rimg9);
+        ImageView rimg10 = view.findViewById(R.id.rimg10);
+        ImageView rimg11 = view.findViewById(R.id.rimg11);
+        ImageView rimg12 = view.findViewById(R.id.rimg12);
+        ImageView rimg13 = view.findViewById(R.id.rimg13);
+        ImageView rimg14 = view.findViewById(R.id.rimg14);
+        ImageView rimg15 = view.findViewById(R.id.rimg15);
+        ImageView rimg16 = view.findViewById(R.id.rimg16);
+        ImageView rimg17 = view.findViewById(R.id.rimg17);
+        ImageView rimg18 = view.findViewById(R.id.rimg18);
+        ImageView rimg19 = view.findViewById(R.id.rimg19);
+        ImageView rimg20 = view.findViewById(R.id.rimg20);
+
+        TextView rtitle1 = view.findViewById(R.id.rtitle1);
+        TextView rtitle2 = view.findViewById(R.id.rtitle2);
+        TextView rtitle3 = view.findViewById(R.id.rtitle3);
+        TextView rtitle4 = view.findViewById(R.id.rtitle4);
+        TextView rtitle5 = view.findViewById(R.id.rtitle5);
+        TextView rtitle6 = view.findViewById(R.id.rtitle6);
+        TextView rtitle7 = view.findViewById(R.id.rtitle7);
+        TextView rtitle8 = view.findViewById(R.id.rtitle8);
+        TextView rtitle9 = view.findViewById(R.id.rtitle9);
+        TextView rtitle10 = view.findViewById(R.id.rtitle10);
+        TextView rtitle11 = view.findViewById(R.id.rtitle11);
+        TextView rtitle12 = view.findViewById(R.id.rtitle12);
+        TextView rtitle13 = view.findViewById(R.id.rtitle13);
+        TextView rtitle14 = view.findViewById(R.id.rtitle14);
+        TextView rtitle15 = view.findViewById(R.id.rtitle15);
+        TextView rtitle16 = view.findViewById(R.id.rtitle16);
+        TextView rtitle17 = view.findViewById(R.id.rtitle17);
+        TextView rtitle18 = view.findViewById(R.id.rtitle18);
+        TextView rtitle19 = view.findViewById(R.id.rtitle19);
+        TextView rtitle20 = view.findViewById(R.id.rtitle20);
+
 
 //        추천하기 버튼
 //        TODO : 클릭 시 python 코드와 연결되도록
@@ -364,15 +405,24 @@ public class Recommendation extends Fragment {
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    ImageView[] resultImgViews = new ImageView[] {rimg1, rimg2, rimg3, rimg4, rimg5, rimg6, rimg7, rimg8, rimg9, rimg10};
+                                    ImageView[] resultImgViews = new ImageView[] {rimg1, rimg2, rimg3, rimg4, rimg5, rimg6, rimg7, rimg8, rimg9, rimg10,
+                                    rimg11, rimg12, rimg13, rimg14, rimg15, rimg16, rimg17, rimg18, rimg19, rimg20};
+                                    TextView[] resultTitles = new TextView[] {rtitle1, rtitle2, rtitle3, rtitle4, rtitle5, rtitle6, rtitle7, rtitle8, rtitle9,
+                                    rtitle10, rtitle11, rtitle12, rtitle13, rtitle14, rtitle15, rtitle16, rtitle17, rtitle18, rtitle19, rtitle20};
+
                                     int index = 0;
-                                    for (int i = 0; i < recByCat.length; i++) {
-                                        for (int j = 0; j < recByCat[i].length; j++) {
-//                                            Glide.with(getActivity()).load(strarray[recByCat[i][j]][4]).into(resultImgViews[index]);
-                                            Glide.with(getActivity()).load(strarray[recByCat[0][0]][4]).into(rimg1);
+                                    for (int i = 0; i < 2; i++) {
+                                        for (int j = 0; j < 10; j++) {
+                                            int value = recByCat[i][j];
+                                            if (i == 1) {
+                                                value += 714;
+                                            }
+                                            Glide.with(getActivity()).load(strarray[value][4]).into(resultImgViews[index]);
+                                            resultTitles[index].setText(strarray[value][0]);
                                             index++;
                                         }
                                     }
+
 
                                 }
                             });
@@ -606,7 +656,7 @@ public class Recommendation extends Fragment {
                     for (int i = 0; i < numOfCat; i++) {
                         String[] strTmp = new String[10];
                         strTmp = readString(dis).split(" ");
-                        for (int j = 0; j < 14; j++) {
+                        for (int j = 0; j < 10; j++) {
                             recByCat[i][j] = Integer.parseInt(strTmp[j]);
                             Log.e("rec", String.valueOf(recByCat[i][j]));
                         }
