@@ -750,7 +750,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -801,6 +804,7 @@ public class Main extends Fragment {
     String preRate, like;
     int from = 0, size = 5185;
     int n1 = 0, n2 = 0;
+    SearchView searchView;
     String uid;
 
     int coldSoftCount = 0;
@@ -869,6 +873,7 @@ public class Main extends Fragment {
             }
         });
 
+
         strarray = new String[5185][6];
 
         String[] assets_arr = new String[]{"bed.txt", "chair.txt", "closet.txt", "curtain.txt", "desk.txt", "lamp.txt", "shelf.txt", "sofa.txt", "table.txt"};
@@ -922,6 +927,18 @@ public class Main extends Fragment {
         } catch (IOException e ) {
             e.printStackTrace();
         }
+
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                return false;
+//            }
+//        });
 
     }
 
@@ -1092,15 +1109,15 @@ public class Main extends Fragment {
 
 
         //like
-//        Glide.with(getActivity()).load(strarray[indices.get(0)][4]).into(binding.likeImage1);
+//        Glide.with(getActivity()).load(strarray[list.get(12)][4]).into(binding.likeImage1);
 //        Glide.with(getActivity()).load(strarray[list.get(13)][4]).into(binding.likeImage2);
 //        Glide.with(getActivity()).load(strarray[list.get(14)][4]).into(binding.likeImage3);
 //
-//        binding.likeTitle1.setText(strarray[indices.get(0)][0]);
+//        binding.likeTitle1.setText(strarray[list.get(12)][0]);
 //        binding.likeTitle2.setText(strarray[list.get(13)][0]);
 //        binding.likeTitle3.setText(strarray[list.get(14)][0]);
 //
-//        binding.likePrice1.setText(strarray[indices.get(0)][1] +" ₩");
+//        binding.likePrice1.setText(strarray[list.get(12)][1] +" ₩");
 //        binding.likePrice2.setText(strarray[list.get(13)][1] +" ₩");
 //        binding.likePrice3.setText(strarray[list.get(14)][1] +" ₩");
 
@@ -1149,8 +1166,6 @@ public class Main extends Fragment {
 //                Navigation.findNavController(getView()).navigate(action3);
 //            }
 //        });
-
-
 
         Button btn_more_likes = view.findViewById(R.id.btn_more_likes);
         HorizontalScrollView hsv = view.findViewById(R.id.horizontalScrollView);

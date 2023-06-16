@@ -38,15 +38,15 @@
 
                         <TextView
                             android:id="@+id/main_random_page"
-                            android:layout_width="wrap_content"
+                            android:layout_width="289dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="7"
                             android:fontFamily="@font/notosanskr_medium"
                             android:text="둘러보기"
                             android:textColor="@color/fur_darkNavy"
                             android:textSize="24sp"
-                            android:textStyle="bold"
-                            android:layout_gravity="center"
-                            android:layout_weight="7"/>
+                            android:textStyle="bold" />
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -63,17 +63,15 @@
                         android:orientation="horizontal"
                         android:weightSum="100">
 
-                        <EditText
+                        <androidx.appcompat.widget.SearchView
+                            android:id="@+id/searchView"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="90"
-                            android:background="@drawable/butter_navy_rounded_shape"
-                            android:drawableLeft="@drawable/ic_search_gray_24dp"
-                            android:drawablePadding="8dp"
-                            android:fontFamily="@font/notosanskr_medium"
-                            android:hint="내가 찾는 가구 검색 바로가기"
-                            android:padding="12dp"
-                            android:textColorHint="@color/butter_navy" />
+                            app:iconifiedByDefault="false"
+                            app:searchIcon="@drawable/ic_search_gray_24dp"
+                            app:queryHint="검색어를 입력하세요"
+                            app:queryBackground="@drawable/gray_rounded_shape"/>
 
 <!--                        filter 이미지인데 새로고침으로 바꿔둔 상황-->
                         <ImageButton
@@ -97,7 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-
+            android:layout_marginBottom="?attr/actionBarSize"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 

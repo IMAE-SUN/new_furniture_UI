@@ -12,7 +12,7 @@
     <color name="fur_pink">#DBA39A</color>
     <color name="fur_medium">#F0DBDB</color>
     <color name="fur_light">#F5EBE0</color>
-    <color name="fur_pale">#FEFCF3</color>
+    <color name="fur_pale">#FEFCFA</color>
     <color name="gray">#686868</color>
     <color name="blue">#D1DAFF</color>
     <color name="primaryColor">#e0e0e0</color>
@@ -23,7 +23,7 @@
     <color name="butter_mint">#7DB9B6</color>
     <color name="butter_red">#E96479</color>
     <color name="butter_navy">#4D455D</color>
-    <color name="butter_light">#fffaee</color>
+    <color name="butter_light">#FEFCFA</color>
     <color name="yellow">#ffff00</color>
 
 

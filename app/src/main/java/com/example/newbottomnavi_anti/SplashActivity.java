@@ -27,14 +27,14 @@ public class SplashActivity extends AppCompatActivity {
         house = findViewById(R.id.img_house);
 
         anim_splash_FadeIn = AnimationUtils.loadAnimation(this, R.anim.anim_splash_fadein);
-        anim_fur = AnimationUtils.loadAnimation(this, R.anim.anim_splash_fur);
+//        anim_fur = AnimationUtils.loadAnimation(this, R.anim.anim_splash_fur);
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 furniture.startAnimation(anim_splash_FadeIn);
-                house.startAnimation(anim_fur);
+//                house.startAnimation(anim_fur);
                 Intent intent = new Intent(SplashActivity.this, signin.class);
                 startActivity(intent);
                 finish();

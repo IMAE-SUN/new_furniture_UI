@@ -95,8 +95,6 @@ public class Recommendation extends Fragment {
     Uri imageUri;
     Uri photoURI, albumURI;
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -158,34 +156,41 @@ public class Recommendation extends Fragment {
 //                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(2)][0],strarray[list.get(2)][1],strarray[list.get(2)][5],strarray[list.get(2)][2],strarray[list.get(2)][3]);
 //        MainDirections.ActionNavigationHomeToFurnitureInfoFragment action4 =
 //                MainDirections.actionNavigationHomeToFurnitureInfoFragment(strarray[list.get(3)][0],strarray[list.get(3)][1],strarray[list.get(3)][5],strarray[list.get(3)][2],strarray[list.get(3)][3]);
+//        strarray = new String[5185][6];
+//
+//        String[] assets_arr = new String[]{"bed.txt", "chair.txt", "closet.txt", "curtain.txt", "desk.txt", "lamp.txt", "shelf.txt", "sofa.txt", "table.txt"};
+//        //        String[] category_arr = new String[] {"bed", "chair", "closet", "curtain", "desk", "lamp", "shelf", "sofa", "table"};
+////        String[][] bed, chair, closet, curtain, desk, lamp, shelf, sofa, table;
+//        AssetManager assetManager = getActivity().getAssets();
+//        InputStream inputStream = null;
+//        int total = 0;
+//        try {
+//            int j = 0;
+//            for(int i=0; i<9; i++){
+//                inputStream = assetManager.open(assets_arr[i]);
+//                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+//                String line;
+//                while ((line = reader.readLine()) != null) {
+//                    if(i==3 || i==5){
+//                        String[] temp = new String[6];
+//                        temp = line.split(";");
+//                        strarray[j][5] = temp[4];
+//                        strarray[j][4] = temp[3];
+//                        strarray[j][3] = "크기(가로x세로x높이):0";
+//                        strarray[j][2] = temp[2];
+//                        strarray[j][1] = temp[1];
+//                        strarray[j][0] = temp[0];
+//                    }else{
+//                        strarray[j] = line.split(";");
+//                    }
+//                    j++;
+//                }
+//                reader.close();
+//            }
 
-//        binding.recomCardA.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Navigation.findNavController(getView()).navigate(action);
-//            }
-//        });
-//        binding.recomCardB.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Navigation.findNavController(getView()).navigate(action2);
-//            }
-//        });
-//        binding.recomCardC.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Navigation.findNavController(getView()).navigate(action3);
-//            }
-//        });
-//        binding.recomCardD.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Navigation.findNavController(getView()).navigate(action4);
-//            }
-//        });
 
-
-//        Radio Button 처리
+//        RadioText = rb1.getText().toString();
+//
 //        radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 //            @Override
 //            public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -237,9 +242,6 @@ public class Recommendation extends Fragment {
 //        그렇게 불러온 사진들 띄워주기 (최대 4개)
 //        TODO : 클릭 시 없어져야 함
         img_wys_1 = view.findViewById(R.id.img_whatsyourstle_1);
-        img_wys_2 = view.findViewById(R.id.img_whatsyourstle_2);
-        img_wys_3 = view.findViewById(R.id.img_whatsyourstle_3);
-        img_wys_4 = view.findViewById(R.id.img_whatsyourstle_4);
 
         rimg1 = view.findViewById(R.id.result_img1);
 
@@ -366,7 +368,8 @@ public class Recommendation extends Fragment {
                                     int index = 0;
                                     for (int i = 0; i < recByCat.length; i++) {
                                         for (int j = 0; j < recByCat[i].length; j++) {
-                                            Glide.with(getActivity()).load(strarray[recByCat[i][j]][4]).into(resultImgViews[index]);
+//                                            Glide.with(getActivity()).load(strarray[recByCat[i][j]][4]).into(resultImgViews[index]);
+                                            Glide.with(getActivity()).load(strarray[recByCat[0][0]][4]).into(rimg1);
                                             index++;
                                         }
                                     }
@@ -377,6 +380,14 @@ public class Recommendation extends Fragment {
                     }).start();
                 }
 
+            }
+        });
+
+//        추천 새로고침
+        refresh_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                loadWithFilter(color);
             }
         });
 
@@ -590,6 +601,7 @@ public class Recommendation extends Fragment {
                     color = readString(dis);
                     tone = readString(dis);
                     Log.w("color,tone done", color);
+//                    loadWithFilter(color);
 
                     for (int i = 0; i < numOfCat; i++) {
                         String[] strTmp = new String[10];
@@ -622,6 +634,85 @@ public class Recommendation extends Fragment {
 
         return recByCat;
     }
+
+
+//    public void loadWithFilter(String color){ // n1 = 가구 카테고리, n2 = tone
+//        Log.e("loadWithFilter", "color : " + color);
+//
+//        //0~39까지의 중복 없는 난수 10개 생성
+//        Set<Integer> set = new HashSet<>();
+//
+//        String[] coldSoft = {"Dreamy", "Charming", "Wholesome", "Tranqu", "Plain", "Fresh", "Emotional", "Fashionable", "Delicate", "Chic", "Agile", "Youthful", "Refreshing", "Clean", "Neat"};
+//        String[] warmSoft = {"Colorful", "Casual", "Bright", "Enjoyable", "Pretty", "Childlike", "Sweet", "Soft", "Intimate", "Mild", "Graceful"};
+//        String[] warmHard = {"Lively", "Bold", "Active", "Wild", "Extravagant", "Alluring", "Mellow", "Luxurious", "Trational", "Elaborate", "Heavy&Deep", "Calm"};
+//        String[] coldHard = {"Modest", "Quite", "Dapper", "Dignified", "Noble", "Stylish", "Sporty", "Sharp", "Rational", "Masculine", "Metallic"};
+//
+//        while (set.size() < 10) {
+//            Double d = Math.random() * 5185;
+//            Log.d("random", String.valueOf(d.intValue()));
+//
+//            if(color.equals("coldSoft")){
+//                if(Arrays.asList(coldSoft).contains(strarray[d.intValue()][5])){
+//                    set.add(d.intValue());
+//                }
+//            }
+//            else if(color.equals("coldHard")){
+//                if(Arrays.asList(coldHard).contains(strarray[d.intValue()][5])){
+//                    set.add(d.intValue());
+//                }
+//            }
+//            else if(color.equals("warmSoft")){
+//                if(Arrays.asList(warmSoft).contains(strarray[d.intValue()][5])){
+//                    set.add(d.intValue());
+//                }
+//            }
+//            else if(color.equals("warmHard")){
+//                if(Arrays.asList(warmHard).contains(strarray[d.intValue()][5])){
+//                    set.add(d.intValue());
+//                }
+//            }
+//            else{
+//                continue;
+//            }
+//        }
+//
+//
+//        list = new ArrayList<>(set);
+////        Log.e("list", String.valueOf(list));
+//
+//        Glide.with(getActivity()).load(strarray[list.get(0)][4]).into(binding.imgRecomA);
+//        Glide.with(getActivity()).load(strarray[list.get(1)][4]).into(binding.imgRecomB);
+//        Glide.with(getActivity()).load(strarray[list.get(2)][4]).into(binding.imgRecomC);
+//        Glide.with(getActivity()).load(strarray[list.get(3)][4]).into(binding.imgRecomD);
+//        Glide.with(getActivity()).load(strarray[list.get(4)][4]).into(binding.imgRecomE);
+//        Glide.with(getActivity()).load(strarray[list.get(5)][4]).into(binding.imgRecomF);
+//        Glide.with(getActivity()).load(strarray[list.get(2)][4]).into(binding.imgRecomG);
+//        Glide.with(getActivity()).load(strarray[list.get(3)][4]).into(binding.imgRecomH);
+//        Glide.with(getActivity()).load(strarray[list.get(4)][4]).into(binding.imgRecomI);
+//        Glide.with(getActivity()).load(strarray[list.get(5)][4]).into(binding.imgRecomJ);
+//
+//        binding.titleRecomA.setText(strarray[list.get(0)][0]);
+//        binding.titleRecomB.setText(strarray[list.get(1)][0]);
+//        binding.titleRecomC.setText(strarray[list.get(2)][0]);
+//        binding.titleRecomD.setText(strarray[list.get(3)][0]);
+//        binding.titleRecomE.setText(strarray[list.get(4)][0]);
+//        binding.titleRecomF.setText(strarray[list.get(5)][0]);
+//        binding.titleRecomG.setText(strarray[list.get(2)][0]);
+//        binding.titleRecomH.setText(strarray[list.get(3)][0]);
+//        binding.titleRecomI.setText(strarray[list.get(4)][0]);
+//        binding.titleRecomJ.setText(strarray[list.get(5)][0]);
+//
+//        binding.priceRecomA.setText(strarray[list.get(0)][1] + " ₩");
+//        binding.priceRecomB.setText(strarray[list.get(1)][1] + " ₩");
+//        binding.priceRecomC.setText(strarray[list.get(2)][1] + " ₩");
+//        binding.priceRecomD.setText(strarray[list.get(3)][1] + " ₩");
+//        binding.priceRecomE.setText(strarray[list.get(4)][1] + " ₩");
+//        binding.priceRecomF.setText(strarray[list.get(5)][1] + " ₩");
+//        binding.priceRecomG.setText(strarray[list.get(2)][1] + " ₩");
+//        binding.priceRecomH.setText(strarray[list.get(3)][1] + " ₩");
+//        binding.priceRecomI.setText(strarray[list.get(4)][1] + " ₩");
+//        binding.priceRecomJ.setText(strarray[list.get(5)][1] + " ₩");
+//    }
 
     public String readString(DataInputStream dis) throws IOException {
         int length = dis.readInt();
