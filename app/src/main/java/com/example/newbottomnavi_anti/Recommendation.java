@@ -622,11 +622,11 @@ public class Recommendation extends Fragment {
                     tone = readString(dis);
                     Log.w("color,tone done", color);
 
-                    int[][] recByCat = new int[numOfCat][10];
+                    int[][] recByCat = new int[numOfCat][14];
                     for (int i = 0; i < numOfCat; i++) {
                         String[] strTmp = new String[10];
                         strTmp = readString(dis).split(" ");
-                        for (int j = 0; j < 10; j++) {
+                        for (int j = 0; j < 14; j++) {
                             recByCat[i][j] = Integer.parseInt(strTmp[j]);
                             Log.e("rec", String.valueOf(recByCat[i][j]));
                         }
